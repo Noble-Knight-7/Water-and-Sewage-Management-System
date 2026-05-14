@@ -15,6 +15,33 @@ namespace WaterSewageManagementSystem
         public LoginForm()
         {
             InitializeComponent();
+
+            comboBox_role_selector.Items.Add("Admin");
+            comboBox_role_selector.Items.Add("Customer");
+            comboBox_role_selector.Items.Add("Service Officer");
+            comboBox_role_selector.Items.Add("Maintenance Engineer");
+
+            comboBox_role_selector.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void button_login_clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel_register_clicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void linkLabel_forgot_password_clicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void comboBox_role_selector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

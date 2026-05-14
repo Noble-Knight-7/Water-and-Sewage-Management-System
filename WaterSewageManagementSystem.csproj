@@ -409,6 +409,12 @@
     <Compile Include="Services\NoticeService.cs" />
     <Compile Include="Services\ReportService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <EmbeddedResource Include="Forms\Common\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceOfficer\BillingReportForm.resx">
+      <DependentUpon>BillingReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
