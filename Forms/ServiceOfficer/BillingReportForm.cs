@@ -25,5 +25,10 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         }
 
         private void btnClose_Click(object sender, EventArgs e) => this.Close();
+
+        private void BillingReportForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

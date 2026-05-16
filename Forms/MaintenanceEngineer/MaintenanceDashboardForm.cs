@@ -34,7 +34,10 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             if (MessageHelper.ShowConfirm("Are you sure you want to logout?") == DialogResult.Yes)
             {
                 SessionManager.Logout();
-                this.Close();
+                LoginForm login = new LoginForm();
+                login.Show();
+
+                this.Hide();
             }
         }
 

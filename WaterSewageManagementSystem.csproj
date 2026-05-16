@@ -466,6 +466,9 @@
     <EmbeddedResource Include="Forms\MaintenanceEngineer\MaintenanceDashboardForm.resx">
       <DependentUpon>MaintenanceDashboardForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceOfficer\BillingReportForm.resx">
+      <DependentUpon>BillingReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServiceOfficer\MeterReadingForm.resx">
       <DependentUpon>MeterReadingForm.cs</DependentUpon>
     </EmbeddedResource>
