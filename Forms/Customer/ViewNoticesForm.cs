@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using System.Windows.Forms;
+using WaterSewageManagementSystem.Services;
 
 namespace WaterSewageManagementSystem.Forms.Customer
 {
     public partial class ViewNoticesForm : Form
     {
-        public ViewNoticesForm()
+        private readonly NoticeService _noticeService = new NoticeService();
+
+        public ViewNoticesForm() { InitializeComponent(); LoadNotices(); }
+
+        private void LoadNotices()
         {
-            InitializeComponent();
+            dgvNotices.DataSource = null;
+            dgvNotices.DataSource = _noticeService.GetAll();
         }
+
+        private void btnClose_Click(object sender, EventArgs e) => this.Close();
     }
 }

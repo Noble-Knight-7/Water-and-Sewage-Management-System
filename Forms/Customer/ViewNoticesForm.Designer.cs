@@ -1,39 +1,45 @@
-﻿namespace WaterSewageManagementSystem.Forms.Customer
+namespace WaterSewageManagementSystem.Forms.Customer
 {
     partial class ViewNoticesForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
+        protected override void Dispose(bool disposing) { if (disposing && components != null) components.Dispose(); base.Dispose(disposing); }
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ViewNoticesForm";
-        }
+            this.lblTitle  = new System.Windows.Forms.Label();
+            this.dgvNotices = new System.Windows.Forms.DataGridView();
+            this.btnClose  = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)this.dgvNotices).BeginInit();
+            this.SuspendLayout();
 
-        #endregion
+            this.ClientSize = new System.Drawing.Size(900, 480); this.Text = "Notices & Alerts";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen; this.BackColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog; this.MaximizeBox = false;
+
+            this.lblTitle.Text = "Notices & Service Alerts"; this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(74,20,140); this.lblTitle.Location = new System.Drawing.Point(20, 12); this.lblTitle.Size = new System.Drawing.Size(300, 30);
+
+            this.dgvNotices.Location = new System.Drawing.Point(20, 50); this.dgvNotices.Size = new System.Drawing.Size(860, 385);
+            this.dgvNotices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvNotices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvNotices.ReadOnly = true; this.dgvNotices.AllowUserToAddRows = false;
+            this.dgvNotices.BackgroundColor = System.Drawing.Color.White; this.dgvNotices.RowHeadersVisible = false;
+            this.dgvNotices.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(74,20,140);
+            this.dgvNotices.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvNotices.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.dgvNotices.EnableHeadersVisualStyles = false;
+
+            this.btnClose.Text = "Close"; this.btnClose.Location = new System.Drawing.Point(780, 440); this.btnClose.Size = new System.Drawing.Size(100, 33);
+            this.btnClose.BackColor = System.Drawing.Color.Gray; this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.btnClose.FlatAppearance.BorderSize = 0; this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+
+            this.Controls.AddRange(new System.Windows.Forms.Control[] { this.lblTitle, this.dgvNotices, this.btnClose });
+            ((System.ComponentModel.ISupportInitialize)this.dgvNotices).EndInit();
+            this.ResumeLayout(false);
+        }
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.DataGridView dgvNotices;
+        private System.Windows.Forms.Button btnClose;
     }
 }
