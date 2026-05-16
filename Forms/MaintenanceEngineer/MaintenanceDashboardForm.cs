@@ -37,7 +37,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 LoginForm login = new LoginForm();
                 login.Show();
 
-                this.Hide();
+                this.Close();
             }
         }
 

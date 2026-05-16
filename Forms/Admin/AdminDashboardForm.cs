@@ -117,7 +117,7 @@ namespace WaterSewageManagementSystem.Forms.Admin
                 LoginForm login = new LoginForm();
                 login.Show();
 
-                this.Hide();
+                this.Close();
             }
         }
 
