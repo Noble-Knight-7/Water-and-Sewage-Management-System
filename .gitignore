@@ -57,3 +57,7 @@ Desktop.ini
 # ReSharper optional
 _ReSharper*/
 *.DotSettings.user
+
+
+.zip
+.rar

@@ -1,47 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using WaterSewageManagementSystem.Helpers;
+using WaterSewageManagementSystem.Services;
 
 namespace WaterSewageManagementSystem
 {
     public partial class LoginForm : Form
     {
+        private readonly AuthService _authService = new AuthService();
+
         public LoginForm()
         {
             InitializeComponent();
-
-            comboBox_role_selector.Items.Add("Admin");
-            comboBox_role_selector.Items.Add("Customer");
-            comboBox_role_selector.Items.Add("Service Officer");
-            comboBox_role_selector.Items.Add("Maintenance Engineer");
-
-            comboBox_role_selector.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        private void button_login_clicked(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
+            string email    = txtEmail.Text.Trim();
+            string password = txtPassword.Text;
 
+            if (ValidationHelper.IsEmpty(email) || ValidationHelper.IsEmpty(password))
+            {
+                MessageHelper.ShowError("Please enter your email and password.");
+                return;
+            }
+
+            bool success = _authService.Login(email, password);
+            if (!success)
+            {
+                MessageHelper.ShowError("Invalid email or password, or your account is not active.");
+                return;
+            }
+
+            // Open the correct dashboard based on the logged-in user's role
+            string role = SessionManager.CurrentUser.Role;
+            Form dashboard = null;
+
+            switch (role)
+            {
+                case "Admin":
+                    dashboard = new Forms.Admin.AdminDashboardForm();
+                    break;
+                case "Customer":
+                    dashboard = new Forms.Customer.CustomerDashboardForm();
+                    break;
+                case "ServiceOfficer":
+                    dashboard = new Forms.ServiceOfficer.ServiceOfficerDashboardForm();
+                    break;
+                case "MaintenanceEngineer":
+                    dashboard = new Forms.MaintenanceEngineer.MaintenanceDashboardForm();
+                    break;
+                default:
+                    MessageHelper.ShowError("Unknown role. Please contact admin.");
+                    return;
+            }
+
+            this.Hide();
+            dashboard.FormClosed += (s, args) => this.Close();
+            dashboard.Show();
         }
 
-        private void linkLabel_register_clicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void lnkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            var form = new Forms.Common.RegisterForm();
+            form.ShowDialog();
         }
 
-        private void linkLabel_forgot_password_clicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void lnkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
-        }
-
-        private void comboBox_role_selector_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            var form = new Forms.Common.ForgotPasswordForm();
+            form.ShowDialog();
         }
     }
 }
