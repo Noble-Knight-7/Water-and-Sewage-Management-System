@@ -345,17 +345,17 @@
     <Compile Include="Forms\ServiceOfficer\CorrectBillForm.Designer.cs">
       <DependentUpon>CorrectBillForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ServiceOfficer\GenerateBillForm.cs">
+    <Compile Include="Forms\ServiceOfficer\CustomerBillListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ServiceOfficer\GenerateBillForm.Designer.cs">
-      <DependentUpon>GenerateBillForm.cs</DependentUpon>
+    <Compile Include="Forms\ServiceOfficer\CustomerBillListForm.Designer.cs">
+      <DependentUpon>CustomerBillListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ServiceOfficer\MeterReadingForm.cs">
+    <Compile Include="Forms\ServiceOfficer\MeterReadingBillGenerateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ServiceOfficer\MeterReadingForm.Designer.cs">
-      <DependentUpon>MeterReadingForm.cs</DependentUpon>
+    <Compile Include="Forms\ServiceOfficer\MeterReadingBillGenerateForm.Designer.cs">
+      <DependentUpon>MeterReadingBillGenerateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ServiceOfficer\ReviewConnectionApplicationsForm.cs">
       <SubType>Form</SubType>
@@ -469,11 +469,29 @@
     <EmbeddedResource Include="Forms\ServiceOfficer\BillingReportForm.resx">
       <DependentUpon>BillingReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServiceOfficer\MeterReadingForm.resx">
-      <DependentUpon>MeterReadingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ServiceOfficer\CorrectBillForm.resx">
+      <DependentUpon>CorrectBillForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceOfficer\CustomerBillListForm.resx">
+      <DependentUpon>CustomerBillListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceOfficer\MeterReadingBillGenerateForm.resx">
+      <DependentUpon>MeterReadingBillGenerateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceOfficer\ReviewConnectionApplicationsForm.resx">
+      <DependentUpon>ReviewConnectionApplicationsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceOfficer\ReviewDisputesForm.resx">
+      <DependentUpon>ReviewDisputesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceOfficer\ScheduleInstallationForm.resx">
+      <DependentUpon>ScheduleInstallationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServiceOfficer\ServiceOfficerDashboardForm.resx">
       <DependentUpon>ServiceOfficerDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServiceOfficer\VerifyDocumentsForm.resx">
+      <DependentUpon>VerifyDocumentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx" />
   </ItemGroup>

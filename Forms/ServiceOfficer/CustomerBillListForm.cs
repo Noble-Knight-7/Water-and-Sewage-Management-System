@@ -2,15 +2,15 @@
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
-using WaterSewageManagementSystem.Helpers;
 
 namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
-    public partial class BillingReportForm : Form
+    public partial class CustomerBillListForm : Form
     {
+        // Change the Data Source if your SQL Server name is different.
         string connectionString = @"Data Source=LENOVO\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
-        public BillingReportForm()
+        public CustomerBillListForm()
         {
             InitializeComponent();
             LoadBills();
@@ -32,7 +32,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                                     b.BillingMonth,
                                     b.PreviousReading,
                                     b.CurrentReading,
-                                    b.UnitUsed,
                                     b.Amount,
                                     b.Arrears,
                                     b.Status,
@@ -64,15 +63,34 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             }
         }
 
-        private void btnLogReport_Click(object sender, EventArgs e)
+        private void btnMarkPaid_Click(object sender, EventArgs e)
         {
-            if (SessionManager.CurrentUser == null)
+            if (dgvBills.SelectedRows.Count == 0)
             {
-                MessageBox.Show("No logged in user found. Please login again.");
+                MessageBox.Show("Select a bill first.");
                 return;
             }
 
-            int createdBy = SessionManager.CurrentUser.UserID;
+            int billID = Convert.ToInt32(dgvBills.SelectedRows[0].Cells["BillID"].Value);
+            string status = dgvBills.SelectedRows[0].Cells["Status"].Value.ToString();
+
+            if (status == "Paid")
+            {
+                MessageBox.Show("This bill is already paid.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Mark this bill as Paid?",
+                "Confirm Payment Status",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
 
             SqlConnection conn = new SqlConnection(connectionString);
 
@@ -80,8 +98,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             {
                 conn.Open();
 
-                string query = "INSERT INTO Reports (CreatedBy, ReportType, CreatedDate, Description) " +
-                               "VALUES (" + createdBy + ", 'Billing', GETDATE(), 'Service Officer generated billing report.')";
+                string query = "UPDATE Bills SET Status='Paid' WHERE BillID=" + billID;
 
                 SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -89,21 +106,27 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
                 if (rows > 0)
                 {
-                    MessageBox.Show("Billing report logged successfully.");
+                    MessageBox.Show("Bill marked as Paid.");
+                    LoadBills();
                 }
                 else
                 {
-                    MessageBox.Show("Report was not logged.");
+                    MessageBox.Show("Bill status was not updated.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error logging report: " + ex.Message);
+                MessageBox.Show("Error updating bill status: " + ex.Message);
             }
             finally
             {
                 conn.Close();
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadBills();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
