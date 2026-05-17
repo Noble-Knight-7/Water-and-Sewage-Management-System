@@ -1,10 +1,31 @@
-namespace WaterSewageManagementSystem.Forms.Admin
+﻿namespace WaterSewageManagementSystem.Forms.Admin
 {
-    partial class AdminDashboardForm
+    partial class AdminDashBoardFormV2
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
-        protected override void Dispose(bool disposing) { if (disposing && components != null) components.Dispose(); base.Dispose(disposing); }
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
             this.panelHeader = new System.Windows.Forms.Panel();
@@ -29,8 +50,7 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(800, 70);
-            this.panelHeader.TabIndex = 0;
-            this.panelHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.panelHeader_Paint);
+            this.panelHeader.TabIndex = 1;
             // 
             // lblTitle
             // 
@@ -41,7 +61,6 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.lblTitle.Size = new System.Drawing.Size(400, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "WASA Management System";
-            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // lblWelcome
             // 
@@ -51,7 +70,6 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(400, 22);
             this.lblWelcome.TabIndex = 1;
-            this.lblWelcome.Click += new System.EventHandler(this.lblWelcome_Click);
             // 
             // btnManageUsers
             // 
@@ -61,10 +79,10 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.btnManageUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManageUsers.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnManageUsers.ForeColor = System.Drawing.Color.White;
-            this.btnManageUsers.Location = new System.Drawing.Point(50, 100);
+            this.btnManageUsers.Location = new System.Drawing.Point(50, 95);
             this.btnManageUsers.Name = "btnManageUsers";
             this.btnManageUsers.Size = new System.Drawing.Size(200, 100);
-            this.btnManageUsers.TabIndex = 0;
+            this.btnManageUsers.TabIndex = 2;
             this.btnManageUsers.Text = "Manage Users";
             this.btnManageUsers.UseVisualStyleBackColor = false;
             this.btnManageUsers.Click += new System.EventHandler(this.btnManageUsers_Click);
@@ -77,13 +95,12 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.btnApproveEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnApproveEmployees.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnApproveEmployees.ForeColor = System.Drawing.Color.White;
-            this.btnApproveEmployees.Location = new System.Drawing.Point(285, 100);
+            this.btnApproveEmployees.Location = new System.Drawing.Point(285, 95);
             this.btnApproveEmployees.Name = "btnApproveEmployees";
             this.btnApproveEmployees.Size = new System.Drawing.Size(200, 100);
-            this.btnApproveEmployees.TabIndex = 0;
+            this.btnApproveEmployees.TabIndex = 3;
             this.btnApproveEmployees.Text = "Approve Employees";
             this.btnApproveEmployees.UseVisualStyleBackColor = false;
-            this.btnApproveEmployees.Click += new System.EventHandler(this.btnApproveEmployees_Click);
             // 
             // btnAssignComplaints
             // 
@@ -93,13 +110,12 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.btnAssignComplaints.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAssignComplaints.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnAssignComplaints.ForeColor = System.Drawing.Color.White;
-            this.btnAssignComplaints.Location = new System.Drawing.Point(520, 100);
+            this.btnAssignComplaints.Location = new System.Drawing.Point(520, 95);
             this.btnAssignComplaints.Name = "btnAssignComplaints";
             this.btnAssignComplaints.Size = new System.Drawing.Size(200, 100);
-            this.btnAssignComplaints.TabIndex = 0;
+            this.btnAssignComplaints.TabIndex = 4;
             this.btnAssignComplaints.Text = "Assign Complaints";
             this.btnAssignComplaints.UseVisualStyleBackColor = false;
-            this.btnAssignComplaints.Click += new System.EventHandler(this.btnAssignComplaints_Click);
             // 
             // btnNotices
             // 
@@ -109,13 +125,12 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.btnNotices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNotices.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnNotices.ForeColor = System.Drawing.Color.White;
-            this.btnNotices.Location = new System.Drawing.Point(50, 230);
+            this.btnNotices.Location = new System.Drawing.Point(50, 225);
             this.btnNotices.Name = "btnNotices";
             this.btnNotices.Size = new System.Drawing.Size(200, 100);
-            this.btnNotices.TabIndex = 0;
+            this.btnNotices.TabIndex = 5;
             this.btnNotices.Text = "Notice Management";
             this.btnNotices.UseVisualStyleBackColor = false;
-            this.btnNotices.Click += new System.EventHandler(this.btnNotices_Click);
             // 
             // btnReports
             // 
@@ -125,13 +140,12 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReports.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnReports.ForeColor = System.Drawing.Color.White;
-            this.btnReports.Location = new System.Drawing.Point(285, 230);
+            this.btnReports.Location = new System.Drawing.Point(285, 225);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(200, 100);
-            this.btnReports.TabIndex = 0;
+            this.btnReports.TabIndex = 6;
             this.btnReports.Text = "System Reports";
             this.btnReports.UseVisualStyleBackColor = false;
-            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnProfile
             // 
@@ -141,13 +155,12 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnProfile.ForeColor = System.Drawing.Color.White;
-            this.btnProfile.Location = new System.Drawing.Point(520, 230);
+            this.btnProfile.Location = new System.Drawing.Point(520, 225);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(200, 100);
-            this.btnProfile.TabIndex = 0;
+            this.btnProfile.TabIndex = 7;
             this.btnProfile.Text = "My Profile";
             this.btnProfile.UseVisualStyleBackColor = false;
-            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
             // btnLogout
             // 
@@ -157,18 +170,19 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(50, 360);
+            this.btnLogout.Location = new System.Drawing.Point(50, 355);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(200, 100);
-            this.btnLogout.TabIndex = 0;
+            this.btnLogout.TabIndex = 8;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // AdminDashboardForm
+            // AdminDashBoardFormV2
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(244)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(800, 550);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.btnManageUsers);
             this.Controls.Add(this.btnApproveEmployees);
             this.Controls.Add(this.btnAssignComplaints);
@@ -176,21 +190,24 @@ namespace WaterSewageManagementSystem.Forms.Admin
             this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnProfile);
             this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.panelHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "AdminDashboardForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Admin Dashboard - WASA Management System";
-            this.Load += new System.EventHandler(this.AdminDashboardForm_Load);
+            this.Name = "AdminDashBoardFormV2";
+            this.Text = "AdminDashBoardFormV2";
             this.panelHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
+        #endregion
+
         private System.Windows.Forms.Panel panelHeader;
-        private System.Windows.Forms.Label  lblTitle, lblWelcome;
-        private System.Windows.Forms.Button btnManageUsers, btnApproveEmployees, btnAssignComplaints;
-        private System.Windows.Forms.Button btnNotices, btnReports, btnProfile, btnLogout;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Button btnManageUsers;
+        private System.Windows.Forms.Button btnApproveEmployees;
+        private System.Windows.Forms.Button btnAssignComplaints;
+        private System.Windows.Forms.Button btnNotices;
+        private System.Windows.Forms.Button btnReports;
+        private System.Windows.Forms.Button btnProfile;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
