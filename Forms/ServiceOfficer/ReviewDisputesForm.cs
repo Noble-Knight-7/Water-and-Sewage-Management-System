@@ -1,71 +1,147 @@
 using System;
+using System.Data;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.DataAccess;
+using Microsoft.Data.SqlClient;
 using WaterSewageManagementSystem.Helpers;
-using WaterSewageManagementSystem.Models;
 
 namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
     public partial class ReviewDisputesForm : Form
     {
-        private readonly DbConnection _db = new DbConnection();
+        // Change the Data Source if your SQL Server name is different.
+        string connectionString = @"Data Source=LENOVO\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
-        public ReviewDisputesForm() { InitializeComponent(); LoadDisputes(); }
+        public ReviewDisputesForm()
+        {
+            InitializeComponent();
+            LoadDisputes();
+        }
 
         private void LoadDisputes()
         {
-            var list = new System.Collections.Generic.List<BillDispute>();
-            using (var con = _db.GetConnection())
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
             {
-                con.Open();
-                string sql = @"SELECT d.*, u.FullName AS CustomerName, b.BillingMonth, b.Amount AS BillAmount
-                               FROM BillDisputes d
-                               JOIN Customers c ON d.CustomerID = c.CustomerID
-                               JOIN Users u ON c.UserID = u.UserID
-                               JOIN Bills b ON d.BillID = b.BillID
-                               ORDER BY d.SubmittedAt DESC";
-                using (var cmd = new Microsoft.Data.SqlClient.SqlCommand(sql, con))
-                using (var r = cmd.ExecuteReader())
-                {
-                    while (r.Read())
-                    {
-                        list.Add(new BillDispute
-                        {
-                            DisputeID    = (int)r["DisputeID"],
-                            BillID       = (int)r["BillID"],
-                            CustomerID   = (int)r["CustomerID"],
-                            Reason       = r["Reason"].ToString(),
-                            Status       = r["Status"].ToString(),
-                            SubmittedAt  = Convert.ToDateTime(r["SubmittedAt"]),
-                            CustomerName = r["CustomerName"].ToString(),
-                            BillingMonth = r["BillingMonth"].ToString(),
-                            BillAmount   = Convert.ToDecimal(r["BillAmount"])
-                        });
-                    }
-                }
+                conn.Open();
+
+                string query = @"SELECT 
+                                    d.DisputeID,
+                                    d.BillID,
+                                    d.CustomerID,
+                                    u.FullName AS CustomerName,
+                                    b.BillingMonth,
+                                    b.Amount AS BillAmount,
+                                    d.Reason,
+                                    d.Status,
+                                    d.ReviewedBy,
+                                    d.SubmittedAt
+                                 FROM BillDisputes d
+                                 JOIN Customers c ON d.CustomerID = c.CustomerID
+                                 JOIN Users u ON c.UserID = u.UserID
+                                 JOIN Bills b ON d.BillID = b.BillID
+                                 ORDER BY d.SubmittedAt DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+
+                adp.Fill(ds);
+
+                DataTable dt = ds.Tables[0];
+
+                dgvDisputes.DataSource = dt;
+                dgvDisputes.AutoGenerateColumns = true;
             }
-            dgvDisputes.DataSource = list;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading disputes: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void btnMarkReviewed_Click(object sender, EventArgs e)
         {
-            if (dgvDisputes.SelectedRows.Count == 0) { MessageHelper.ShowWarning("Select a dispute."); return; }
-            int id = (int)dgvDisputes.SelectedRows[0].Cells["DisputeID"].Value;
-            using (var con = _db.GetConnection())
+            if (dgvDisputes.SelectedRows.Count == 0)
             {
-                con.Open();
-                string sql = "UPDATE BillDisputes SET Status='Reviewed', ReviewedBy=@By WHERE DisputeID=@ID";
-                using (var cmd = new Microsoft.Data.SqlClient.SqlCommand(sql, con))
+                MessageBox.Show("Select a dispute first.");
+                return;
+            }
+
+            if (SessionManager.CurrentUser == null)
+            {
+                MessageBox.Show("No logged in user found. Please login again.");
+                return;
+            }
+
+            int disputeID = Convert.ToInt32(dgvDisputes.SelectedRows[0].Cells["DisputeID"].Value);
+            string currentStatus = dgvDisputes.SelectedRows[0].Cells["Status"].Value.ToString();
+
+            if (currentStatus == "Reviewed")
+            {
+                MessageBox.Show("This dispute is already reviewed.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Mark this dispute as Reviewed?",
+                "Confirm Review",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            int reviewedBy = SessionManager.CurrentUser.UserID;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = "UPDATE BillDisputes SET Status='Reviewed', ReviewedBy=" + reviewedBy +
+                               " WHERE DisputeID=" + disputeID;
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows > 0)
                 {
-                    cmd.Parameters.AddWithValue("@By", SessionManager.CurrentUser.UserID);
-                    cmd.Parameters.AddWithValue("@ID", id);
-                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Dispute marked as Reviewed. You can now open Correct Bill to adjust the amount.");
+                    LoadDisputes();
+                }
+                else
+                {
+                    MessageBox.Show("Dispute was not updated.");
                 }
             }
-            MessageHelper.ShowSuccess("Dispute marked as Reviewed. You can now open Correct Bill to adjust the amount.");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error reviewing dispute: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
             LoadDisputes();
         }
 
-        private void btnClose_Click(object sender, EventArgs e) => this.Close();
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

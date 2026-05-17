@@ -456,10 +456,10 @@
             // lblRecentRecords
             // 
             this.lblRecentRecords.AutoSize = true;
-            this.lblRecentRecords.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblRecentRecords.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.lblRecentRecords.Location = new System.Drawing.Point(27, 218);
             this.lblRecentRecords.Name = "lblRecentRecords";
-            this.lblRecentRecords.Size = new System.Drawing.Size(158, 28);
+            this.lblRecentRecords.Size = new System.Drawing.Size(171, 30);
             this.lblRecentRecords.TabIndex = 5;
             this.lblRecentRecords.Text = "Recent Records";
             // 

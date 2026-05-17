@@ -1,72 +1,176 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Data;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.Helpers;
-using WaterSewageManagementSystem.Services;
+using Microsoft.Data.SqlClient;
 
 namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
     public partial class MeterReadingBillGenerateForm : Form
     {
-        private BillingService _billingService;
+        // Change the Data Source if your SQL Server name is different.
+        string connectionString = @"Data Source=LENOVO\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
         public MeterReadingBillGenerateForm()
         {
             InitializeComponent();
-            txtBillingMonth.Text = DateTime.Now.ToString("MMMM yyyy");
 
-            if (System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime)
+            txtBillingMonth.Text = DateTime.Now.ToString("MMMM yyyy");
+            txtArrears.Text = "0";
+
+            // This prevents database code from running inside Visual Studio Designer.
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
-                _billingService = new BillingService();
                 LoadCustomers();
             }
         }
 
         private void LoadCustomers()
         {
-            var customers = _billingService.GetAllCustomers();
+            SqlConnection conn = new SqlConnection(connectionString);
 
-            cmbCustomer.DataSource = customers;
-            cmbCustomer.DisplayMember = "FullName";
-            cmbCustomer.ValueMember = "CustomerID";
+            try
+            {
+                conn.Open();
+
+                string query = @"SELECT 
+                                    c.CustomerID,
+                                    u.FullName + ' - Meter: ' + c.MeterNumber AS CustomerDisplay
+                                 FROM Customers c
+                                 JOIN Users u ON c.UserID = u.UserID
+                                 ORDER BY u.FullName";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+
+                adp.Fill(ds);
+
+                DataTable dt = ds.Tables[0];
+
+                cmbCustomer.DataSource = dt;
+                cmbCustomer.DisplayMember = "CustomerDisplay";
+                cmbCustomer.ValueMember = "CustomerID";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading customers: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            if (_billingService == null)
-            {
-                _billingService = new BillingService();
-            }
-
             if (cmbCustomer.SelectedItem == null)
             {
-                MessageHelper.ShowError("Please select a customer."); return;
-            }
-            if (!decimal.TryParse(txtPrevious.Text, out decimal prev) ||
-                !decimal.TryParse(txtCurrent.Text, out decimal curr))
-            {
-                MessageHelper.ShowError("Enter valid numeric meter readings."); return;
-            }
-            if (curr < prev)
-            {
-                MessageHelper.ShowError("Current reading cannot be less than previous reading."); return;
-            }
-            if (ValidationHelper.IsEmpty(txtBillingMonth.Text))
-            {
-                MessageHelper.ShowError("Enter billing month."); return;
+                MessageBox.Show("Please select a customer.");
+                return;
             }
 
-            decimal arrears = decimal.TryParse(txtArrears.Text, out decimal a) ? a : 0;
-            int customerID = (int)cmbCustomer.SelectedValue;
-
-            bool success = _billingService.GenerateBill(customerID, txtBillingMonth.Text.Trim(), prev, curr, arrears);
-            if (success)
+            if (txtBillingMonth.Text == "")
             {
-                decimal units = curr - prev;
-                decimal amount = units * 8; // 8 taka per unit
-                MessageHelper.ShowSuccess($"Bill generated!\nUnits used: {units}\nAmount: ৳{amount:N2}\nArrears: ৳{arrears:N2}\nTotal Due: ৳{amount + arrears:N2}");
-                txtPrevious.Clear(); txtCurrent.Clear(); txtArrears.Text = "0";
+                MessageBox.Show("Enter billing month.");
+                return;
             }
-            else MessageHelper.ShowError("Failed to generate bill. Please check the readings.");
+
+            int previousReading;
+            int currentReading;
+
+            if (!int.TryParse(txtPrevious.Text, out previousReading))
+            {
+                MessageBox.Show("Enter a valid previous meter reading.");
+                return;
+            }
+
+            if (!int.TryParse(txtCurrent.Text, out currentReading))
+            {
+                MessageBox.Show("Enter a valid current meter reading.");
+                return;
+            }
+
+            if (currentReading < previousReading)
+            {
+                MessageBox.Show("Current reading cannot be less than previous reading.");
+                return;
+            }
+
+            decimal arrears;
+
+            if (txtArrears.Text == "")
+            {
+                arrears = 0;
+            }
+            else if (!decimal.TryParse(txtArrears.Text, out arrears))
+            {
+                MessageBox.Show("Enter a valid arrears amount.");
+                return;
+            }
+
+            if (arrears < 0)
+            {
+                MessageBox.Show("Arrears cannot be negative.");
+                return;
+            }
+
+            int customerID = Convert.ToInt32(cmbCustomer.SelectedValue);
+            string billingMonth = txtBillingMonth.Text.Trim().Replace("'", "''");
+
+            int unitsUsed = currentReading - previousReading;
+            decimal ratePerUnit = 8.0m;
+            decimal amount = unitsUsed * ratePerUnit;   
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = "INSERT INTO Bills " +
+                               "(CustomerID, BillingMonth, PreviousReading, CurrentReading, Amount, Arrears, Status, CreatedAt) " +
+                               "VALUES (" +
+                               customerID + ", '" +
+                               billingMonth + "', " +
+                               previousReading + ", " +
+                               currentReading + ", " +
+                               amount + ", " +
+                               arrears + ", 'Unpaid', GETDATE())";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show(
+                        "Bill generated successfully!\n\n" +
+                        "Units Used: " + unitsUsed + "\n" +
+                        "Amount: Tk. " + amount.ToString("N2") + "\n" +
+                        "Arrears: Tk. " + arrears.ToString("N2") + "\n" +
+                        "Total Due: Tk. " + (amount + arrears).ToString("N2")
+                    );
+
+                    txtPrevious.Text = "";
+                    txtCurrent.Text = "";
+                    txtArrears.Text = "0";
+                    txtBillingMonth.Text = DateTime.Now.ToString("MMMM yyyy");
+                }
+                else
+                {
+                    MessageBox.Show("Bill was not generated.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error generating bill: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
