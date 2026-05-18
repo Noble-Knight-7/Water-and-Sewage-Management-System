@@ -20,9 +20,19 @@ namespace WaterSewageManagementSystem
             string email    = txtEmail.Text.Trim();
             string password = txtPassword.Text;
 
-            if (ValidationHelper.IsEmpty(email) || ValidationHelper.IsEmpty(password))
+            if (ValidationHelper.IsEmpty(email) && ValidationHelper.IsEmpty(password))
             {
                 MessageHelper.ShowError("Please enter your email and password.");
+                return;
+            }
+            if (ValidationHelper.IsEmpty(email))
+            {
+                MessageHelper.ShowError("Please enter your email.");
+                return;
+            }
+            if (ValidationHelper.IsEmpty(password))
+            {
+                MessageHelper.ShowError("Please enter your password.");
                 return;
             }
 
@@ -57,7 +67,7 @@ namespace WaterSewageManagementSystem
             }
 
             this.Hide();
-            dashboard.FormClosed += (s, args) => this.Close();
+            dashboard.FormClosed += (s, args) => this.Close(); 
             dashboard.Show();
         }
 
@@ -71,6 +81,11 @@ namespace WaterSewageManagementSystem
         {
             var form = new Forms.Common.ForgotPasswordForm();
             form.ShowDialog();
+        }
+
+        private void login_close_clicked(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -160,6 +160,7 @@ namespace WaterSewageManagementSystem
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Water & Sewage Management System - Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.login_close_clicked);
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
             this.ResumeLayout(false);

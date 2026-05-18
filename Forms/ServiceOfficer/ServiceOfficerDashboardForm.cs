@@ -10,7 +10,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
     public partial class ServiceOfficerDashboardForm : Form
     {
         //string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
-
         public ServiceOfficerDashboardForm()
         {
             InitializeComponent();
@@ -216,7 +215,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
                 LoginForm login = new LoginForm();
                 login.Show();
-
                 this.Hide();
             }
         }

@@ -420,10 +420,6 @@
     <Compile Include="Services\UserService.cs" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings" />
-    <None Include="team-work\member-1-admin.md" />
-    <None Include="team-work\member-2-customer.md" />
-    <None Include="team-work\member-3-service-officer.md" />
-    <None Include="team-work\member-4-maintenance-engineer.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -479,9 +475,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MaintenanceEngineer\MaintenanceDashboardForm.resx">
       <DependentUpon>MaintenanceDashboardForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ServiceOfficer\BillingReportForm.resx">
-      <DependentUpon>BillingReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServiceOfficer\CorrectBillForm.resx">
       <DependentUpon>CorrectBillForm.cs</DependentUpon>

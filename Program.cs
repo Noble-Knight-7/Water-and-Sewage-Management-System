@@ -17,8 +17,8 @@ namespace WaterSewageManagementSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
             //Application.Run(new Forms.ServiceOfficer.ServiceOfficerDashboardForm());
+            Application.Run(new LoginForm());
         }
     }
 }
