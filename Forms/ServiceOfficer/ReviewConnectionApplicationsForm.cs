@@ -9,11 +9,13 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
     public partial class ReviewConnectionApplicationsForm : Form
     {
         string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
-
         public ReviewConnectionApplicationsForm()
         {
             InitializeComponent();
             LoadApplications();
+            dgvApplications.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvApplications.MultiSelect = false;
+            txtMeterNumber.Enabled = false;
         }
 
         private void LoadApplications()
@@ -43,10 +45,8 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                                  ORDER BY a.ApplicationDate DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-
                 adp.Fill(ds);
 
                 DataTable dt = ds.Tables[0];
@@ -66,11 +66,17 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void btnApprove_Click(object sender, EventArgs e)
         {
-            if (dgvApplications.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Select an application first.");
-                return;
-            }
+            int meterNumber;
+            int appID = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicationID"].Value);
+            int customerID = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["CustomerID"].Value);
+            string currentStatus = dgvApplications.SelectedRows[0].Cells["ApprovalStatus"].Value.ToString();
+            int officerID = SessionManager.CurrentUser.UserID;
+
+            //if (dgvApplications.SelectedRows.Count == 0)
+            //{
+            //    MessageBox.Show("Select an application first.");
+            //    return;
+            //}
 
             if (SessionManager.CurrentUser == null)
             {
@@ -78,8 +84,19 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 return;
             }
 
-            int appID = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicationID"].Value);
-            string currentStatus = dgvApplications.SelectedRows[0].Cells["ApprovalStatus"].Value.ToString();
+            if (txtMeterNumber.Text == "")
+            {
+                MessageBox.Show("Please enter a meter number before approving.");
+                txtMeterNumber.Focus();
+                return;
+            }
+
+            if (!int.TryParse(txtMeterNumber.Text.Trim(), out meterNumber))
+            {
+                MessageBox.Show("Meter number must be a valid number.");
+                txtMeterNumber.Focus();
+                return;
+            }
 
             if (currentStatus == "Approved")
             {
@@ -87,19 +104,12 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 return;
             }
 
-            DialogResult result = MessageBox.Show(
-                "Approve this connection application?",
-                "Confirm Approval",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
+            DialogResult result = MessageBox.Show("Approve this connection application?","Confirm Approval", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.No)
             {
                 return;
             }
-
-            int officerID = SessionManager.CurrentUser.UserID;
 
             SqlConnection conn = new SqlConnection(connectionString);
 
@@ -107,27 +117,42 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             {
                 conn.Open();
 
-                string query = "UPDATE ConnectionApplications " +
-                               "SET ApprovalStatus='Approved', RejectionReason='', AssignedOfficer=" + officerID +
-                               " WHERE ApplicationID=" + appID;
+                string checkQuery = "SELECT COUNT(*) FROM Customers WHERE MeterNumber =" + meterNumber+" AND CustomerID<>"+customerID;
+                SqlCommand checkcmd = new SqlCommand(checkQuery, conn);
+                int count = (int)checkcmd.ExecuteScalar();
+                if (count > 0)
+                {
+                    MessageBox.Show("Meter number already assigned to another customer. Please enter a different meter number.");
+                    txtMeterNumber.Clear();
+                    txtMeterNumber.Focus();
+                    return;
+                }
 
+                string updateCustomerQuery = "UPDATE Customers SET MeterNumber=" + meterNumber + " WHERE CustomerID=" + customerID;
+                SqlCommand updateCustomerCmd = new SqlCommand(updateCustomerQuery, conn);
+                updateCustomerCmd.ExecuteNonQuery();
+
+                string query = "UPDATE ConnectionApplications " + "SET ApprovalStatus='Approved', RejectionReason='', AssignedOfficer=" + officerID +" WHERE ApplicationID=" + appID;
                 SqlCommand cmd = new SqlCommand(query, conn);
-
                 int rows = cmd.ExecuteNonQuery();
-
                 if (rows > 0)
                 {
                     MessageBox.Show("Application approved successfully.");
+                    txtMeterNumber.Text = "";
+                    txtMeterNumber.Enabled = false;
                     LoadApplications();
                 }
                 else
                 {
                     MessageBox.Show("Application was not approved.");
+                    txtMeterNumber.Clear();
                 }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error approving application: " + ex.Message);
+                txtMeterNumber.Clear();
             }
             finally
             {
@@ -137,11 +162,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void btnReject_Click(object sender, EventArgs e)
         {
-            if (dgvApplications.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Select an application first.");
-                return;
-            }
+            //if (dgvApplications.SelectedRows.Count == 0)
+            //{
+            //    MessageBox.Show("Select an application first.");
+            //    return;
+            //}
 
             if (SessionManager.CurrentUser == null)
             {
@@ -228,6 +253,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvApplications_SelectionChanged(object sender, EventArgs e) 
+        {
+            txtMeterNumber.Enabled = true;
         }
     }
 }

@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvApplications = new System.Windows.Forms.DataGridView();
             this.btnApprove = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.txtMeterNumber = new System.Windows.Forms.TextBox();
+            this.labelMeterNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,14 +56,14 @@
             this.dgvApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvApplications.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvApplications.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(125)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvApplications.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(125)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvApplications.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvApplications.ColumnHeadersHeight = 29;
             this.dgvApplications.EnableHeadersVisualStyles = false;
             this.dgvApplications.Location = new System.Drawing.Point(20, 50);
@@ -72,6 +74,7 @@
             this.dgvApplications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvApplications.Size = new System.Drawing.Size(910, 395);
             this.dgvApplications.TabIndex = 7;
+            this.dgvApplications.SelectionChanged += new System.EventHandler(this.dgvApplications_SelectionChanged);
             // 
             // btnApprove
             // 
@@ -137,12 +140,34 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // txtMeterNumber
+            // 
+            this.txtMeterNumber.Enabled = false;
+            this.txtMeterNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMeterNumber.Location = new System.Drawing.Point(596, 462);
+            this.txtMeterNumber.MaxLength = 3;
+            this.txtMeterNumber.Name = "txtMeterNumber";
+            this.txtMeterNumber.Size = new System.Drawing.Size(145, 30);
+            this.txtMeterNumber.TabIndex = 12;
+            // 
+            // labelMeterNumber
+            // 
+            this.labelMeterNumber.AutoSize = true;
+            this.labelMeterNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMeterNumber.Location = new System.Drawing.Point(435, 462);
+            this.labelMeterNumber.Name = "labelMeterNumber";
+            this.labelMeterNumber.Size = new System.Drawing.Size(141, 23);
+            this.labelMeterNumber.TabIndex = 13;
+            this.labelMeterNumber.Text = "Meter Number - ";
+            // 
             // ReviewConnectionApplicationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(950, 500);
+            this.Controls.Add(this.labelMeterNumber);
+            this.Controls.Add(this.txtMeterNumber);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvApplications);
             this.Controls.Add(this.btnApprove);
@@ -155,6 +180,7 @@
             this.Text = "Review Connection Application";
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -166,5 +192,7 @@
         private System.Windows.Forms.Button btnReject;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.TextBox txtMeterNumber;
+        private System.Windows.Forms.Label labelMeterNumber;
     }
 }

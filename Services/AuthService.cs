@@ -52,7 +52,7 @@ namespace WaterSewageManagementSystem.Services
                 Customer customer = new Customer
                 {
                     UserID = insertedUser.UserID,
-                    MeterNumber = "",
+                    MeterNumber = null,
                     HoldingNumber = "",
                     ConnectionType = "Residential"
                 };

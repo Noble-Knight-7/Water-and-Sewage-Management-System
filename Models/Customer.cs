@@ -4,7 +4,7 @@ namespace WaterSewageManagementSystem.Models
     {
         public int CustomerID { get; set; }
         public int UserID { get; set; }
-        public string MeterNumber { get; set; }
+        public int? MeterNumber { get; set; }
         public string HoldingNumber { get; set; }
         public string ConnectionType { get; set; } // Residential, Commercial
         // For display convenience

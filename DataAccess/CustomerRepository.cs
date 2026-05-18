@@ -1,4 +1,5 @@
 using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using WaterSewageManagementSystem.Models;
 
@@ -74,14 +75,16 @@ namespace WaterSewageManagementSystem.DataAccess
             using (var con = _db.GetConnection())
             {
                 con.Open();
-                string sql = @"INSERT INTO Customers (UserID, MeterNumber, HoldingNumber, ConnectionType)
-                               VALUES (@UserID, @MeterNumber, @HoldingNumber, @ConnectionType)";
+
+                string sql = @"INSERT INTO Customers (UserID, HoldingNumber, ConnectionType)
+                       VALUES (@UserID, @HoldingNumber, @ConnectionType)";
+
                 using (var cmd = new SqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@UserID", customer.UserID);
-                    cmd.Parameters.AddWithValue("@MeterNumber", customer.MeterNumber ?? "");
                     cmd.Parameters.AddWithValue("@HoldingNumber", customer.HoldingNumber ?? "");
                     cmd.Parameters.AddWithValue("@ConnectionType", customer.ConnectionType ?? "Residential");
+
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
@@ -91,15 +94,15 @@ namespace WaterSewageManagementSystem.DataAccess
         {
             return new Customer
             {
-                CustomerID     = (int)r["CustomerID"],
-                UserID         = (int)r["UserID"],
-                MeterNumber    = r["MeterNumber"].ToString(),
-                HoldingNumber  = r["HoldingNumber"].ToString(),
+                CustomerID = (int)r["CustomerID"],
+                UserID = (int)r["UserID"],
+                MeterNumber = r["MeterNumber"] == DBNull.Value ? (int?)null : (int)r["MeterNumber"],
+                HoldingNumber = r["HoldingNumber"].ToString(),
                 ConnectionType = r["ConnectionType"].ToString(),
-                FullName       = r["FullName"].ToString(),
-                Email          = r["Email"].ToString(),
-                Phone          = r["Phone"].ToString(),
-                Address        = r["Address"].ToString()
+                FullName = r["FullName"].ToString(),
+                Email = r["Email"].ToString(),
+                Phone = r["Phone"].ToString(),
+                Address = r["Address"].ToString()
             };
         }
     }
