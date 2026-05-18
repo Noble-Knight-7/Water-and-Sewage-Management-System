@@ -24,11 +24,11 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
-            this.lblTitle.Location = new System.Drawing.Point(150, 15);
+            this.lblTitle.Location = new System.Drawing.Point(160, 35);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(160, 28);
+            this.lblTitle.Size = new System.Drawing.Size(160, 35);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "My Profile";
             // 
@@ -53,7 +53,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             // lblName
             // 
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblName.Location = new System.Drawing.Point(30, 93);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(140, 20);
@@ -71,8 +71,8 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             // lblEmail
             // 
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblEmail.Location = new System.Drawing.Point(30, 138);
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblEmail.Location = new System.Drawing.Point(30, 160);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(140, 20);
             this.lblEmail.TabIndex = 5;
@@ -80,10 +80,10 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             // txtEmail
             // 
-            this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtEmail.BackColor = System.Drawing.SystemColors.Window;
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtEmail.Location = new System.Drawing.Point(180, 135);
+            this.txtEmail.Location = new System.Drawing.Point(180, 157);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(240, 30);
@@ -91,8 +91,8 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             // lblPhone
             // 
-            this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblPhone.Location = new System.Drawing.Point(30, 183);
+            this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblPhone.Location = new System.Drawing.Point(30, 225);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(140, 20);
             this.lblPhone.TabIndex = 7;
@@ -102,15 +102,15 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtPhone.Location = new System.Drawing.Point(180, 180);
+            this.txtPhone.Location = new System.Drawing.Point(180, 222);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(240, 30);
             this.txtPhone.TabIndex = 8;
             // 
             // lblAddress
             // 
-            this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblAddress.Location = new System.Drawing.Point(30, 228);
+            this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblAddress.Location = new System.Drawing.Point(30, 292);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(140, 20);
             this.lblAddress.TabIndex = 9;
@@ -120,7 +120,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtAddress.Location = new System.Drawing.Point(180, 225);
+            this.txtAddress.Location = new System.Drawing.Point(180, 289);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(240, 30);
             this.txtAddress.TabIndex = 10;
@@ -131,9 +131,9 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(30, 300);
+            this.btnSave.Location = new System.Drawing.Point(12, 372);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(130, 36);
             this.btnSave.TabIndex = 11;
@@ -147,9 +147,9 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.btnChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChangePassword.FlatAppearance.BorderSize = 0;
             this.btnChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangePassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnChangePassword.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnChangePassword.ForeColor = System.Drawing.Color.White;
-            this.btnChangePassword.Location = new System.Drawing.Point(170, 300);
+            this.btnChangePassword.Location = new System.Drawing.Point(180, 372);
             this.btnChangePassword.Name = "btnChangePassword";
             this.btnChangePassword.Size = new System.Drawing.Size(140, 36);
             this.btnChangePassword.TabIndex = 12;
@@ -162,7 +162,8 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.btnClose.BackColor = System.Drawing.Color.LightGray;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(320, 300);
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnClose.Location = new System.Drawing.Point(348, 372);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 36);
             this.btnClose.TabIndex = 13;
@@ -172,7 +173,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             // ProfileForm
             // 
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(460, 420);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblRole);

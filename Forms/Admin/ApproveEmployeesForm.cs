@@ -31,5 +31,10 @@ namespace WaterSewageManagementSystem.Forms.Admin
 
         private void btnRefresh_Click(object sender, EventArgs e) => LoadPending();
         private void btnClose_Click(object sender, EventArgs e) => this.Close();
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -504,7 +504,6 @@
             this.dgvRecentRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecentRecords.Size = new System.Drawing.Size(871, 287);
             this.dgvRecentRecords.TabIndex = 6;
-            this.dgvRecentRecords.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecentRecords_CellContentClick);
             // 
             // colId
             // 

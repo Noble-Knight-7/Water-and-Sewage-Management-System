@@ -404,7 +404,11 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\BillingService.cs" />
@@ -428,6 +432,8 @@
     <Content Include="database\WaterSewage_DB_Create.sql" />
     <Content Include="database\WaterSewage_DB_Insert_Sample_Data.sql" />
     <Content Include="database\WaterSewage_DB_Procedures.sql" />
+    <None Include="Resources\Images\login_page_logov2.jpg" />
+    <None Include="Resources\Images\login_page_logo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="database\backup\" />
@@ -436,17 +442,25 @@
     <Folder Include="docs\project-proposal\" />
     <Folder Include="docs\screenshots\" />
     <Folder Include="Resources\Icons\" />
-    <Folder Include="Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\Admin\AdminDashboardForm.resx">
       <DependentUpon>AdminDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\ApproveEmployeesForm.resx">
+      <DependentUpon>ApproveEmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\NoticeManagementForm.resx">
       <DependentUpon>NoticeManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Common\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Common\ForgotPasswordForm.resx">
+      <DependentUpon>ForgotPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Common\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Common\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
@@ -493,7 +507,10 @@
     <EmbeddedResource Include="Forms\ServiceOfficer\VerifyDocumentsForm.resx">
       <DependentUpon>VerifyDocumentsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

@@ -8,8 +8,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
     public partial class MeterReadingBillGenerateForm : Form
     {
-        // Change the Data Source if your SQL Server name is different.
-        string connectionString = @"Data Source=LENOVO\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
         public MeterReadingBillGenerateForm()
         {
@@ -18,11 +17,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             txtBillingMonth.Text = DateTime.Now.ToString("MMMM yyyy");
             txtArrears.Text = "0";
 
-            // This prevents database code from running inside Visual Studio Designer.
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-            {
-                LoadCustomers();
-            }
+            // This prevents database code from running inside Visual Studio Designer. // DO we need this? Yes, because the LoadCustomers() method connects to the database and populates the customer dropdown. If we run this code while the form is being designed in Visual Studio, it will try to connect to the database and may throw an error if the database is not available or if we're just trying to design the form without running it.
+            //if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            //{
+            //}
+            LoadCustomers();
         }
 
         private void LoadCustomers()

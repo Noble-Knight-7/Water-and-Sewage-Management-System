@@ -8,8 +8,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
     public partial class ReviewConnectionApplicationsForm : Form
     {
-        // Change the Data Source if your SQL Server name is different.
-        string connectionString = @"Data Source=LENOVO\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
         public ReviewConnectionApplicationsForm()
         {
