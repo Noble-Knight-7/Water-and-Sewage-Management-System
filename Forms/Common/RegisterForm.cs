@@ -8,8 +8,6 @@ namespace WaterSewageManagementSystem.Forms.Common
 {
     public partial class RegisterForm : Form
     {
-        // private readonly AuthService _authService = new AuthService();
-
         public RegisterForm()
         {
             InitializeComponent();
@@ -75,6 +73,16 @@ namespace WaterSewageManagementSystem.Forms.Common
         private void btnCancel_Click(object sender, EventArgs e) => this.Close();
 
         private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblAddress_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAddress_TextChanged(object sender, EventArgs e)
         {
 
         }

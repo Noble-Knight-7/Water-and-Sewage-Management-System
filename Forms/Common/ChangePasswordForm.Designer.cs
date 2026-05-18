@@ -19,18 +19,18 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
-            this.lblTitle.Location = new System.Drawing.Point(100, 15);
+            this.lblTitle.Location = new System.Drawing.Point(89, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(200, 28);
+            this.lblTitle.Size = new System.Drawing.Size(243, 47);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Change Password";
             // 
             // lblOld
             // 
             this.lblOld.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblOld.Location = new System.Drawing.Point(30, 60);
+            this.lblOld.Location = new System.Drawing.Point(30, 70);
             this.lblOld.Name = "lblOld";
             this.lblOld.Size = new System.Drawing.Size(160, 20);
             this.lblOld.TabIndex = 1;
@@ -41,7 +41,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             this.txtOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOld.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtOld.Location = new System.Drawing.Point(200, 58);
+            this.txtOld.Location = new System.Drawing.Point(200, 66);
             this.txtOld.Name = "txtOld";
             this.txtOld.PasswordChar = '*';
             this.txtOld.Size = new System.Drawing.Size(170, 30);
@@ -50,7 +50,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // lblNew
             // 
             this.lblNew.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblNew.Location = new System.Drawing.Point(30, 110);
+            this.lblNew.Location = new System.Drawing.Point(30, 120);
             this.lblNew.Name = "lblNew";
             this.lblNew.Size = new System.Drawing.Size(160, 20);
             this.lblNew.TabIndex = 3;
@@ -60,7 +60,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             this.txtNew.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNew.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNew.Location = new System.Drawing.Point(200, 108);
+            this.txtNew.Location = new System.Drawing.Point(200, 118);
             this.txtNew.Name = "txtNew";
             this.txtNew.PasswordChar = '*';
             this.txtNew.Size = new System.Drawing.Size(170, 30);
@@ -69,7 +69,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // lblConfirm
             // 
             this.lblConfirm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblConfirm.Location = new System.Drawing.Point(30, 160);
+            this.lblConfirm.Location = new System.Drawing.Point(30, 170);
             this.lblConfirm.Name = "lblConfirm";
             this.lblConfirm.Size = new System.Drawing.Size(160, 20);
             this.lblConfirm.TabIndex = 5;
@@ -79,7 +79,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             this.txtConfirm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConfirm.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtConfirm.Location = new System.Drawing.Point(200, 158);
+            this.txtConfirm.Location = new System.Drawing.Point(200, 168);
             this.txtConfirm.Name = "txtConfirm";
             this.txtConfirm.PasswordChar = '*';
             this.txtConfirm.Size = new System.Drawing.Size(170, 30);
@@ -93,7 +93,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(30, 215);
+            this.btnSave.Location = new System.Drawing.Point(12, 232);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(155, 36);
             this.btnSave.TabIndex = 7;
@@ -106,7 +106,8 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.btnCancel.BackColor = System.Drawing.Color.LightGray;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(215, 215);
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCancel.Location = new System.Drawing.Point(233, 232);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(155, 36);
             this.btnCancel.TabIndex = 8;
@@ -116,7 +117,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             // ChangePasswordForm
             // 
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(400, 280);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblOld);

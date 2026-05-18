@@ -8,7 +8,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
     public partial class BillingReportForm : Form
     {
-        string connectionString = @"Data Source=LENOVO\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
         public BillingReportForm()
         {

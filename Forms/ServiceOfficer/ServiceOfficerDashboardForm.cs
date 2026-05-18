@@ -9,8 +9,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
     public partial class ServiceOfficerDashboardForm : Form
     {
-        // Change the Data Source if your SQL Server name is different.
-        string connectionString = @"Data Source=LENOVO\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
+        //string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
         public ServiceOfficerDashboardForm()
         {
@@ -20,15 +19,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             {
                 lbl_Welcome.Text = "Welcome, " + SessionManager.CurrentUser.FullName;
             }
-            else
-            {
-                lbl_Welcome.Text = "Welcome, Service Officer";
-            }
         }
 
         private void ServiceOfficerDashboardForm_Load(object sender, EventArgs e)
         {
-            LoadDashboardData();
+            LoadDashboardData(); //Can we move it inside the Constructor? We can, but it's generally better to keep data loading in the Load event. This way, if we ever need to refresh the dashboard data without re-creating the form, we can just call LoadDashboardData() again.
         }
 
         private void LoadDashboardData()
@@ -39,7 +34,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void LoadCounts()
         {
-            SqlConnection conn = new SqlConnection(connectionString);
+            SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True");
 
             try
             {
@@ -73,7 +68,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void LoadRecentRecords()
         {
-            SqlConnection conn = new SqlConnection(connectionString);
+            SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True");
 
             try
             {
@@ -165,13 +160,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             LoadDashboardData();
         }
 
-        // Keep this method also, in case your Designer uses btnGenerateBill_Click later.
-        private void btnGenerateBill_Click(object sender, EventArgs e)
-        {
-            new CustomerBillListForm().ShowDialog();
-            LoadDashboardData();
-        }
-
         private void btnReviewDisputes_Click(object sender, EventArgs e)
         {
             new ReviewDisputesForm().ShowDialog();
@@ -231,21 +219,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
                 this.Hide();
             }
-        }
-
-        private void panelHeader_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void cardBill_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dgvRecentRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
