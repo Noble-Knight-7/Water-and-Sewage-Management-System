@@ -1,7 +1,7 @@
-using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 
 namespace WaterSewageManagementSystem.Forms.Common
 {
@@ -42,8 +42,8 @@ namespace WaterSewageManagementSystem.Forms.Common
             string address = txtAddress.Text.Trim();
             string holdingNumber = txtHoldingNumber.Text.Trim();
             string connectionType = cmbConType.SelectedItem?.ToString();
-
             string gender = "";
+
             if (radioButton_Male.Checked)
             {
                 gender = "Male";
@@ -55,17 +55,17 @@ namespace WaterSewageManagementSystem.Forms.Common
 
             bool hasError = false;
 
-            //errorlblAdress.Text = "";
-            //errorlblConfPass.Text = "";
-            //errorlblPhone.Text = "";
-            //errorlblConn.Text = "";
-            //errorlblEmail.Text = "";
-            //errorlblGender.Text = "";
-            //errorlblHold.Text = "";
-            //errorlblName.Text = "";
-            //errorlblPass.Text = "";
-            //errorlblRole.Text = "";
-            //errorlblPassNotMatch.Text = "";
+            errorlblAdress.Text = "";
+            errorlblConfPass.Text = "";
+            errorlblPhone.Text = "";
+            errorlblConn.Text = "";
+            errorlblEmail.Text = "";
+            errorlblGender.Text = "";
+            errorlblHold.Text = "";
+            errorlblName.Text = "";
+            errorlblPass.Text = "";
+            errorlblRole.Text = "";
+            errorlblPassNotMatch.Text = "";
 
             if (name == "")
             {
@@ -153,16 +153,14 @@ namespace WaterSewageManagementSystem.Forms.Common
             }
 
             SqlConnection conn = new SqlConnection(connectionString);
-            SqlTransaction transaction = null;
 
             try
             {
                 conn.Open();
-                transaction = conn.BeginTransaction();
 
                 string checkQuery = "SELECT * FROM Users WHERE Email = @Email";
 
-                SqlCommand checkCmd = new SqlCommand(checkQuery, conn, transaction);
+                SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
                 checkCmd.Parameters.AddWithValue("@Email", email);
 
                 SqlDataAdapter adp = new SqlDataAdapter(checkCmd);
@@ -173,41 +171,39 @@ namespace WaterSewageManagementSystem.Forms.Common
 
                 if (dt.Rows.Count > 0)
                 {
-                    transaction.Rollback();
-
                     MessageBox.Show("This email is already registered. Please use a different email.");
                     txtEmail.Focus();
                     return;
                 }
 
                 string insertUserQuery = @"
-                    INSERT INTO Users
-                    (
-                        FullName,
-                        Email,
-                        Phone,
-                        Password,
-                        Role,
-                        Address,
-                        Gender,
-                        Status,
-                        CreatedAt
-                    )
-                    OUTPUT INSERTED.UserID
-                    VALUES
-                    (
-                        @FullName,
-                        @Email,
-                        @Phone,
-                        @Password,
-                        @Role,
-                        @Address,
-                        @Gender,
-                        @Status,
-                        GETDATE()
-                    )";
+                INSERT INTO Users
+                (
+                    FullName,
+                    Email,
+                    Phone,
+                    Password,
+                    Role,
+                    Address,
+                    Gender,
+                    Status,
+                    CreatedAt
+                )
+                OUTPUT INSERTED.UserID
+                VALUES
+                (
+                    @FullName,
+                    @Email,
+                    @Phone,
+                    @Password,
+                    @Role,
+                    @Address,
+                    @Gender,
+                    @Status,
+                    GETDATE()
+                )";
 
-                SqlCommand insertUserCmd = new SqlCommand(insertUserQuery, conn, transaction);
+                SqlCommand insertUserCmd = new SqlCommand(insertUserQuery, conn);
                 insertUserCmd.Parameters.AddWithValue("@FullName", name);
                 insertUserCmd.Parameters.AddWithValue("@Email", email);
                 insertUserCmd.Parameters.AddWithValue("@Phone", phone);
@@ -222,22 +218,22 @@ namespace WaterSewageManagementSystem.Forms.Common
                 if (role == "Customer")
                 {
                     string insertCustomerQuery = @"
-                        INSERT INTO Customers
-                        (
-                            UserID,
-                            MeterNumber,
-                            HoldingNumber,
-                            ConnectionType
-                        )
-                        VALUES
-                        (
-                            @UserID,
-                            @MeterNumber,
-                            @HoldingNumber,
-                            @ConnectionType
-                        )";
+                    INSERT INTO Customers
+                    (
+                        UserID,
+                        MeterNumber,
+                        HoldingNumber,
+                        ConnectionType
+                    )
+                    VALUES
+                    (
+                        @UserID,
+                        @MeterNumber,
+                        @HoldingNumber,
+                        @ConnectionType
+                    )";
 
-                    SqlCommand insertCustomerCmd = new SqlCommand(insertCustomerQuery, conn, transaction);
+                    SqlCommand insertCustomerCmd = new SqlCommand(insertCustomerQuery, conn);
                     insertCustomerCmd.Parameters.AddWithValue("@UserID", newUserID);
                     insertCustomerCmd.Parameters.AddWithValue("@MeterNumber", DBNull.Value);
                     insertCustomerCmd.Parameters.AddWithValue("@HoldingNumber", holdingNumber);
@@ -245,8 +241,6 @@ namespace WaterSewageManagementSystem.Forms.Common
 
                     insertCustomerCmd.ExecuteNonQuery();
                 }
-
-                transaction.Commit();
 
                 if (role == "Customer")
                 {
@@ -261,11 +255,6 @@ namespace WaterSewageManagementSystem.Forms.Common
             }
             catch (Exception ex)
             {
-                if (transaction != null)
-                {
-                    transaction.Rollback();
-                }
-
                 MessageBox.Show("Registration failed: " + ex.Message);
             }
             finally
@@ -273,7 +262,6 @@ namespace WaterSewageManagementSystem.Forms.Common
                 conn.Close();
             }
         }
-
         private void cmb_role_selection_change(object sender, EventArgs e)
         {
             string role = cmbRole.SelectedItem?.ToString();
@@ -299,7 +287,6 @@ namespace WaterSewageManagementSystem.Forms.Common
                 errorlblConn.Text = "";
             }
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();

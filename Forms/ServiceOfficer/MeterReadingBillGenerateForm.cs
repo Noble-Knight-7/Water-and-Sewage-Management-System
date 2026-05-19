@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
@@ -16,11 +15,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
             txtBillingMonth.Text = DateTime.Now.ToString("MMMM yyyy");
             txtArrears.Text = "0";
-
-            // This prevents database code from running inside Visual Studio Designer. // DO we need this? Yes, because the LoadCustomers() method connects to the database and populates the customer dropdown. If we run this code while the form is being designed in Visual Studio, it will try to connect to the database and may throw an error if the database is not available or if we're just trying to design the form without running it.
-            //if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-            //{
-            //}
             LoadCustomers();
         }
 
@@ -33,11 +27,18 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 conn.Open();
 
                 string query = @"SELECT 
-                                    c.CustomerID,
-                                    u.FullName + ' - Meter: ' + c.MeterNumber AS CustomerDisplay
-                                 FROM Customers c
-                                 JOIN Users u ON c.UserID = u.UserID
-                                 ORDER BY u.FullName";
+                    c.CustomerID,
+                    c.ConnectionType,
+                    CONCAT(
+                        u.FullName, 
+                        ' - Meter: ', 
+                        ISNULL(CAST(c.MeterNumber AS VARCHAR(20)), 'N/A'),
+                        ' - ',
+                        c.ConnectionType
+                    ) AS CustomerDisplay
+                 FROM Customers c
+                 JOIN Users u ON c.UserID = u.UserID
+                 ORDER BY u.FullName";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -118,9 +119,31 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             int customerID = Convert.ToInt32(cmbCustomer.SelectedValue);
             string billingMonth = txtBillingMonth.Text.Trim().Replace("'", "''");
 
+            DataRowView selectedCustomer = (DataRowView)cmbCustomer.SelectedItem;
+            string connectionType = selectedCustomer["ConnectionType"].ToString();
+
             int unitsUsed = currentReading - previousReading;
-            decimal ratePerUnit = 8.0m;
-            decimal amount = unitsUsed * ratePerUnit;   
+            decimal ratePerUnit = 0;
+
+            if (connectionType == "Residential")
+            {
+                ratePerUnit = 8.0m;
+            }
+            else if (connectionType == "Commercial")
+            {
+                ratePerUnit = 12.0m;
+            }
+            else if (connectionType == "Industrial")
+            {
+                ratePerUnit = 14.0m;
+            }
+            else
+            {
+                MessageBox.Show("Invalid connection type for this customer.");
+                return;
+            }
+
+            decimal amount = unitsUsed * ratePerUnit;
 
             SqlConnection conn = new SqlConnection(connectionString);
 
@@ -146,7 +169,9 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 {
                     MessageBox.Show(
                         "Bill generated successfully!\n\n" +
+                        "Connection Type: " + connectionType + "\n" +
                         "Units Used: " + unitsUsed + "\n" +
+                        "Rate Per Unit: Tk. " + ratePerUnit.ToString("N2") + "\n" +
                         "Amount: Tk. " + amount.ToString("N2") + "\n" +
                         "Arrears: Tk. " + arrears.ToString("N2") + "\n" +
                         "Total Due: Tk. " + (amount + arrears).ToString("N2")

@@ -2,7 +2,6 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
-using WaterSewageManagementSystem.Helpers;
 
 namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
@@ -71,7 +70,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 return;
             }
 
-            if (SessionManager.CurrentUser == null)
+            if (LoginForm.LoggedInUserID == 0)
             {
                 MessageBox.Show("No logged in user found. Please login again.");
                 return;
@@ -98,7 +97,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 return;
             }
 
-            int reviewedBy = SessionManager.CurrentUser.UserID;
+            int reviewedBy = LoginForm.LoggedInUserID;
 
             SqlConnection conn = new SqlConnection(connectionString);
 

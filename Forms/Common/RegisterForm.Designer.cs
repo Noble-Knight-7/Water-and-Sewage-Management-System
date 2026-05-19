@@ -237,9 +237,9 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.cmbConType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbConType.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbConType.Items.AddRange(new object[] {
-            "Customer",
-            "ServiceOfficer",
-            "MaintenanceEngineer"});
+            "Commercial",
+            "Residential",
+            "Industrial"});
             this.cmbConType.Location = new System.Drawing.Point(706, 389);
             this.cmbConType.Name = "cmbConType";
             this.cmbConType.Size = new System.Drawing.Size(260, 31);

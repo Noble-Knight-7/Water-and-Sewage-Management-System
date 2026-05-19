@@ -3,7 +3,6 @@ using System.Data;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using WaterSewageManagementSystem.Forms.Common;
-using WaterSewageManagementSystem.Helpers;
 
 namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
@@ -14,9 +13,13 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         {
             InitializeComponent();
 
-            if (SessionManager.CurrentUser != null)
+            if (!string.IsNullOrEmpty(LoginForm.LoggedInFullName))
             {
-                lbl_Welcome.Text = "Welcome, " + SessionManager.CurrentUser.FullName;
+                lbl_Welcome.Text = "Welcome, " + LoginForm.LoggedInFullName;
+            }
+            else
+            {
+                lbl_Welcome.Text = "Welcome, Service Officer";
             }
         }
 
@@ -211,7 +214,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
             if (result == DialogResult.Yes)
             {
-                SessionManager.Logout();
+                LoginForm.LoggedInUserID = 0;
+                LoginForm.LoggedInFullName = "";
+                LoginForm.LoggedInEmail = "";
+                LoginForm.LoggedInRole = "";
+                LoginForm.LoggedInStatus = "";
 
                 LoginForm login = new LoginForm();
                 login.Show();

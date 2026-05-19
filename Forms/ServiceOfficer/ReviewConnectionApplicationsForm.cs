@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
-using WaterSewageManagementSystem.Helpers;
 
 namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
@@ -66,11 +65,23 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void btnApprove_Click(object sender, EventArgs e)
         {
+            if (dgvApplications.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Select an application first.");
+                return;
+            }
+
+            if (LoginForm.LoggedInUserID == 0)
+            {
+                MessageBox.Show("No logged in user found. Please login again.");
+                return;
+            }
+
             int meterNumber;
             int appID = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicationID"].Value);
             int customerID = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["CustomerID"].Value);
             string currentStatus = dgvApplications.SelectedRows[0].Cells["ApprovalStatus"].Value.ToString();
-            int officerID = SessionManager.CurrentUser.UserID;
+            int officerID = LoginForm.LoggedInUserID;
 
             //if (dgvApplications.SelectedRows.Count == 0)
             //{
@@ -78,11 +89,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             //    return;
             //}
 
-            if (SessionManager.CurrentUser == null)
-            {
-                MessageBox.Show("No logged in user found. Please login again.");
-                return;
-            }
+            //if (SessionManager.CurrentUser == null)
+            //{
+            //    MessageBox.Show("No logged in user found. Please login again.");
+            //    return;
+            //}
 
             if (txtMeterNumber.Text == "")
             {
@@ -168,7 +179,13 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             //    return;
             //}
 
-            if (SessionManager.CurrentUser == null)
+            if (dgvApplications.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Select an application first.");
+                return;
+            }
+
+            if (LoginForm.LoggedInUserID == 0)
             {
                 MessageBox.Show("No logged in user found. Please login again.");
                 return;
@@ -176,6 +193,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
             int appID = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicationID"].Value);
             string currentStatus = dgvApplications.SelectedRows[0].Cells["ApprovalStatus"].Value.ToString();
+
 
             if (currentStatus == "Rejected")
             {
@@ -209,7 +227,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 return;
             }
 
-            int officerID = SessionManager.CurrentUser.UserID;
+            int officerID = LoginForm.LoggedInUserID;
 
             SqlConnection conn = new SqlConnection(connectionString);
 
