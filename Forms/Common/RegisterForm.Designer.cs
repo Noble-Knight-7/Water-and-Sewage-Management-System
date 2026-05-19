@@ -29,16 +29,10 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lblConType = new System.Windows.Forms.Label();
-            this.cmbConType = new System.Windows.Forms.ComboBox();
             this.lblGender = new System.Windows.Forms.Label();
             this.radioButton_Male = new System.Windows.Forms.RadioButton();
             this.radioButton_Female = new System.Windows.Forms.RadioButton();
-            this.lblHolding = new System.Windows.Forms.Label();
-            this.txtHoldingNumber = new System.Windows.Forms.TextBox();
             this.errorlblAdress = new System.Windows.Forms.Label();
-            this.errorlblConn = new System.Windows.Forms.Label();
-            this.errorlblHold = new System.Windows.Forms.Label();
             this.errorlblRole = new System.Windows.Forms.Label();
             this.errorlblPhone = new System.Windows.Forms.Label();
             this.errorlblConfPass = new System.Windows.Forms.Label();
@@ -47,6 +41,9 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblName = new System.Windows.Forms.Label();
             this.errorlblGender = new System.Windows.Forms.Label();
             this.errorlblPassNotMatch = new System.Windows.Forms.Label();
+            this.lblDOB = new System.Windows.Forms.Label();
+            this.errorlblDOB = new System.Windows.Forms.Label();
+            this.dateTimePickerDOB = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -117,7 +114,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // lblPassword
             // 
             this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblPassword.Location = new System.Drawing.Point(523, 88);
+            this.lblPassword.Location = new System.Drawing.Point(523, 165);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(145, 20);
             this.lblPassword.TabIndex = 7;
@@ -127,7 +124,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtPassword.Location = new System.Drawing.Point(706, 86);
+            this.txtPassword.Location = new System.Drawing.Point(706, 163);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(260, 30);
@@ -136,7 +133,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // lblConfirm
             // 
             this.lblConfirm.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblConfirm.Location = new System.Drawing.Point(523, 160);
+            this.lblConfirm.Location = new System.Drawing.Point(523, 237);
             this.lblConfirm.Name = "lblConfirm";
             this.lblConfirm.Size = new System.Drawing.Size(177, 27);
             this.lblConfirm.TabIndex = 9;
@@ -146,7 +143,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // 
             this.txtConfirmPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConfirmPass.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtConfirmPass.Location = new System.Drawing.Point(706, 157);
+            this.txtConfirmPass.Location = new System.Drawing.Point(706, 234);
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PasswordChar = '*';
             this.txtConfirmPass.Size = new System.Drawing.Size(260, 30);
@@ -155,7 +152,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             // lblRole
             // 
             this.lblRole.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblRole.Location = new System.Drawing.Point(523, 238);
+            this.lblRole.Location = new System.Drawing.Point(523, 315);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(145, 28);
             this.lblRole.TabIndex = 11;
@@ -169,11 +166,10 @@ namespace WaterSewageManagementSystem.Forms.Common
             "Customer",
             "ServiceOfficer",
             "MaintenanceEngineer"});
-            this.cmbRole.Location = new System.Drawing.Point(706, 235);
+            this.cmbRole.Location = new System.Drawing.Point(706, 312);
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(260, 31);
             this.cmbRole.TabIndex = 12;
-            this.cmbRole.SelectedIndexChanged += new System.EventHandler(this.cmb_role_selection_change);
             // 
             // lblAddress
             // 
@@ -201,7 +197,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(40, 504);
+            this.btnRegister.Location = new System.Drawing.Point(40, 503);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(125, 38);
             this.btnRegister.TabIndex = 15;
@@ -215,35 +211,13 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Location = new System.Drawing.Point(841, 504);
+            this.btnCancel.Location = new System.Drawing.Point(841, 503);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(125, 38);
             this.btnCancel.TabIndex = 16;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // lblConType
-            // 
-            this.lblConType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblConType.Location = new System.Drawing.Point(523, 389);
-            this.lblConType.Name = "lblConType";
-            this.lblConType.Size = new System.Drawing.Size(185, 28);
-            this.lblConType.TabIndex = 17;
-            this.lblConType.Text = "Connection Type *";
-            // 
-            // cmbConType
-            // 
-            this.cmbConType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbConType.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbConType.Items.AddRange(new object[] {
-            "Commercial",
-            "Residential",
-            "Industrial"});
-            this.cmbConType.Location = new System.Drawing.Point(706, 389);
-            this.cmbConType.Name = "cmbConType";
-            this.cmbConType.Size = new System.Drawing.Size(260, 31);
-            this.cmbConType.TabIndex = 18;
             // 
             // lblGender
             // 
@@ -278,24 +252,6 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.radioButton_Female.Text = "Female";
             this.radioButton_Female.UseVisualStyleBackColor = true;
             // 
-            // lblHolding
-            // 
-            this.lblHolding.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblHolding.Location = new System.Drawing.Point(523, 312);
-            this.lblHolding.Name = "lblHolding";
-            this.lblHolding.Size = new System.Drawing.Size(177, 25);
-            this.lblHolding.TabIndex = 22;
-            this.lblHolding.Text = "Holding Number *";
-            // 
-            // txtHoldingNumber
-            // 
-            this.txtHoldingNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHoldingNumber.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtHoldingNumber.Location = new System.Drawing.Point(706, 309);
-            this.txtHoldingNumber.Name = "txtHoldingNumber";
-            this.txtHoldingNumber.Size = new System.Drawing.Size(260, 30);
-            this.txtHoldingNumber.TabIndex = 23;
-            // 
             // errorlblAdress
             // 
             this.errorlblAdress.AutoSize = true;
@@ -307,34 +263,12 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblAdress.TabIndex = 24;
             this.errorlblAdress.Text = "errorlblAdress";
             // 
-            // errorlblConn
-            // 
-            this.errorlblConn.AutoSize = true;
-            this.errorlblConn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.errorlblConn.ForeColor = System.Drawing.Color.Red;
-            this.errorlblConn.Location = new System.Drawing.Point(702, 423);
-            this.errorlblConn.Name = "errorlblConn";
-            this.errorlblConn.Size = new System.Drawing.Size(96, 20);
-            this.errorlblConn.TabIndex = 25;
-            this.errorlblConn.Text = "errorlblConn";
-            // 
-            // errorlblHold
-            // 
-            this.errorlblHold.AutoSize = true;
-            this.errorlblHold.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.errorlblHold.ForeColor = System.Drawing.Color.Red;
-            this.errorlblHold.Location = new System.Drawing.Point(702, 342);
-            this.errorlblHold.Name = "errorlblHold";
-            this.errorlblHold.Size = new System.Drawing.Size(92, 20);
-            this.errorlblHold.TabIndex = 26;
-            this.errorlblHold.Text = "errorlblHold";
-            // 
             // errorlblRole
             // 
             this.errorlblRole.AutoSize = true;
             this.errorlblRole.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.errorlblRole.ForeColor = System.Drawing.Color.Red;
-            this.errorlblRole.Location = new System.Drawing.Point(703, 269);
+            this.errorlblRole.Location = new System.Drawing.Point(703, 346);
             this.errorlblRole.Name = "errorlblRole";
             this.errorlblRole.Size = new System.Drawing.Size(89, 20);
             this.errorlblRole.TabIndex = 27;
@@ -356,7 +290,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblConfPass.AutoSize = true;
             this.errorlblConfPass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.errorlblConfPass.ForeColor = System.Drawing.Color.Red;
-            this.errorlblConfPass.Location = new System.Drawing.Point(703, 190);
+            this.errorlblConfPass.Location = new System.Drawing.Point(703, 267);
             this.errorlblConfPass.Name = "errorlblConfPass";
             this.errorlblConfPass.Size = new System.Drawing.Size(122, 20);
             this.errorlblConfPass.TabIndex = 29;
@@ -378,7 +312,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblPass.AutoSize = true;
             this.errorlblPass.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.errorlblPass.ForeColor = System.Drawing.Color.Red;
-            this.errorlblPass.Location = new System.Drawing.Point(703, 119);
+            this.errorlblPass.Location = new System.Drawing.Point(703, 196);
             this.errorlblPass.Name = "errorlblPass";
             this.errorlblPass.Size = new System.Drawing.Size(90, 20);
             this.errorlblPass.TabIndex = 31;
@@ -411,16 +345,49 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblPassNotMatch.AutoSize = true;
             this.errorlblPassNotMatch.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.errorlblPassNotMatch.ForeColor = System.Drawing.Color.Red;
-            this.errorlblPassNotMatch.Location = new System.Drawing.Point(706, 190);
+            this.errorlblPassNotMatch.Location = new System.Drawing.Point(706, 267);
             this.errorlblPassNotMatch.Name = "errorlblPassNotMatch";
             this.errorlblPassNotMatch.Size = new System.Drawing.Size(158, 20);
             this.errorlblPassNotMatch.TabIndex = 34;
             this.errorlblPassNotMatch.Text = "errorlblPassNotMatch";
             // 
+            // lblDOB
+            // 
+            this.lblDOB.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblDOB.Location = new System.Drawing.Point(523, 86);
+            this.lblDOB.Name = "lblDOB";
+            this.lblDOB.Size = new System.Drawing.Size(165, 42);
+            this.lblDOB.TabIndex = 35;
+            this.lblDOB.Text = "Date of Birth *";
+            // 
+            // errorlblDOB
+            // 
+            this.errorlblDOB.AutoSize = true;
+            this.errorlblDOB.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.errorlblDOB.ForeColor = System.Drawing.Color.Red;
+            this.errorlblDOB.Location = new System.Drawing.Point(702, 111);
+            this.errorlblDOB.Name = "errorlblDOB";
+            this.errorlblDOB.Size = new System.Drawing.Size(91, 20);
+            this.errorlblDOB.TabIndex = 36;
+            this.errorlblDOB.Text = "errorlblDOB";
+            // 
+            // dateTimePickerDOB
+            // 
+            this.dateTimePickerDOB.CalendarFont = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerDOB.Location = new System.Drawing.Point(706, 86);
+            this.dateTimePickerDOB.Name = "dateTimePickerDOB";
+            this.dateTimePickerDOB.ShowCheckBox = true;
+            this.dateTimePickerDOB.Size = new System.Drawing.Size(260, 22);
+            this.dateTimePickerDOB.TabIndex = 37;
+            this.dateTimePickerDOB.Value = new System.DateTime(2026, 5, 19, 0, 0, 0, 0);
+            // 
             // RegisterForm
             // 
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(1015, 554);
+            this.ClientSize = new System.Drawing.Size(1015, 575);
+            this.Controls.Add(this.dateTimePickerDOB);
+            this.Controls.Add(this.errorlblDOB);
+            this.Controls.Add(this.lblDOB);
             this.Controls.Add(this.errorlblPassNotMatch);
             this.Controls.Add(this.errorlblGender);
             this.Controls.Add(this.errorlblName);
@@ -429,16 +396,10 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.Controls.Add(this.errorlblConfPass);
             this.Controls.Add(this.errorlblPhone);
             this.Controls.Add(this.errorlblRole);
-            this.Controls.Add(this.errorlblHold);
-            this.Controls.Add(this.errorlblConn);
             this.Controls.Add(this.errorlblAdress);
-            this.Controls.Add(this.lblHolding);
-            this.Controls.Add(this.txtHoldingNumber);
-            this.Controls.Add(this.cmbConType);
             this.Controls.Add(this.radioButton_Female);
             this.Controls.Add(this.radioButton_Male);
             this.Controls.Add(this.lblGender);
-            this.Controls.Add(this.lblConType);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtName);
@@ -486,16 +447,10 @@ namespace WaterSewageManagementSystem.Forms.Common
 
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label lblConType;
-        private System.Windows.Forms.ComboBox cmbConType;
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.RadioButton radioButton_Male;
         private System.Windows.Forms.RadioButton radioButton_Female;
-        private System.Windows.Forms.Label lblHolding;
-        private System.Windows.Forms.TextBox txtHoldingNumber;
         private System.Windows.Forms.Label errorlblAdress;
-        private System.Windows.Forms.Label errorlblConn;
-        private System.Windows.Forms.Label errorlblHold;
         private System.Windows.Forms.Label errorlblRole;
         private System.Windows.Forms.Label errorlblPhone;
         private System.Windows.Forms.Label errorlblConfPass;
@@ -504,5 +459,8 @@ namespace WaterSewageManagementSystem.Forms.Common
         private System.Windows.Forms.Label errorlblName;
         private System.Windows.Forms.Label errorlblGender;
         private System.Windows.Forms.Label errorlblPassNotMatch;
+        private System.Windows.Forms.Label lblDOB;
+        private System.Windows.Forms.Label errorlblDOB;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDOB;
     }
 }

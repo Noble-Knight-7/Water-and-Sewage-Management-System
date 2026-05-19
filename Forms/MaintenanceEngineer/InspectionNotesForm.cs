@@ -1,59 +1,148 @@
+using System;
+using System.Data;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.Helpers;
-using WaterSewageManagementSystem.Services;
+using Microsoft.Data.SqlClient;
 
 namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
 {
     public partial class InspectionNotesForm : Form
     {
-        private readonly MaintenanceService _maintenanceService = new MaintenanceService();
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
-        public InspectionNotesForm() { InitializeComponent(); LoadTasks(); }
+        public InspectionNotesForm()
+        {
+            InitializeComponent();
+            LoadTasks();
+        }
 
         private void LoadTasks()
         {
-            dgvTasks.DataSource = null;
-            dgvTasks.DataSource = _maintenanceService.GetByEngineer(SessionManager.CurrentUser.UserID);
+            if (LoginForm.LoggedInUserID == 0)
+            {
+                MessageBox.Show("No logged in engineer found. Please login again.");
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = @"SELECT 
+                                    t.TaskID,
+                                    t.ComplaintID,
+                                    t.EngineerID,
+                                    CONVERT(varchar(20), t.VisitDate, 106) AS VisitDate,
+                                    t.ProgressStatus,
+                                    t.Notes,
+                                    t.CompletionReport,
+                                    CONVERT(varchar(20), t.UpdatedAt, 106) AS UpdatedAt,
+                                    c.Category,
+                                    c.Description AS ComplaintDescription,
+                                    c.Priority,
+                                    c.Status AS ComplaintStatus,
+                                    u.FullName AS CustomerName
+                                 FROM MaintenanceTasks t
+                                 JOIN Complaints c ON t.ComplaintID = c.ComplaintID
+                                 JOIN Customers cu ON c.CustomerID = cu.CustomerID
+                                 JOIN Users u ON cu.UserID = u.UserID
+                                 WHERE t.EngineerID = " + LoginForm.LoggedInUserID + @"
+                                 ORDER BY t.UpdatedAt DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+
+                DataTable dt = ds.Tables[0];
+                dgvTasks.DataSource = dt;
+                dgvTasks.AutoGenerateColumns = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading tasks: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
-        private void dgvTasks_SelectionChanged(object sender, System.EventArgs e)
-        {
-            // When engineer clicks a row, load its existing notes into the text box
-            if (dgvTasks.SelectedRows.Count == 0) return;
-            var row = dgvTasks.SelectedRows[0];
-            string existingNotes = row.Cells["Notes"].Value?.ToString() ?? "";
-            txtNotes.Text = existingNotes;
-        }
-
-        private void btnSaveNotes_Click(object sender, System.EventArgs e)
+        private void dgvTasks_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvTasks.SelectedRows.Count == 0)
             {
-                MessageHelper.ShowWarning("Select a task first."); return;
-            }
-            if (ValidationHelper.IsEmpty(txtNotes.Text))
-            {
-                MessageHelper.ShowError("Please enter inspection notes before saving."); return;
+                return;
             }
 
-            int taskID = (int)dgvTasks.SelectedRows[0].Cells["TaskID"].Value;
+            string existingNotes = "";
 
-            // Get current status so we don't accidentally reset it
-            string currentStatus = dgvTasks.SelectedRows[0].Cells["ProgressStatus"].Value?.ToString() ?? "InProgress";
-
-            bool success = _maintenanceService.UpdateProgress(taskID, currentStatus, txtNotes.Text.Trim());
-            if (success)
+            if (dgvTasks.SelectedRows[0].Cells["Notes"].Value != null)
             {
-                MessageHelper.ShowSuccess("Inspection notes saved successfully.");
-                LoadTasks();
+                existingNotes = dgvTasks.SelectedRows[0].Cells["Notes"].Value.ToString();
             }
-            else
+
+            txtNotes.Text = existingNotes;
+        }
+
+        private void btnSaveNotes_Click(object sender, EventArgs e)
+        {
+            if (dgvTasks.SelectedRows.Count == 0)
             {
-                MessageHelper.ShowError("Failed to save notes. Please try again.");
+                MessageBox.Show("Select a task first.");
+                return;
+            }
+
+            if (txtNotes.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter inspection notes before saving.");
+                return;
+            }
+
+            int taskID = Convert.ToInt32(dgvTasks.SelectedRows[0].Cells["TaskID"].Value);
+            string notes = txtNotes.Text.Trim().Replace("'", "''");
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = "UPDATE MaintenanceTasks SET Notes='" + notes +
+                               "', UpdatedAt=GETDATE() WHERE TaskID=" + taskID;
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Inspection notes saved successfully.");
+                    LoadTasks();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to save notes.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving notes: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
 
-        private void btnClear_Click(object sender, System.EventArgs e) => txtNotes.Clear();
-        private void btnClose_Click(object sender, System.EventArgs e) => this.Close();
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtNotes.Clear();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

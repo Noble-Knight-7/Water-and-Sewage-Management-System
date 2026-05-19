@@ -1,67 +1,169 @@
+using System;
+using System.Data;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.Helpers;
-using WaterSewageManagementSystem.Services;
+using Microsoft.Data.SqlClient;
 
 namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
 {
     public partial class CompletionReportForm : Form
     {
-        private readonly MaintenanceService _maintenanceService = new MaintenanceService();
-        private readonly ReportService      _reportService      = new ReportService();
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
-        public CompletionReportForm() { InitializeComponent(); LoadTasks(); }
+        public CompletionReportForm()
+        {
+            InitializeComponent();
+            LoadTasks();
+        }
 
         private void LoadTasks()
         {
-            // Show only tasks that are InProgress or Pending - ones that still need a completion report
-            dgvTasks.DataSource = null;
-            dgvTasks.DataSource = _maintenanceService.GetByEngineer(SessionManager.CurrentUser.UserID);
+            if (LoginForm.LoggedInUserID == 0)
+            {
+                MessageBox.Show("No logged in engineer found. Please login again.");
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = @"SELECT 
+                                    t.TaskID,
+                                    t.ComplaintID,
+                                    t.EngineerID,
+                                    CONVERT(varchar(20), t.VisitDate, 106) AS VisitDate,
+                                    t.ProgressStatus,
+                                    t.Notes,
+                                    t.CompletionReport,
+                                    CONVERT(varchar(20), t.UpdatedAt, 106) AS UpdatedAt,
+                                    c.Category,
+                                    c.Description AS ComplaintDescription,
+                                    c.Priority,
+                                    c.Status AS ComplaintStatus,
+                                    u.FullName AS CustomerName
+                                 FROM MaintenanceTasks t
+                                 JOIN Complaints c ON t.ComplaintID = c.ComplaintID
+                                 JOIN Customers cu ON c.CustomerID = cu.CustomerID
+                                 JOIN Users u ON cu.UserID = u.UserID
+                                 WHERE t.EngineerID = " + LoginForm.LoggedInUserID + @"
+                                 ORDER BY t.UpdatedAt DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+
+                DataTable dt = ds.Tables[0];
+                dgvTasks.DataSource = dt;
+                dgvTasks.AutoGenerateColumns = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading tasks: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
-        private void dgvTasks_SelectionChanged(object sender, System.EventArgs e)
-        {
-            if (dgvTasks.SelectedRows.Count == 0) return;
-            // Load existing completion report if there is one
-            string existing = dgvTasks.SelectedRows[0].Cells["CompletionReport"].Value?.ToString() ?? "";
-            txtReport.Text = existing;
-        }
-
-        private void btnSubmit_Click(object sender, System.EventArgs e)
+        private void dgvTasks_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvTasks.SelectedRows.Count == 0)
             {
-                MessageHelper.ShowWarning("Select a task to submit a completion report for."); return;
-            }
-            if (ValidationHelper.IsEmpty(txtReport.Text))
-            {
-                MessageHelper.ShowError("Please write the completion report before submitting."); return;
+                return;
             }
 
-            int taskID = (int)dgvTasks.SelectedRows[0].Cells["TaskID"].Value;
+            string existingReport = "";
 
-            if (MessageHelper.ShowConfirm("Submit this completion report? This will mark the task as Completed.") == DialogResult.Yes)
+            if (dgvTasks.SelectedRows[0].Cells["CompletionReport"].Value != null)
             {
-                // Save completion report and mark task Completed
-                bool success = _maintenanceService.SubmitCompletionReport(taskID, txtReport.Text.Trim());
-                if (success)
+                existingReport = dgvTasks.SelectedRows[0].Cells["CompletionReport"].Value.ToString();
+            }
+
+            txtReport.Text = existingReport;
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (dgvTasks.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Select a task to submit a completion report for.");
+                return;
+            }
+
+            if (txtReport.Text.Trim() == "")
+            {
+                MessageBox.Show("Please write the completion report before submitting.");
+                return;
+            }
+
+            int taskID = Convert.ToInt32(dgvTasks.SelectedRows[0].Cells["TaskID"].Value);
+            int complaintID = Convert.ToInt32(dgvTasks.SelectedRows[0].Cells["ComplaintID"].Value);
+            string report = txtReport.Text.Trim().Replace("'", "''");
+            string engineerName = LoginForm.LoggedInFullName;
+
+            DialogResult result = MessageBox.Show(
+                "Submit this completion report? This will mark the task as Completed.",
+                "Confirm Completion Report",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string updateTaskQuery = "UPDATE MaintenanceTasks SET CompletionReport='" + report +
+                                         "', ProgressStatus='Completed', UpdatedAt=GETDATE() WHERE TaskID=" + taskID;
+                SqlCommand updateTaskCmd = new SqlCommand(updateTaskQuery, conn);
+                int taskRows = updateTaskCmd.ExecuteNonQuery();
+
+                string updateComplaintQuery = "UPDATE Complaints SET Status='Resolved' WHERE ComplaintID=" + complaintID;
+                SqlCommand updateComplaintCmd = new SqlCommand(updateComplaintQuery, conn);
+                updateComplaintCmd.ExecuteNonQuery();
+
+                string reportDescription = "Completion report submitted for Task ID " + taskID + " by " + engineerName;
+                reportDescription = reportDescription.Replace("'", "''");
+
+                string insertReportQuery = "INSERT INTO Reports (CreatedBy, ReportType, CreatedDate, Description) " +
+                                           "VALUES (" + LoginForm.LoggedInUserID + ", 'Maintenance', GETDATE(), '" + reportDescription + "')";
+                SqlCommand insertReportCmd = new SqlCommand(insertReportQuery, conn);
+                insertReportCmd.ExecuteNonQuery();
+
+                if (taskRows > 0)
                 {
-                    // Also log it in the Reports table
-                    _reportService.LogReport(
-                        SessionManager.CurrentUser.UserID,
-                        "Maintenance",
-                        "Completion report submitted for Task ID " + taskID + " by " + SessionManager.CurrentUser.FullName
-                    );
-                    MessageHelper.ShowSuccess("Completion report submitted. Task is now marked as Completed.");
+                    MessageBox.Show("Completion report submitted. Task is now marked as Completed.");
                     txtReport.Clear();
                     LoadTasks();
                 }
                 else
                 {
-                    MessageHelper.ShowError("Failed to submit report. Please try again.");
+                    MessageBox.Show("Failed to submit report.");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error submitting completion report: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
 
-        private void btnClose_Click(object sender, System.EventArgs e) => this.Close();
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

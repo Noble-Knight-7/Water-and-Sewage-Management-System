@@ -82,6 +82,13 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             int customerID = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["CustomerID"].Value);
             string currentStatus = dgvApplications.SelectedRows[0].Cells["ApprovalStatus"].Value.ToString();
             int officerID = LoginForm.LoggedInUserID;
+            string documentStatus = dgvApplications.SelectedRows[0].Cells["DocumentStatus"].Value.ToString();
+
+            if (documentStatus != "Verified")
+            {
+                MessageBox.Show("Please verify the documents first.");
+                return;
+            }
 
             //if (dgvApplications.SelectedRows.Count == 0)
             //{

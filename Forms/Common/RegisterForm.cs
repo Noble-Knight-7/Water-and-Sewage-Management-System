@@ -13,22 +13,16 @@ namespace WaterSewageManagementSystem.Forms.Common
         {
             InitializeComponent();
 
-            lblConType.Hide();
-            cmbConType.Hide();
-            lblHolding.Hide();
-            txtHoldingNumber.Hide();
-
             errorlblAdress.Text = "";
             errorlblConfPass.Text = "";
             errorlblPhone.Text = "";
-            errorlblConn.Text = "";
             errorlblEmail.Text = "";
             errorlblGender.Text = "";
-            errorlblHold.Text = "";
             errorlblName.Text = "";
             errorlblPass.Text = "";
             errorlblRole.Text = "";
             errorlblPassNotMatch.Text = "";
+            errorlblDOB.Text = "";
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -40,9 +34,8 @@ namespace WaterSewageManagementSystem.Forms.Common
             string confirmPass = txtConfirmPass.Text;
             string role = cmbRole.SelectedItem?.ToString();
             string address = txtAddress.Text.Trim();
-            string holdingNumber = txtHoldingNumber.Text.Trim();
-            string connectionType = cmbConType.SelectedItem?.ToString();
             string gender = "";
+            DateTime dob = dateTimePickerDOB.Value.Date;
 
             if (radioButton_Male.Checked)
             {
@@ -58,14 +51,13 @@ namespace WaterSewageManagementSystem.Forms.Common
             errorlblAdress.Text = "";
             errorlblConfPass.Text = "";
             errorlblPhone.Text = "";
-            errorlblConn.Text = "";
             errorlblEmail.Text = "";
             errorlblGender.Text = "";
-            errorlblHold.Text = "";
             errorlblName.Text = "";
             errorlblPass.Text = "";
             errorlblRole.Text = "";
             errorlblPassNotMatch.Text = "";
+            errorlblDOB.Text = "";
 
             if (name == "")
             {
@@ -121,20 +113,31 @@ namespace WaterSewageManagementSystem.Forms.Common
                 hasError = true;
             }
 
-            if (role == "Customer")
+            if (dateTimePickerDOB.Checked == false)
             {
-                if (holdingNumber == "")
-                {
-                    errorlblHold.Text = "Please enter your holding number";
-                    hasError = true;
-                }
-
-                if (connectionType == null || connectionType == "")
-                {
-                    errorlblConn.Text = "Select a connection type";
-                    hasError = true;
-                }
+                errorlblDOB.Text = "Please select your date of birth";
+                hasError = true;
             }
+            else if (dateTimePickerDOB.Value.Date >= DateTime.Today)
+            {
+                errorlblDOB.Text = "Date of birth cannot be today or future date";
+                hasError = true;
+            }
+
+            //if (role == "Customer")
+            //{
+            //    if (holdingNumber == "")
+            //    {
+            //        errorlblHold.Text = "Please enter your holding number";
+            //        hasError = true;
+            //    }
+
+            //    if (connectionType == null || connectionType == "")
+            //    {
+            //        errorlblConn.Text = "Select a connection type";
+            //        hasError = true;
+            //    }
+            //}
 
             if (hasError == true)
             {
@@ -142,6 +145,8 @@ namespace WaterSewageManagementSystem.Forms.Common
             }
 
             string status = "";
+
+
 
             if (role == "Customer")
             {
@@ -177,31 +182,33 @@ namespace WaterSewageManagementSystem.Forms.Common
                 }
 
                 string insertUserQuery = @"
-                INSERT INTO Users
-                (
-                    FullName,
-                    Email,
-                    Phone,
-                    Password,
-                    Role,
-                    Address,
-                    Gender,
-                    Status,
-                    CreatedAt
-                )
-                OUTPUT INSERTED.UserID
-                VALUES
-                (
-                    @FullName,
-                    @Email,
-                    @Phone,
-                    @Password,
-                    @Role,
-                    @Address,
-                    @Gender,
-                    @Status,
-                    GETDATE()
-                )";
+INSERT INTO Users
+(
+    FullName,
+    Email,
+    Phone,
+    Password,
+    Role,
+    Address,
+    Gender,
+    DOB,
+    Status,
+    CreatedAt
+)
+OUTPUT INSERTED.UserID
+VALUES
+(
+    @FullName,
+    @Email,
+    @Phone,
+    @Password,
+    @Role,
+    @Address,
+    @Gender,
+    @DOB,
+    @Status,
+    GETDATE()
+)";
 
                 SqlCommand insertUserCmd = new SqlCommand(insertUserQuery, conn);
                 insertUserCmd.Parameters.AddWithValue("@FullName", name);
@@ -211,6 +218,7 @@ namespace WaterSewageManagementSystem.Forms.Common
                 insertUserCmd.Parameters.AddWithValue("@Role", role);
                 insertUserCmd.Parameters.AddWithValue("@Address", address);
                 insertUserCmd.Parameters.AddWithValue("@Gender", gender);
+                insertUserCmd.Parameters.AddWithValue("@DOB", dob);
                 insertUserCmd.Parameters.AddWithValue("@Status", status);
 
                 int newUserID = Convert.ToInt32(insertUserCmd.ExecuteScalar());
@@ -224,6 +232,7 @@ namespace WaterSewageManagementSystem.Forms.Common
                         MeterNumber,
                         HoldingNumber,
                         ConnectionType
+                        
                     )
                     VALUES
                     (
@@ -236,8 +245,8 @@ namespace WaterSewageManagementSystem.Forms.Common
                     SqlCommand insertCustomerCmd = new SqlCommand(insertCustomerQuery, conn);
                     insertCustomerCmd.Parameters.AddWithValue("@UserID", newUserID);
                     insertCustomerCmd.Parameters.AddWithValue("@MeterNumber", DBNull.Value);
-                    insertCustomerCmd.Parameters.AddWithValue("@HoldingNumber", holdingNumber);
-                    insertCustomerCmd.Parameters.AddWithValue("@ConnectionType", connectionType);
+                    insertCustomerCmd.Parameters.AddWithValue("@HoldingNumber", DBNull.Value);
+                    insertCustomerCmd.Parameters.AddWithValue("@ConnectionType", DBNull.Value);
 
                     insertCustomerCmd.ExecuteNonQuery();
                 }
@@ -262,34 +271,11 @@ namespace WaterSewageManagementSystem.Forms.Common
                 conn.Close();
             }
         }
-        private void cmb_role_selection_change(object sender, EventArgs e)
-        {
-            string role = cmbRole.SelectedItem?.ToString();
 
-            if (role == "Customer")
-            {
-                lblConType.Show();
-                cmbConType.Show();
-                lblHolding.Show();
-                txtHoldingNumber.Show();
-            }
-            else
-            {
-                lblConType.Hide();
-                cmbConType.Hide();
-                lblHolding.Hide();
-                txtHoldingNumber.Hide();
-
-                txtHoldingNumber.Clear();
-                cmbConType.SelectedIndex = -1;
-
-                errorlblHold.Text = "";
-                errorlblConn.Text = "";
-            }
-        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

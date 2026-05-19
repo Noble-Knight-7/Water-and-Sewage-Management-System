@@ -1,85 +1,128 @@
 using System;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.DataAccess;
-using WaterSewageManagementSystem.Helpers;
-using WaterSewageManagementSystem.Models;
-using WaterSewageManagementSystem.Services;
+using Microsoft.Data.SqlClient;
 
 namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
 {
-    // WaterQualityIssueForm lets the Maintenance Engineer report a water quality
-    // problem by submitting it as a high-priority Complaint and publishing a Notice.
-    // This form creates both records in the database in one action.
     public partial class WaterQualityIssueForm : Form
     {
-        private readonly NoticeService    _noticeService    = new NoticeService();
-        private readonly ComplaintService _complaintService = new ComplaintService();
-        private readonly CustomerRepository _customerRepo   = new CustomerRepository();
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
-        public WaterQualityIssueForm() { InitializeComponent(); }
+        public WaterQualityIssueForm()
+        {
+            InitializeComponent();
+        }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            string issueType  = cmbIssueType.SelectedItem?.ToString();
-            string area       = txtArea.Text.Trim();
+            string issueType = cmbIssueType.SelectedItem?.ToString();
+            string area = txtArea.Text.Trim();
             string description = txtDescription.Text.Trim();
 
-            if (issueType == null)
+            if (issueType == null || issueType == "")
             {
-                MessageHelper.ShowError("Please select the type of water quality issue."); return;
-            }
-            if (ValidationHelper.IsEmpty(area))
-            {
-                MessageHelper.ShowError("Please enter the affected area."); return;
-            }
-            if (ValidationHelper.IsEmpty(description))
-            {
-                MessageHelper.ShowError("Please describe the issue in detail."); return;
-            }
-
-            if (MessageHelper.ShowConfirm(
-                "This will publish an emergency notice and create a high-priority complaint.\n\nProceed?") != DialogResult.Yes)
+                MessageBox.Show("Please select the type of water quality issue.");
                 return;
-
-            // 1. Publish an emergency notice so customers are aware
-            var notice = new Notice
-            {
-                Title       = "⚠ Water Quality Alert: " + issueType,
-                Description = $"Area: {area}. {description}",
-                Area        = area,
-                NoticeType  = "Emergency",
-                PublishedBy = SessionManager.CurrentUser.UserID
-            };
-            _noticeService.Publish(notice);
-
-            // 2. Create a high-priority complaint linked to the first customer
-            //    (In a real system you'd link it to the zone, not a specific customer,
-            //     but for this academic project we attach it to CustomerID 1 as a system entry)
-            var customers = _customerRepo.GetAll();
-            if (customers.Count > 0)
-            {
-                var complaint = new Complaint
-                {
-                    CustomerID  = customers[0].CustomerID,
-                    Category    = "Water Quality",
-                    Description = $"[Reported by Engineer {SessionManager.CurrentUser.FullName}] " +
-                                  $"Issue Type: {issueType}. Area: {area}. Details: {description}",
-                    Priority    = "Urgent"
-                };
-                _complaintService.Submit(complaint);
             }
 
-            MessageHelper.ShowSuccess(
-                "Water quality issue reported!\n\n" +
-                "✔ Emergency notice published for customers.\n" +
-                "✔ Urgent complaint ticket created for Admin review.");
+            if (area == "")
+            {
+                MessageBox.Show("Please enter the affected area.");
+                txtArea.Focus();
+                return;
+            }
 
-            // Clear the form for a new entry
-            txtArea.Clear();
-            txtDescription.Clear();
-            cmbIssueType.SelectedIndex = 0;
+            if (description == "")
+            {
+                MessageBox.Show("Please describe the issue in detail.");
+                txtDescription.Focus();
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "This will publish an emergency notice and create a high-priority complaint. Proceed?",
+                "Confirm Water Quality Report",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string noticeTitle = "Water Quality Alert: " + issueType;
+                string noticeDescription = "Area: " + area + ". " + description;
+
+                noticeTitle = noticeTitle.Replace("'", "''");
+                noticeDescription = noticeDescription.Replace("'", "''");
+                string safeArea = area.Replace("'", "''");
+
+                string noticeQuery = "INSERT INTO Notices (Title, Description, Area, NoticeType, PublishedBy, PublishDate) " +
+                                     "VALUES ('" + noticeTitle + "', '" + noticeDescription + "', '" + safeArea +
+                                     "', 'Emergency', " + LoginForm.LoggedInUserID + ", GETDATE())";
+
+                SqlCommand noticeCmd = new SqlCommand(noticeQuery, conn);
+                int noticeRows = noticeCmd.ExecuteNonQuery();
+
+                string customerQuery = "SELECT TOP 1 CustomerID FROM Customers ORDER BY CustomerID";
+                SqlCommand customerCmd = new SqlCommand(customerQuery, conn);
+                object customerResult = customerCmd.ExecuteScalar();
+
+                int complaintRows = 0;
+
+                if (customerResult != null && customerResult != DBNull.Value)
+                {
+                    int customerID = Convert.ToInt32(customerResult);
+
+                    string complaintDescription = "[Reported by Engineer " + LoginForm.LoggedInFullName + "] " +
+                                                  "Issue Type: " + issueType + ". Area: " + area + ". Details: " + description;
+                    complaintDescription = complaintDescription.Replace("'", "''");
+
+                    string complaintQuery = "INSERT INTO Complaints (CustomerID, Category, Description, Priority, Status, DateSubmitted) " +
+                                            "VALUES (" + customerID + ", 'Water Quality', '" + complaintDescription +
+                                            "', 'Urgent', 'Pending', GETDATE())";
+
+                    SqlCommand complaintCmd = new SqlCommand(complaintQuery, conn);
+                    complaintRows = complaintCmd.ExecuteNonQuery();
+                }
+
+                if (noticeRows > 0 && complaintRows > 0)
+                {
+                    MessageBox.Show("Water quality issue reported. Emergency notice published and urgent complaint created.");
+                }
+                else if (noticeRows > 0)
+                {
+                    MessageBox.Show("Emergency notice published. No customer was found, so complaint ticket was not created.");
+                }
+                else
+                {
+                    MessageBox.Show("Water quality issue was not reported.");
+                }
+
+                txtArea.Clear();
+                txtDescription.Clear();
+                cmbIssueType.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error reporting water quality issue: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
-        private void btnClose_Click(object sender, EventArgs e) => this.Close();
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -156,15 +156,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\BillRepository.cs" />
-    <Compile Include="DataAccess\ComplaintRepository.cs" />
-    <Compile Include="DataAccess\ConnectionRepository.cs" />
-    <Compile Include="DataAccess\CustomerRepository.cs" />
-    <Compile Include="DataAccess\DbConnection.cs" />
-    <Compile Include="DataAccess\MaintenanceRepository.cs" />
-    <Compile Include="DataAccess\NoticeRepository.cs" />
-    <Compile Include="DataAccess\ReportRepository.cs" />
-    <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Forms\Admin\AdminDashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,11 +276,11 @@
     <Compile Include="Forms\Customer\ViewNoticesForm.Designer.cs">
       <DependentUpon>ViewNoticesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MaintenanceEngineer\AssignedComplaintsForm.cs">
+    <Compile Include="Forms\MaintenanceEngineer\AssignedComplaints.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MaintenanceEngineer\AssignedComplaintsForm.Designer.cs">
-      <DependentUpon>AssignedComplaintsForm.cs</DependentUpon>
+    <Compile Include="Forms\MaintenanceEngineer\AssignedComplaints.Designer.cs">
+      <DependentUpon>AssignedComplaints.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MaintenanceEngineer\CompletionReportForm.cs">
       <SubType>Form</SubType>
@@ -326,12 +317,6 @@
     </Compile>
     <Compile Include="Forms\MaintenanceEngineer\VisitDateForm.Designer.cs">
       <DependentUpon>VisitDateForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MaintenanceEngineer\WaterQualityIssueForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MaintenanceEngineer\WaterQualityIssueForm.Designer.cs">
-      <DependentUpon>WaterQualityIssueForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ServiceOfficer\BillingReportForm.cs">
       <SubType>Form</SubType>
@@ -387,21 +372,6 @@
     <Compile Include="Forms\ServiceOfficer\VerifyDocumentsForm.Designer.cs">
       <DependentUpon>VerifyDocumentsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\FormNavigationHelper.cs" />
-    <Compile Include="Helpers\MessageHelper.cs" />
-    <Compile Include="Helpers\PasswordHelper.cs" />
-    <Compile Include="Helpers\SessionManager.cs" />
-    <Compile Include="Helpers\ValidationHelper.cs" />
-    <Compile Include="Models\Bill.cs" />
-    <Compile Include="Models\BillDispute.cs" />
-    <Compile Include="Models\Complaint.cs" />
-    <Compile Include="Models\ConnectionApplication.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\MaintenanceTask.cs" />
-    <Compile Include="Models\Notice.cs" />
-    <Compile Include="Models\Payment.cs" />
-    <Compile Include="Models\Report.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources1.Designer.cs">
@@ -410,14 +380,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs" />
-    <Compile Include="Services\AuthService.cs" />
-    <Compile Include="Services\BillingService.cs" />
-    <Compile Include="Services\ComplaintService.cs" />
-    <Compile Include="Services\ConnectionService.cs" />
-    <Compile Include="Services\MaintenanceService.cs" />
-    <Compile Include="Services\NoticeService.cs" />
-    <Compile Include="Services\ReportService.cs" />
-    <Compile Include="Services\UserService.cs" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings" />
   </ItemGroup>
@@ -425,18 +387,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="database\WaterSewage_DB_Create.sql" />
-    <Content Include="database\WaterSewage_DB_Insert_Sample_Data.sql" />
-    <Content Include="database\WaterSewage_DB_Procedures.sql" />
     <None Include="Resources\Images\login_page_logov2.jpg" />
     <None Include="Resources\Images\login_page_logo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="database\backup\" />
-    <Folder Include="docs\diagrams\" />
-    <Folder Include="docs\final-report\" />
-    <Folder Include="docs\project-proposal\" />
-    <Folder Include="docs\screenshots\" />
     <Folder Include="Resources\Icons\" />
   </ItemGroup>
   <ItemGroup>
@@ -472,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\CustomerDashboardForm.resx">
       <DependentUpon>CustomerDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaintenanceEngineer\AssignedComplaints.resx">
+      <DependentUpon>AssignedComplaints.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MaintenanceEngineer\MaintenanceDashboardForm.resx">
       <DependentUpon>MaintenanceDashboardForm.cs</DependentUpon>

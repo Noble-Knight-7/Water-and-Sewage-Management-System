@@ -186,93 +186,94 @@ namespace WaterSewageManagementSystem.Forms.Customer
 
         private void btnDispute_Click(object sender, EventArgs e)
         {
-            if (currentBillID == 0 || currentCustomerID == 0)
-            {
-                MessageBox.Show("No bill selected for dispute.");
-                return;
-            }
+            new SubmitBillDisputeForm(currentBillID).ShowDialog();
+            //if (currentBillID == 0 || currentCustomerID == 0)
+            //{
+            //    MessageBox.Show("No bill selected for dispute.");
+            //    return;
+            //}
 
-            if (currentBillStatus == "Paid")
-            {
-                MessageBox.Show("Paid bill cannot be disputed.");
-                return;
-            }
+            //if (currentBillStatus == "Paid")
+            //{
+            //    MessageBox.Show("Paid bill cannot be disputed.");
+            //    return;
+            //}
 
-            string reason = Microsoft.VisualBasic.Interaction.InputBox(
-                "Enter your dispute reason:",
-                "Submit Bill Dispute",
-                ""
-            );
+            //string reason = Microsoft.VisualBasic.Interaction.InputBox(
+            //    "Enter your dispute reason:",
+            //    "Submit Bill Dispute",
+            //    ""
+            //);
 
-            if (reason == "")
-            {
-                MessageBox.Show("Dispute reason is required.");
-                return;
-            }
+            //if (reason == "")
+            //{
+            //    MessageBox.Show("Dispute reason is required.");
+            //    return;
+            //}
 
-            reason = reason.Replace("'", "''");
+            //reason = reason.Replace("'", "''");
 
-            SqlConnection conn = new SqlConnection(connectionString);
+            //SqlConnection conn = new SqlConnection(connectionString);
 
-            try
-            {
-                conn.Open();
+            //try
+            //{
+            //    conn.Open();
 
-                string checkQuery = "SELECT COUNT(*) FROM BillDisputes " +
-                                    "WHERE BillID = " + currentBillID +
-                                    " AND CustomerID = " + currentCustomerID +
-                                    " AND Status = 'Pending'";
+            //    string checkQuery = "SELECT COUNT(*) FROM BillDisputes " +
+            //                        "WHERE BillID = " + currentBillID +
+            //                        " AND CustomerID = " + currentCustomerID +
+            //                        " AND Status = 'Pending'";
 
-                SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+            //    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
 
-                int pendingCount = Convert.ToInt32(checkCmd.ExecuteScalar());
+            //    int pendingCount = Convert.ToInt32(checkCmd.ExecuteScalar());
 
-                if (pendingCount > 0)
-                {
-                    MessageBox.Show("You already have a pending dispute for this bill.");
-                    return;
-                }
+            //    if (pendingCount > 0)
+            //    {
+            //        MessageBox.Show("You already have a pending dispute for this bill.");
+            //        return;
+            //    }
 
-                DialogResult result = MessageBox.Show(
-                    "Submit dispute for this bill?",
-                    "Confirm Dispute",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
+            //    DialogResult result = MessageBox.Show(
+            //        "Submit dispute for this bill?",
+            //        "Confirm Dispute",
+            //        MessageBoxButtons.YesNo,
+            //        MessageBoxIcon.Question
+            //    );
 
-                if (result == DialogResult.No)
-                {
-                    return;
-                }
+            //    if (result == DialogResult.No)
+            //    {
+            //        return;
+            //    }
 
-                string insertQuery = "INSERT INTO BillDisputes " +
-                                     "(BillID, CustomerID, Reason, Status, SubmittedAt) " +
-                                     "VALUES (" +
-                                     currentBillID + ", " +
-                                     currentCustomerID + ", '" +
-                                     reason + "', 'Pending', GETDATE())";
+            //    string insertQuery = "INSERT INTO BillDisputes " +
+            //                         "(BillID, CustomerID, Reason, Status, SubmittedAt) " +
+            //                         "VALUES (" +
+            //                         currentBillID + ", " +
+            //                         currentCustomerID + ", '" +
+            //                         reason + "', 'Pending', GETDATE())";
 
-                SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
+            //    SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
 
-                int rows = insertCmd.ExecuteNonQuery();
+            //    int rows = insertCmd.ExecuteNonQuery();
 
-                if (rows > 0)
-                {
-                    MessageBox.Show("Bill dispute submitted successfully.");
-                }
-                else
-                {
-                    MessageBox.Show("Dispute was not submitted.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error submitting dispute: " + ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            //    if (rows > 0)
+            //    {
+            //        MessageBox.Show("Bill dispute submitted successfully.");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Dispute was not submitted.");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error submitting dispute: " + ex.Message);
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
         }
 
         private void btnClose_Click(object sender, EventArgs e)
