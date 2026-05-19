@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
-using WaterSewageManagementSystem.Helpers;
 
-namespace WaterSewageManagementSystem.Forms.Customer.v2
+namespace WaterSewageManagementSystem.Forms.Customer
 {
     public partial class BillHistoryForm : Form
     {
@@ -24,13 +17,13 @@ namespace WaterSewageManagementSystem.Forms.Customer.v2
 
         private void LoadHistory()
         {
-            if (SessionManager.CurrentUser == null)
+            if (LoginForm.LoggedInUserID == 0)
             {
                 MessageBox.Show("No logged in customer found. Please login again.");
                 return;
             }
 
-            int userID = SessionManager.CurrentUser.UserID;
+            int userID = LoginForm.LoggedInUserID;
 
             SqlConnection conn = new SqlConnection(connectionString);
 

@@ -1,4 +1,4 @@
-﻿namespace WaterSewageManagementSystem.Forms.Customer.v2
+﻿namespace WaterSewageManagementSystem.Forms.Customer
 {
     partial class ViewNoticesForm
     {

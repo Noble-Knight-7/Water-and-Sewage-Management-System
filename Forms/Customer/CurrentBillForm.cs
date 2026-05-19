@@ -8,9 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.Helpers;
 
-namespace WaterSewageManagementSystem.Forms.Customer.v2
+using WaterSewageManagementSystem;
+
+namespace WaterSewageManagementSystem.Forms.Customer
 {
     public partial class CurrentBillForm : Form
     {
@@ -31,7 +32,7 @@ namespace WaterSewageManagementSystem.Forms.Customer.v2
 
         private void LoadBill()
         {
-            if (SessionManager.CurrentUser == null)
+            if (LoginForm.LoggedInUserID == 0)
             {
                 lblBillID.Text = "No logged-in user.";
                 lblMonth.Text = "";
@@ -45,7 +46,7 @@ namespace WaterSewageManagementSystem.Forms.Customer.v2
                 return;
             }
 
-            int userID = SessionManager.CurrentUser.UserID;
+            int userID = LoginForm.LoggedInUserID;
 
             SqlConnection conn = new SqlConnection(connectionString);
 

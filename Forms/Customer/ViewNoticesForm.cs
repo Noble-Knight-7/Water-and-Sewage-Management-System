@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace WaterSewageManagementSystem.Forms.Customer.v2
+namespace WaterSewageManagementSystem.Forms.Customer
 {
     public partial class ViewNoticesForm : Form
     {

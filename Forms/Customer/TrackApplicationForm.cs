@@ -8,9 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.Helpers;
 
-namespace WaterSewageManagementSystem.Forms.Customer.v2
+using WaterSewageManagementSystem;
+
+namespace WaterSewageManagementSystem.Forms.Customer
 {
     public partial class TrackApplicationForm : Form
     {
@@ -27,13 +28,13 @@ namespace WaterSewageManagementSystem.Forms.Customer.v2
 
         private void LoadApplications()
         {
-            if (SessionManager.CurrentUser == null)
+            if (LoginForm.LoggedInUserID == 0)
             {
                 MessageBox.Show("No logged-in customer found. Please login again.");
                 return;
             }
 
-            int userID = SessionManager.CurrentUser.UserID;
+            int userID = LoginForm.LoggedInUserID;
 
             SqlConnection conn = new SqlConnection(connectionString);
 
