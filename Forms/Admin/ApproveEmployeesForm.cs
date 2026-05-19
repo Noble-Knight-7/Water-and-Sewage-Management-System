@@ -36,5 +36,20 @@ namespace WaterSewageManagementSystem.Forms.Admin
         {
 
         }
+
+        private void ApproveEmployeesForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitle_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPageIcon_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

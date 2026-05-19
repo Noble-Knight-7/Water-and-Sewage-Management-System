@@ -450,8 +450,17 @@
     <EmbeddedResource Include="Forms\Admin\ApproveEmployeesForm.resx">
       <DependentUpon>ApproveEmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\AssignComplaintsForm.resx">
+      <DependentUpon>AssignComplaintsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\ManageUsersForm.resx">
+      <DependentUpon>ManageUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\NoticeManagementForm.resx">
       <DependentUpon>NoticeManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\SystemReportForm.resx">
+      <DependentUpon>SystemReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Common\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>

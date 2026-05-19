@@ -27,24 +27,33 @@ namespace WaterSewageManagementSystem.Forms.Admin
 
         private void btnPublish_Click(object sender, EventArgs e)
         {
+            if (SessionManager.CurrentUser == null)
+            {
+                MessageHelper.ShowError("Session expired. Please log in again.");
+                return;
+            }
+
             if (ValidationHelper.IsEmpty(txtTitle.Text) || ValidationHelper.IsEmpty(txtDescription.Text))
             {
-                MessageHelper.ShowError("Title and description are required."); return;
+                MessageHelper.ShowError("Title and description are required.");
+                return;
             }
 
             var notice = new Notice
             {
-                Title       = txtTitle.Text.Trim(),
+                Title = txtTitle.Text.Trim(),
                 Description = txtDescription.Text.Trim(),
-                Area        = txtArea.Text.Trim(),
-                NoticeType  = cmbType.SelectedItem?.ToString() ?? "General",
+                Area = txtArea.Text.Trim(),
+                NoticeType = cmbType.SelectedItem?.ToString() ?? "General",
                 PublishedBy = SessionManager.CurrentUser.UserID
             };
 
             if (_noticeService.Publish(notice))
             {
                 MessageHelper.ShowSuccess("Notice published.");
-                txtTitle.Clear(); txtDescription.Clear(); txtArea.Clear();
+                txtTitle.Clear();
+                txtDescription.Clear();
+                txtArea.Clear();
                 LoadNotices();
             }
             else MessageHelper.ShowError("Failed to publish notice.");
@@ -65,6 +74,13 @@ namespace WaterSewageManagementSystem.Forms.Admin
         private void btnClose_Click(object sender, EventArgs e) => this.Close();
 
         private void NoticeManagementForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        private void lblNTitle_Click(object sender, EventArgs e)
         {
 
         }

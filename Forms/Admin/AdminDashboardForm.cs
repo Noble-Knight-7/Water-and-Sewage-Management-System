@@ -1,8 +1,9 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.Helpers;
 using WaterSewageManagementSystem.Forms.Common;
+using WaterSewageManagementSystem.Helpers;
+using WaterSewageManagementSystem.Services;
 
 namespace WaterSewageManagementSystem.Forms.Admin
 {
@@ -12,15 +13,28 @@ namespace WaterSewageManagementSystem.Forms.Admin
         {
             InitializeComponent();
             //CreateDashboardButtons();
+            LoadDashboardStats();
 
-            if (SessionManager.CurrentUser != null)
-            {
-                lblWelcome.Text = "Welcome, " + SessionManager.CurrentUser.FullName;
-            }
-            else
-            {
-                lblWelcome.Text = "Welcome, Admin";
-            }
+            //if (SessionManager.CurrentUser != null)
+            //{
+            //    lblWelcome.Text = "Welcome, " + SessionManager.CurrentUser.FullName;
+            //}
+            //else
+            //{
+            //    lblWelcome.Text = "Welcome, Admin";
+            //}
+        }
+
+        private readonly UserService _userService = new UserService();
+        private readonly ComplaintService _complaintService = new ComplaintService();
+        private readonly NoticeService _noticeService = new NoticeService();
+
+        private void LoadDashboardStats()
+        {
+            lblCard1Num.Text = _userService.GetAllUsers().Count.ToString();
+            lblCard2Num.Text = _complaintService.GetAll().Count.ToString();
+            lblCard3Num.Text = _userService.GetPendingEmployees().Count.ToString();
+            lblCard4Num.Text = _noticeService.GetAll().Count.ToString();
         }
 
         //private void CreateDashboardButtons()
@@ -137,6 +151,41 @@ namespace WaterSewageManagementSystem.Forms.Admin
         }
 
         private void panelHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelLogoArea_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblLogoName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblLogoSub_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblWelcome_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void card1_Paint(object sender, PaintEventArgs e)
         {
 
         }
