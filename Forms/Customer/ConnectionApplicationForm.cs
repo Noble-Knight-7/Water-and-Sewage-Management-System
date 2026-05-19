@@ -1,59 +1,108 @@
+﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.DataAccess;
 using WaterSewageManagementSystem.Helpers;
-using WaterSewageManagementSystem.Services;
 
-namespace WaterSewageManagementSystem.Forms.Customer
+namespace WaterSewageManagementSystem.Forms.Customer.v2
 {
+
     public partial class ConnectionApplicationForm : Form
     {
-        //private readonly ConnectionService  _connectionService = new ConnectionService();
-        //private readonly CustomerRepository _customerRepo      = new CustomerRepository();
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
-        public ConnectionApplicationForm() { InitializeComponent(); }
+        public ConnectionApplicationForm()
+        {
+            InitializeComponent();
+        }
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            var customerRepo = new CustomerRepository();
-            var connectionService = new ConnectionService();
-
             if (SessionManager.CurrentUser == null)
             {
-                MessageHelper.ShowError("No logged-in user found.");
+                MessageBox.Show("No logged-in user found. Please login again.");
                 return;
             }
 
-            var customer = customerRepo.GetByUserID(SessionManager.CurrentUser.UserID);
-            if (customer == null)
-            {
-                MessageHelper.ShowError("Customer record not found.");
-                return;
-            }
+            int userID = SessionManager.CurrentUser.UserID;
+            int customerID = 0;
 
-            var existing = connectionService.GetByCustomer(customer.CustomerID);
+            SqlConnection conn = new SqlConnection(connectionString);
 
-            foreach (var app in existing)
+            try
             {
-                if (app.ApprovalStatus == "Pending")
+                conn.Open();
+
+                // Step 1: Find CustomerID of the logged-in customer
+                string customerQuery = "SELECT CustomerID FROM Customers WHERE UserID = " + userID;
+
+                SqlCommand customerCmd = new SqlCommand(customerQuery, conn);
+
+                object customerResult = customerCmd.ExecuteScalar();
+
+                if (customerResult == null)
                 {
-                    MessageHelper.ShowWarning("You already have a pending connection application ID: " + app.ApplicationID);
+                    MessageBox.Show("Customer record not found.");
                     return;
                 }
-            }
 
-            if (MessageHelper.ShowConfirm("Submit a new connection application?\n\nA Service Officer will review your request and contact you.") == DialogResult.Yes)
-            {
-                bool success = connectionService.Apply(customer.CustomerID);
+                customerID = Convert.ToInt32(customerResult);
 
-                if (success)
-                    MessageHelper.ShowSuccess("Application submitted successfully!");
+                // Step 2: Check if this customer already has a pending application
+                string checkQuery = "SELECT COUNT(*) FROM ConnectionApplications " +
+                                    "WHERE CustomerID = " + customerID + " AND ApprovalStatus = 'Pending'";
+
+                SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+
+                int pendingCount = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                if (pendingCount > 0)
+                {
+                    MessageBox.Show("You already have a pending connection application.");
+                    return;
+                }
+
+                // Step 3: Confirm before submitting
+                DialogResult result = MessageBox.Show(
+                    "Submit a new connection application?\n\nA Service Officer will review your request and contact you.",
+                    "Confirm Application",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                // Step 4: Insert new application
+                string insertQuery = "INSERT INTO ConnectionApplications " +
+                                     "(CustomerID, ApplicationDate, DocumentStatus, ApprovalStatus) " +
+                                     "VALUES (" + customerID + ", GETDATE(), 'Pending', 'Pending')";
+
+                SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
+
+                int rows = insertCmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Connection application submitted successfully!");
+                }
                 else
-                    MessageHelper.ShowError("Failed to submit application. Please try again.");
+                {
+                    MessageBox.Show("Failed to submit application. Please try again.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error submitting connection application: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
-        private void btnClose_Click(object sender, EventArgs e) => this.Close();
-        private void lblStep1_Click(object sender, EventArgs e)
+
+        private void btnClose_Click(object sender, EventArgs e)
         {
 
         }

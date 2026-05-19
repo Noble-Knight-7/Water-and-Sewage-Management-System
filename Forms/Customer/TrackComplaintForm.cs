@@ -1,27 +1,114 @@
+﻿using Microsoft.Data.SqlClient;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.DataAccess;
 using WaterSewageManagementSystem.Helpers;
-using WaterSewageManagementSystem.Services;
 
-namespace WaterSewageManagementSystem.Forms.Customer
+namespace WaterSewageManagementSystem.Forms.Customer.v2
 {
     public partial class TrackComplaintForm : Form
     {
-        private readonly ComplaintService   _complaintService = new ComplaintService();
-        private readonly CustomerRepository _customerRepo     = new CustomerRepository();
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
 
-        public TrackComplaintForm() { InitializeComponent(); LoadComplaints(); }
+        public TrackComplaintForm()
+        {
+            InitializeComponent();
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                LoadComplaints();
+            }
+        }
 
         private void LoadComplaints()
         {
-            var customer = _customerRepo.GetByUserID(SessionManager.CurrentUser.UserID);
-            if (customer == null) { MessageHelper.ShowWarning("No customer record found."); return; }
-            dgvComplaints.DataSource = null;
-            dgvComplaints.DataSource = _complaintService.GetByCustomer(customer.CustomerID);
+            if (SessionManager.CurrentUser == null)
+            {
+                MessageBox.Show("No logged-in customer found. Please login again.");
+                return;
+            }
+
+            int userID = SessionManager.CurrentUser.UserID;
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = @"SELECT 
+                                    cm.ComplaintID,
+                                    cm.CustomerID,
+                                    cm.Category,
+                                    cm.Description,
+                                    cm.Priority,
+                                    cm.Status,
+                                    cm.DateSubmitted
+                                 FROM Complaints cm
+                                 JOIN Customers c ON cm.CustomerID = c.CustomerID
+                                 WHERE c.UserID = " + userID + @"
+                                 ORDER BY cm.DateSubmitted DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+
+                adp.Fill(ds);
+
+                DataTable dt = ds.Tables[0];
+
+                dgvComplaints.DataSource = dt;
+                dgvComplaints.AutoGenerateColumns = true;
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No complaints found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading complaints: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e) => LoadComplaints();
-        private void btnClose_Click(object sender, EventArgs e) => this.Close();
+        private void TrackComplaintForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelTop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvComplaints_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadComplaints();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

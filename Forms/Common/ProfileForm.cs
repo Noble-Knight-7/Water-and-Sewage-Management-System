@@ -1,68 +1,154 @@
+using Microsoft.Data.SqlClient;
 using System;
+using System.Data;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.Helpers;
-using WaterSewageManagementSystem.Services;
 
 namespace WaterSewageManagementSystem.Forms.Common
 {
     public partial class ProfileForm : Form
     {
-        private readonly UserService _userService = new UserService();
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
+
+        private int currentUserId;
 
         public ProfileForm()
         {
             InitializeComponent();
 
-            if (System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime)
-            {
-                LoadProfile();
-            }
+            currentUserId = LoginForm.LoggedInUserID;
         }
 
-        private void LoadProfile()
+        public ProfileForm(int userId)
         {
-            var user = SessionManager.CurrentUser;
-            txtName.Text    = user.FullName;
-            txtEmail.Text   = user.Email;
-            txtPhone.Text   = user.Phone;
-            txtAddress.Text = user.Address;
-            lblRole.Text    = "Role: " + user.Role;
-            lblStatus.Text  = "Status: " + user.Status;
+            InitializeComponent();
+
+            currentUserId = userId;
+        }
+
+        private void ProfileForm_Load(object sender, EventArgs e)
+        {
+            if (currentUserId <= 0)
+            {
+                MessageBox.Show("User information not found. Please login again.");
+                this.Close();
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = @"SELECT FullName, Email, Phone, Address, Role, Status
+                                 FROM Users
+                                 WHERE UserID = @UserID";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@UserID", currentUserId);
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+
+                DataTable dt = ds.Tables[0];
+
+                if (dt.Rows.Count > 0)
+                {
+                    txtName.Text = dt.Rows[0]["FullName"].ToString();
+                    txtEmail.Text = dt.Rows[0]["Email"].ToString();
+                    txtPhone.Text = dt.Rows[0]["Phone"].ToString();
+                    txtAddress.Text = dt.Rows[0]["Address"].ToString();
+
+                    lblRole.Text = "Role: " + dt.Rows[0]["Role"].ToString();
+                    lblStatus.Text = "Status: " + dt.Rows[0]["Status"].ToString();
+
+                    txtEmail.ReadOnly = true;
+                }
+                else
+                {
+                    MessageBox.Show("Profile not found.");
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading profile: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string name    = txtName.Text.Trim();
-            string phone   = txtPhone.Text.Trim();
+            string name = txtName.Text.Trim();
+            string phone = txtPhone.Text.Trim();
             string address = txtAddress.Text.Trim();
 
-            if (ValidationHelper.IsEmpty(name) || ValidationHelper.IsEmpty(phone))
+            if (name == "")
             {
-                MessageHelper.ShowError("Name and phone cannot be empty."); return;
+                MessageBox.Show("Name cannot be empty.");
+                txtName.Focus();
+                return;
             }
 
-            var user = SessionManager.CurrentUser;
-            user.FullName = name;
-            user.Phone    = phone;
-            user.Address  = address;
+            if (phone == "")
+            {
+                MessageBox.Show("Phone cannot be empty.");
+                txtPhone.Focus();
+                return;
+            }
 
-            bool success = _userService.UpdateProfile(user);
-            if (success)
-                MessageHelper.ShowSuccess("Profile updated successfully.");
-            else
-                MessageHelper.ShowError("Could not update profile.");
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = @"UPDATE Users
+                                 SET FullName = @FullName,
+                                     Phone = @Phone,
+                                     Address = @Address
+                                 WHERE UserID = @UserID";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@FullName", name);
+                cmd.Parameters.AddWithValue("@Phone", phone);
+                cmd.Parameters.AddWithValue("@Address", address);
+                cmd.Parameters.AddWithValue("@UserID", currentUserId);
+
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Profile updated successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Could not update profile.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating profile: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            new ChangePasswordForm().ShowDialog();
+            ChangePasswordForm form = new ChangePasswordForm(currentUserId);
+            form.ShowDialog();
         }
 
-        private void btnClose_Click(object sender, EventArgs e) => this.Close();
-
-        private void ProfileForm_Load(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void lblRole_Click(object sender, EventArgs e)

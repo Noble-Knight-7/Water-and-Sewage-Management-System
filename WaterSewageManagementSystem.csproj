@@ -467,12 +467,6 @@
     <EmbeddedResource Include="Forms\Customer\ConnectionApplicationForm.resx">
       <DependentUpon>ConnectionApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer\CurrentBillForm.resx">
-      <DependentUpon>CurrentBillForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer\CustomerDashboardForm.resx">
-      <DependentUpon>CustomerDashboardForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MaintenanceEngineer\MaintenanceDashboardForm.resx">
       <DependentUpon>MaintenanceDashboardForm.cs</DependentUpon>
     </EmbeddedResource>

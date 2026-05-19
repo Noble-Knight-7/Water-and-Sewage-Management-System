@@ -1,51 +1,150 @@
-namespace WaterSewageManagementSystem.Forms.Customer
+﻿namespace WaterSewageManagementSystem.Forms.Customer.v2
 {
     partial class TrackApplicationForm
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
-        protected override void Dispose(bool disposing) { if (disposing && components != null) components.Dispose(); base.Dispose(disposing); }
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitle        = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvApplications = new System.Windows.Forms.DataGridView();
-            this.btnRefresh      = new System.Windows.Forms.Button();
-            this.btnClose        = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)this.dgvApplications).BeginInit();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).BeginInit();
+            this.panelTop.SuspendLayout();
             this.SuspendLayout();
-
-            this.ClientSize = new System.Drawing.Size(900, 480); this.Text = "Track Connection Application";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen; this.BackColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog; this.MaximizeBox = false;
-
-            this.lblTitle.Text = "My Connection Applications"; this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(0,96,100); this.lblTitle.Location = new System.Drawing.Point(20, 12); this.lblTitle.Size = new System.Drawing.Size(320, 30);
-
-            this.dgvApplications.Location = new System.Drawing.Point(20, 50); this.dgvApplications.Size = new System.Drawing.Size(860, 378);
+            // 
+            // dgvApplications
+            // 
+            this.dgvApplications.AllowUserToAddRows = false;
+            this.dgvApplications.AllowUserToDeleteRows = false;
             this.dgvApplications.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvApplications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvApplications.ReadOnly = true; this.dgvApplications.AllowUserToAddRows = false;
-            this.dgvApplications.BackgroundColor = System.Drawing.Color.White; this.dgvApplications.RowHeadersVisible = false;
-            this.dgvApplications.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(0,96,100);
-            this.dgvApplications.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvApplications.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.dgvApplications.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvApplications.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            this.dgvApplications.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvApplications.ColumnHeadersHeight = 36;
             this.dgvApplications.EnableHeadersVisualStyles = false;
-
-            this.btnRefresh.Text = "Refresh"; this.btnRefresh.Location = new System.Drawing.Point(20, 438); this.btnRefresh.Size = new System.Drawing.Size(120, 33);
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(21,101,192); this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.btnRefresh.FlatAppearance.BorderSize = 0; this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgvApplications.GridColor = System.Drawing.Color.White;
+            this.dgvApplications.Location = new System.Drawing.Point(25, 101);
+            this.dgvApplications.MultiSelect = false;
+            this.dgvApplications.Name = "dgvApplications";
+            this.dgvApplications.ReadOnly = true;
+            this.dgvApplications.RowHeadersVisible = false;
+            this.dgvApplications.RowHeadersWidth = 51;
+            this.dgvApplications.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvApplications.Size = new System.Drawing.Size(880, 391);
+            this.dgvApplications.TabIndex = 6;
+            this.dgvApplications.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApplications_CellContentClick);
+            // 
+            // panelTop
+            // 
+            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            this.panelTop.Controls.Add(this.lblTitle);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(930, 62);
+            this.panelTop.TabIndex = 7;
+            this.panelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop_Paint);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(20, 14);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(220, 35);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Track Application";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Location = new System.Drawing.Point(25, 510);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(126, 38);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-
-            this.btnClose.Text = "Close"; this.btnClose.Location = new System.Drawing.Point(780, 438); this.btnClose.Size = new System.Drawing.Size(100, 33);
-            this.btnClose.BackColor = System.Drawing.Color.Gray; this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.btnClose.FlatAppearance.BorderSize = 0; this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Gray;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(779, 510);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(126, 38);
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-
-            this.Controls.AddRange(new System.Windows.Forms.Control[] { this.lblTitle, this.dgvApplications, this.btnRefresh, this.btnClose });
-            ((System.ComponentModel.ISupportInitialize)this.dgvApplications).EndInit();
+            // 
+            // TrackApplicationForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.ClientSize = new System.Drawing.Size(930, 560);
+            this.Controls.Add(this.dgvApplications);
+            this.Controls.Add(this.panelTop);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnClose);
+            this.Name = "TrackApplicationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Track Application";
+            this.Load += new System.EventHandler(this.TrackApplicationForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).EndInit();
+            this.panelTop.ResumeLayout(false);
+            this.panelTop.PerformLayout();
             this.ResumeLayout(false);
+
         }
-        private System.Windows.Forms.Label lblTitle;
+
+        #endregion
+
         private System.Windows.Forms.DataGridView dgvApplications;
-        private System.Windows.Forms.Button btnRefresh, btnClose;
+        private System.Windows.Forms.Panel panelTop;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnClose;
     }
 }

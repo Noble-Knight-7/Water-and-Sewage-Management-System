@@ -1,51 +1,151 @@
-namespace WaterSewageManagementSystem.Forms.Customer
+﻿namespace WaterSewageManagementSystem.Forms.Customer.v2
 {
     partial class TrackComplaintForm
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
-        protected override void Dispose(bool disposing) { if (disposing && components != null) components.Dispose(); base.Dispose(disposing); }
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitle      = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.dgvComplaints = new System.Windows.Forms.DataGridView();
-            this.btnRefresh    = new System.Windows.Forms.Button();
-            this.btnClose      = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)this.dgvComplaints).BeginInit();
+            this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComplaints)).BeginInit();
             this.SuspendLayout();
-
-            this.ClientSize = new System.Drawing.Size(900, 480); this.Text = "Track My Complaints";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen; this.BackColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog; this.MaximizeBox = false;
-
-            this.lblTitle.Text = "My Complaints"; this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(106,27,154); this.lblTitle.Location = new System.Drawing.Point(20, 12); this.lblTitle.Size = new System.Drawing.Size(220, 30);
-
-            this.dgvComplaints.Location = new System.Drawing.Point(20, 50); this.dgvComplaints.Size = new System.Drawing.Size(860, 375);
-            this.dgvComplaints.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvComplaints.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvComplaints.ReadOnly = true; this.dgvComplaints.AllowUserToAddRows = false;
-            this.dgvComplaints.BackgroundColor = System.Drawing.Color.White; this.dgvComplaints.RowHeadersVisible = false;
-            this.dgvComplaints.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(106,27,154);
-            this.dgvComplaints.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvComplaints.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.dgvComplaints.EnableHeadersVisualStyles = false;
-
-            this.btnRefresh.Text = "Refresh"; this.btnRefresh.Location = new System.Drawing.Point(20, 438); this.btnRefresh.Size = new System.Drawing.Size(120, 33);
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(21,101,192); this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.btnRefresh.FlatAppearance.BorderSize = 0; this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            // 
+            // panelTop
+            // 
+            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            this.panelTop.Controls.Add(this.lblTitle);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(930, 62);
+            this.panelTop.TabIndex = 7;
+            this.panelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop_Paint);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(20, 14);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(206, 35);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Track Complaint";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Location = new System.Drawing.Point(25, 510);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(126, 38);
+            this.btnRefresh.TabIndex = 4;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-
-            this.btnClose.Text = "Close"; this.btnClose.Location = new System.Drawing.Point(780, 438); this.btnClose.Size = new System.Drawing.Size(100, 33);
-            this.btnClose.BackColor = System.Drawing.Color.Gray; this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.btnClose.FlatAppearance.BorderSize = 0; this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Gray;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(779, 510);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(126, 38);
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-
-            this.Controls.AddRange(new System.Windows.Forms.Control[] { this.lblTitle, this.dgvComplaints, this.btnRefresh, this.btnClose });
-            ((System.ComponentModel.ISupportInitialize)this.dgvComplaints).EndInit();
+            // 
+            // dgvComplaints
+            // 
+            this.dgvComplaints.AllowUserToAddRows = false;
+            this.dgvComplaints.AllowUserToDeleteRows = false;
+            this.dgvComplaints.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvComplaints.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvComplaints.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            this.dgvComplaints.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvComplaints.ColumnHeadersHeight = 36;
+            this.dgvComplaints.EnableHeadersVisualStyles = false;
+            this.dgvComplaints.GridColor = System.Drawing.Color.White;
+            this.dgvComplaints.Location = new System.Drawing.Point(25, 101);
+            this.dgvComplaints.MultiSelect = false;
+            this.dgvComplaints.Name = "dgvComplaints";
+            this.dgvComplaints.ReadOnly = true;
+            this.dgvComplaints.RowHeadersVisible = false;
+            this.dgvComplaints.RowHeadersWidth = 51;
+            this.dgvComplaints.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvComplaints.Size = new System.Drawing.Size(880, 391);
+            this.dgvComplaints.TabIndex = 6;
+            this.dgvComplaints.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvComplaints_CellContentClick);
+            // 
+            // TrackComplaintForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.ClientSize = new System.Drawing.Size(930, 560);
+            this.Controls.Add(this.panelTop);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.dgvComplaints);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Name = "TrackComplaintForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Track Complaint";
+            this.Load += new System.EventHandler(this.TrackComplaintForm_Load);
+            this.panelTop.ResumeLayout(false);
+            this.panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvComplaints)).EndInit();
             this.ResumeLayout(false);
+
         }
+
+        #endregion
+
+        private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridView dgvComplaints;
-        private System.Windows.Forms.Button btnRefresh, btnClose;
     }
 }

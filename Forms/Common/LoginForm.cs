@@ -1,14 +1,19 @@
 using System;
-using System.Drawing;
+using System.Data;
 using System.Windows.Forms;
-using WaterSewageManagementSystem.Helpers;
-using WaterSewageManagementSystem.Services;
+using Microsoft.Data.SqlClient;
 
 namespace WaterSewageManagementSystem
 {
     public partial class LoginForm : Form
     {
-        private readonly AuthService _authService = new AuthService();
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
+
+        public static int LoggedInUserID;
+        public static string LoggedInFullName;
+        public static string LoggedInEmail;
+        public static string LoggedInRole;
+        public static string LoggedInStatus;
 
         public LoginForm()
         {
@@ -17,69 +22,123 @@ namespace WaterSewageManagementSystem
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string email    = txtEmail.Text.Trim();
+            string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
 
-            if (ValidationHelper.IsEmpty(email) && ValidationHelper.IsEmpty(password))
+            if (email == "" && password == "")
             {
-                MessageHelper.ShowError("Please enter your email and password.");
-                return;
-            }
-            if (ValidationHelper.IsEmpty(email))
-            {
-                MessageHelper.ShowError("Please enter your email.");
-                return;
-            }
-            if (ValidationHelper.IsEmpty(password))
-            {
-                MessageHelper.ShowError("Please enter your password.");
+                MessageBox.Show("Please enter your email and password.");
                 return;
             }
 
-            bool success = _authService.Login(email, password);
-            if (!success)
+            if (email == "")
             {
-                MessageHelper.ShowError("Invalid email or password, or your account is not active.");
+                MessageBox.Show("Please enter your email.");
+                txtEmail.Focus();
                 return;
             }
 
-            // Open the correct dashboard based on the logged-in user's role
-            string role = SessionManager.CurrentUser.Role;
-            Form dashboard = null;
-
-            switch (role)
+            if (password == "")
             {
-                case "Admin":
-                    dashboard = new Forms.Admin.AdminDashboardForm();
-                    break;
-                case "Customer":
-                    dashboard = new Forms.Customer.CustomerDashboardForm();
-                    break;
-                case "ServiceOfficer":
-                    dashboard = new Forms.ServiceOfficer.ServiceOfficerDashboardForm();
-                    break;
-                case "MaintenanceEngineer":
-                    dashboard = new Forms.MaintenanceEngineer.MaintenanceDashboardForm();
-                    break;
-                default:
-                    MessageHelper.ShowError("Unknown role. Please contact admin.");
-                    return;
+                MessageBox.Show("Please enter your password.");
+                txtPassword.Focus();
+                return;
             }
 
-            this.Hide();
-            dashboard.FormClosed += (s, args) => this.Close(); 
-            dashboard.Show();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = @"SELECT UserID, FullName, Email, Role, Status
+                                 FROM Users
+                                 WHERE Email = @Email
+                                 AND [Password] = @Password";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Password", password);
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+
+                DataTable dt = ds.Tables[0];
+
+                if (dt.Rows.Count > 0)
+                {
+                    int userID = Convert.ToInt32(dt.Rows[0]["UserID"]);
+                    string fullName = dt.Rows[0]["FullName"].ToString();
+                    string userEmail = dt.Rows[0]["Email"].ToString();
+                    string role = dt.Rows[0]["Role"].ToString();
+                    string status = dt.Rows[0]["Status"].ToString();
+
+                    if (status != "Active")
+                    {
+                        MessageBox.Show("Your account is not active. Please wait for admin approval.");
+                        return;
+                    }
+
+                    LoggedInUserID = userID;
+                    LoggedInFullName = fullName;
+                    LoggedInEmail = userEmail;
+                    LoggedInRole = role;
+                    LoggedInStatus = status;
+
+                    Form dashboard = null;
+
+                    if (role == "Admin")
+                    {
+                        dashboard = new Forms.Admin.AdminDashboardForm();
+                    }
+                    else if (role == "Customer")
+                    {
+                        dashboard = new Forms.Customer.CustomerDashboardForm();
+                    }
+                    else if (role == "ServiceOfficer")
+                    {
+                        dashboard = new Forms.ServiceOfficer.ServiceOfficerDashboardForm();
+                    }
+                    else if (role == "MaintenanceEngineer")
+                    {
+                        dashboard = new Forms.MaintenanceEngineer.MaintenanceDashboardForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unknown role. Please contact admin.");
+                        return;
+                    }
+
+                    this.Hide();
+                    dashboard.FormClosed += (s, args) => this.Close();
+                    dashboard.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid email or password.");
+                    txtPassword.Clear();
+                    txtEmail.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Login error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void lnkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var form = new Forms.Common.RegisterForm();
+            Forms.Common.RegisterForm form = new Forms.Common.RegisterForm();
             form.ShowDialog();
         }
 
         private void lnkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var form = new Forms.Common.ForgotPasswordForm();
+            Forms.Common.ForgotPasswordForm form = new Forms.Common.ForgotPasswordForm();
             form.ShowDialog();
         }
 
