@@ -90,18 +90,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 return;
             }
 
-            //if (dgvApplications.SelectedRows.Count == 0)
-            //{
-            //    MessageBox.Show("Select an application first.");
-            //    return;
-            //}
-
-            //if (SessionManager.CurrentUser == null)
-            //{
-            //    MessageBox.Show("No logged in user found. Please login again.");
-            //    return;
-            //}
-
             if (txtMeterNumber.Text == "")
             {
                 MessageBox.Show("Please enter a meter number before approving.");
@@ -180,11 +168,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void btnReject_Click(object sender, EventArgs e)
         {
-            //if (dgvApplications.SelectedRows.Count == 0)
-            //{
-            //    MessageBox.Show("Select an application first.");
-            //    return;
-            //}
 
             if (dgvApplications.SelectedRows.Count == 0)
             {
@@ -268,11 +251,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             {
                 conn.Close();
             }
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            LoadApplications();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

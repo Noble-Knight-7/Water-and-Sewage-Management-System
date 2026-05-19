@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectionApplicationForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
             this.lblStep1 = new System.Windows.Forms.Label();
@@ -144,7 +145,7 @@
             this.errorlblHold.ForeColor = System.Drawing.Color.Red;
             this.errorlblHold.Location = new System.Drawing.Point(691, 112);
             this.errorlblHold.Name = "errorlblHold";
-            this.errorlblHold.Size = new System.Drawing.Size(92, 20);
+            this.errorlblHold.Size = new System.Drawing.Size(74, 15);
             this.errorlblHold.TabIndex = 32;
             this.errorlblHold.Text = "errorlblHold";
             // 
@@ -155,7 +156,7 @@
             this.errorlblConn.ForeColor = System.Drawing.Color.Red;
             this.errorlblConn.Location = new System.Drawing.Point(691, 193);
             this.errorlblConn.Name = "errorlblConn";
-            this.errorlblConn.Size = new System.Drawing.Size(96, 20);
+            this.errorlblConn.Size = new System.Drawing.Size(77, 15);
             this.errorlblConn.TabIndex = 31;
             this.errorlblConn.Text = "errorlblConn";
             // 
@@ -174,9 +175,8 @@
             this.txtHoldingNumber.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtHoldingNumber.Location = new System.Drawing.Point(695, 79);
             this.txtHoldingNumber.Name = "txtHoldingNumber";
-            this.txtHoldingNumber.Size = new System.Drawing.Size(260, 30);
+            this.txtHoldingNumber.Size = new System.Drawing.Size(260, 25);
             this.txtHoldingNumber.TabIndex = 30;
-            //this.txtHoldingNumber.TextChanged += new System.EventHandler(this.txtHoldingNumber_TextChanged);
             // 
             // cmbConType
             // 
@@ -188,9 +188,8 @@
             "Industrial"});
             this.cmbConType.Location = new System.Drawing.Point(695, 159);
             this.cmbConType.Name = "cmbConType";
-            this.cmbConType.Size = new System.Drawing.Size(260, 31);
+            this.cmbConType.Size = new System.Drawing.Size(260, 25);
             this.cmbConType.TabIndex = 28;
-            //this.cmbConType.SelectedIndexChanged += new System.EventHandler(this.cmbConType_SelectedIndexChanged);
             // 
             // lblConType
             // 
@@ -221,6 +220,7 @@
             this.Controls.Add(this.lblStep4);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnClose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConnectionApplicationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Apply for New Connection";

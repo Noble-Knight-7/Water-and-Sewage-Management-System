@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorrectBillForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblBillIDLbl = new System.Windows.Forms.Label();
             this.txtBillID = new System.Windows.Forms.TextBox();
-            this.btnLoad = new System.Windows.Forms.Button();
             this.lblBillInfo = new System.Windows.Forms.Label();
             this.lblNewAmt = new System.Windows.Forms.Label();
             this.txtNewAmount = new System.Windows.Forms.TextBox();
@@ -64,24 +64,8 @@
             this.txtBillID.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtBillID.Location = new System.Drawing.Point(170, 76);
             this.txtBillID.Name = "txtBillID";
-            this.txtBillID.Size = new System.Drawing.Size(200, 30);
+            this.txtBillID.Size = new System.Drawing.Size(200, 25);
             this.txtBillID.TabIndex = 11;
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
-            this.btnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLoad.FlatAppearance.BorderSize = 0;
-            this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLoad.ForeColor = System.Drawing.Color.White;
-            this.btnLoad.Location = new System.Drawing.Point(388, 76);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(120, 30);
-            this.btnLoad.TabIndex = 12;
-            this.btnLoad.Text = "Load";
-            this.btnLoad.UseVisualStyleBackColor = false;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // lblBillInfo
             // 
@@ -108,7 +92,7 @@
             this.txtNewAmount.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNewAmount.Location = new System.Drawing.Point(170, 152);
             this.txtNewAmount.Name = "txtNewAmount";
-            this.txtNewAmount.Size = new System.Drawing.Size(200, 30);
+            this.txtNewAmount.Size = new System.Drawing.Size(200, 25);
             this.txtNewAmount.TabIndex = 15;
             // 
             // btnSave
@@ -146,20 +130,19 @@
             // 
             // CorrectBillForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(520, 280);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblBillIDLbl);
             this.Controls.Add(this.txtBillID);
-            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.lblBillInfo);
             this.Controls.Add(this.lblNewAmt);
             this.Controls.Add(this.txtNewAmount);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CorrectBillForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Correct Bill";
@@ -173,7 +156,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblBillIDLbl;
         private System.Windows.Forms.TextBox txtBillID;
-        private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Label lblBillInfo;
         private System.Windows.Forms.Label lblNewAmt;
         private System.Windows.Forms.TextBox txtNewAmount;

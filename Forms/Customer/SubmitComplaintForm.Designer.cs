@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubmitComplaintForm));
             this.panelTop = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
@@ -61,7 +62,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(20, 14);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(229, 35);
+            this.lblTitle.Size = new System.Drawing.Size(182, 28);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Submit Complaint";
             this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
@@ -88,7 +89,7 @@
             this.lblCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblCategory.Location = new System.Drawing.Point(22, 22);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(84, 23);
+            this.lblCategory.Size = new System.Drawing.Size(72, 19);
             this.lblCategory.TabIndex = 0;
             this.lblCategory.Text = "Category";
             this.lblCategory.Click += new System.EventHandler(this.lblCategory_Click);
@@ -106,7 +107,7 @@
             "Other"});
             this.cmbCategory.Location = new System.Drawing.Point(26, 52);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(270, 31);
+            this.cmbCategory.Size = new System.Drawing.Size(270, 25);
             this.cmbCategory.TabIndex = 1;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
@@ -116,7 +117,7 @@
             this.lblPriority.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblPriority.Location = new System.Drawing.Point(327, 22);
             this.lblPriority.Name = "lblPriority";
-            this.lblPriority.Size = new System.Drawing.Size(70, 23);
+            this.lblPriority.Size = new System.Drawing.Size(60, 19);
             this.lblPriority.TabIndex = 2;
             this.lblPriority.Text = "Priority";
             this.lblPriority.Click += new System.EventHandler(this.lblPriority_Click);
@@ -131,7 +132,7 @@
             "High"});
             this.cmbPriority.Location = new System.Drawing.Point(331, 52);
             this.cmbPriority.Name = "cmbPriority";
-            this.cmbPriority.Size = new System.Drawing.Size(270, 31);
+            this.cmbPriority.Size = new System.Drawing.Size(270, 25);
             this.cmbPriority.TabIndex = 3;
             this.cmbPriority.SelectedIndexChanged += new System.EventHandler(this.cmbPriority_SelectedIndexChanged);
             // 
@@ -141,7 +142,7 @@
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblDescription.Location = new System.Drawing.Point(22, 112);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(102, 23);
+            this.lblDescription.Size = new System.Drawing.Size(85, 19);
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "Description";
             this.lblDescription.Click += new System.EventHandler(this.lblDescription_Click);
@@ -200,6 +201,7 @@
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubmitComplaintForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Submit Complaint";

@@ -18,6 +18,13 @@ namespace WaterSewageManagementSystem.Forms.Customer
             LoadNotices();
         }
 
+        private void LoadDashboardData()
+        {
+            LoadDashboardCounts();
+            LoadNotices();
+
+        }
+
         private void SetWelcomeText()
         {
             if (!string.IsNullOrWhiteSpace(LoginForm.LoggedInFullName))
@@ -199,46 +206,56 @@ namespace WaterSewageManagementSystem.Forms.Customer
         private void btnCurrentBill_Click(object sender, EventArgs e)
         {
             new CurrentBillForm().ShowDialog();
+            LoadDashboardData();
+
         }
 
         private void btnBillHistory_Click(object sender, EventArgs e)
         {
             new BillHistoryForm().ShowDialog();
+            LoadDashboardData();
         }
 
         private void btnDispute_Click(object sender, EventArgs e)
         {
             new SubmitBillDisputeForm().ShowDialog();
+            LoadDashboardData();
         }
 
         private void btnComplaint_Click(object sender, EventArgs e)
         {
             new SubmitComplaintForm().ShowDialog();
+            LoadDashboardData();
         }
 
         private void btnTrackComplaint_Click(object sender, EventArgs e)
         {
             new TrackComplaintForm().ShowDialog();
+            LoadDashboardData();
         }
 
         private void btnConnection_Click(object sender, EventArgs e)
         {
             new ConnectionApplicationForm().ShowDialog();
+            LoadDashboardData();
         }
 
         private void btnTrackApp_Click(object sender, EventArgs e)
         {
             new TrackApplicationForm().ShowDialog();
+            LoadDashboardData();
         }
 
         private void btnNotices_Click(object sender, EventArgs e)
         {
             new ViewNoticesForm().ShowDialog();
+            LoadDashboardData();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
             new ProfileForm().ShowDialog();
+            LoadDashboardData();
         }
 
         //private void btnLogout_Click(object sender, EventArgs e)

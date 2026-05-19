@@ -7,6 +7,7 @@ namespace WaterSewageManagementSystem.Forms.Common
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForgotPasswordForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -43,7 +44,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtEmail.Location = new System.Drawing.Point(30, 97);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(350, 30);
+            this.txtEmail.Size = new System.Drawing.Size(350, 25);
             this.txtEmail.TabIndex = 2;
             // 
             // lblNewPass
@@ -62,7 +63,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtNewPassword.Location = new System.Drawing.Point(30, 169);
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.PasswordChar = '*';
-            this.txtNewPassword.Size = new System.Drawing.Size(350, 30);
+            this.txtNewPassword.Size = new System.Drawing.Size(350, 25);
             this.txtNewPassword.TabIndex = 4;
             // 
             // lblConfirm
@@ -81,7 +82,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtConfirm.Location = new System.Drawing.Point(30, 243);
             this.txtConfirm.Name = "txtConfirm";
             this.txtConfirm.PasswordChar = '*';
-            this.txtConfirm.Size = new System.Drawing.Size(350, 30);
+            this.txtConfirm.Size = new System.Drawing.Size(350, 25);
             this.txtConfirm.TabIndex = 6;
             // 
             // btnReset
@@ -128,6 +129,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ForgotPasswordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

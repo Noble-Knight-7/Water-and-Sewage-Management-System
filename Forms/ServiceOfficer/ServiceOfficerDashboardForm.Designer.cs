@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceOfficerDashboardForm));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lbl_Welcome = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.btnMeterReading = new System.Windows.Forms.Button();
             this.btnGenerateBill = new System.Windows.Forms.Button();
             this.btnReviewDisputes = new System.Windows.Forms.Button();
-            this.btnCorrectBill = new System.Windows.Forms.Button();
             this.btnReviewConnections = new System.Windows.Forms.Button();
             this.btnVerifyDocuments = new System.Windows.Forms.Button();
             this.btnScheduleInstallation = new System.Windows.Forms.Button();
@@ -50,8 +50,8 @@
             this.lblMeterCount = new System.Windows.Forms.Label();
             this.lblMeterText = new System.Windows.Forms.Label();
             this.cardBill = new System.Windows.Forms.Panel();
-            this.lblBillCount = new System.Windows.Forms.Label();
-            this.lblBillText = new System.Windows.Forms.Label();
+            this.lblPaidBillCount = new System.Windows.Forms.Label();
+            this.lblPaidBillText = new System.Windows.Forms.Label();
             this.cardDispute = new System.Windows.Forms.Panel();
             this.lblDisputeCount = new System.Windows.Forms.Label();
             this.lblDisputeText = new System.Windows.Forms.Label();
@@ -80,7 +80,6 @@
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
             this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Controls.Add(this.lbl_Welcome);
-            this.panelHeader.Controls.Add(this.btnLogout);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
@@ -94,18 +93,18 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(6, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(686, 35);
+            this.lblTitle.Size = new System.Drawing.Size(554, 28);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Water and Sewage Management System - Service Officer";
             // 
             // lbl_Welcome
             // 
             this.lbl_Welcome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_Welcome.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lbl_Welcome.ForeColor = System.Drawing.Color.White;
-            this.lbl_Welcome.Location = new System.Drawing.Point(800, 18);
+            this.lbl_Welcome.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Welcome.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lbl_Welcome.Location = new System.Drawing.Point(784, 18);
             this.lbl_Welcome.Name = "lbl_Welcome";
-            this.lbl_Welcome.Size = new System.Drawing.Size(204, 19);
+            this.lbl_Welcome.Size = new System.Drawing.Size(349, 19);
             this.lbl_Welcome.TabIndex = 1;
             this.lbl_Welcome.Text = "Welcome, Service Officer";
             this.lbl_Welcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -119,9 +118,9 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(1034, 12);
+            this.btnLogout.Location = new System.Drawing.Point(15, 532);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(80, 31);
+            this.btnLogout.Size = new System.Drawing.Size(194, 31);
             this.btnLogout.TabIndex = 2;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
@@ -132,8 +131,8 @@
             this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(45)))), ((int)(((byte)(78)))));
             this.panelSidebar.Controls.Add(this.btnMeterReading);
             this.panelSidebar.Controls.Add(this.btnGenerateBill);
+            this.panelSidebar.Controls.Add(this.btnLogout);
             this.panelSidebar.Controls.Add(this.btnReviewDisputes);
-            this.panelSidebar.Controls.Add(this.btnCorrectBill);
             this.panelSidebar.Controls.Add(this.btnReviewConnections);
             this.panelSidebar.Controls.Add(this.btnVerifyDocuments);
             this.panelSidebar.Controls.Add(this.btnScheduleInstallation);
@@ -142,7 +141,7 @@
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 52);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(206, 575);
+            this.panelSidebar.Size = new System.Drawing.Size(227, 575);
             this.panelSidebar.TabIndex = 5;
             // 
             // btnMeterReading
@@ -153,11 +152,11 @@
             this.btnMeterReading.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMeterReading.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnMeterReading.ForeColor = System.Drawing.Color.White;
-            this.btnMeterReading.Location = new System.Drawing.Point(0, 36);
+            this.btnMeterReading.Location = new System.Drawing.Point(6, 22);
             this.btnMeterReading.Name = "btnMeterReading";
-            this.btnMeterReading.Size = new System.Drawing.Size(212, 40);
+            this.btnMeterReading.Size = new System.Drawing.Size(224, 50);
             this.btnMeterReading.TabIndex = 1;
-            this.btnMeterReading.Text = "📊 Meter Reading";
+            this.btnMeterReading.Text = "📊 Meter Read and Bill Generate";
             this.btnMeterReading.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMeterReading.UseVisualStyleBackColor = false;
             this.btnMeterReading.Click += new System.EventHandler(this.btnMeterReading_Click);
@@ -170,7 +169,7 @@
             this.btnGenerateBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerateBill.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnGenerateBill.ForeColor = System.Drawing.Color.White;
-            this.btnGenerateBill.Location = new System.Drawing.Point(0, 92);
+            this.btnGenerateBill.Location = new System.Drawing.Point(6, 89);
             this.btnGenerateBill.Name = "btnGenerateBill";
             this.btnGenerateBill.Size = new System.Drawing.Size(212, 40);
             this.btnGenerateBill.TabIndex = 2;
@@ -187,7 +186,7 @@
             this.btnReviewDisputes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReviewDisputes.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnReviewDisputes.ForeColor = System.Drawing.Color.White;
-            this.btnReviewDisputes.Location = new System.Drawing.Point(0, 148);
+            this.btnReviewDisputes.Location = new System.Drawing.Point(6, 154);
             this.btnReviewDisputes.Name = "btnReviewDisputes";
             this.btnReviewDisputes.Size = new System.Drawing.Size(212, 40);
             this.btnReviewDisputes.TabIndex = 3;
@@ -195,23 +194,6 @@
             this.btnReviewDisputes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReviewDisputes.UseVisualStyleBackColor = false;
             this.btnReviewDisputes.Click += new System.EventHandler(this.btnReviewDisputes_Click);
-            // 
-            // btnCorrectBill
-            // 
-            this.btnCorrectBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(45)))), ((int)(((byte)(78)))));
-            this.btnCorrectBill.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCorrectBill.FlatAppearance.BorderSize = 0;
-            this.btnCorrectBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCorrectBill.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCorrectBill.ForeColor = System.Drawing.Color.White;
-            this.btnCorrectBill.Location = new System.Drawing.Point(0, 204);
-            this.btnCorrectBill.Name = "btnCorrectBill";
-            this.btnCorrectBill.Size = new System.Drawing.Size(212, 40);
-            this.btnCorrectBill.TabIndex = 4;
-            this.btnCorrectBill.Text = "✏️ Correct Bill";
-            this.btnCorrectBill.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCorrectBill.UseVisualStyleBackColor = false;
-            this.btnCorrectBill.Click += new System.EventHandler(this.btnCorrectBill_Click);
             // 
             // btnReviewConnections
             // 
@@ -221,7 +203,7 @@
             this.btnReviewConnections.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReviewConnections.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnReviewConnections.ForeColor = System.Drawing.Color.White;
-            this.btnReviewConnections.Location = new System.Drawing.Point(0, 260);
+            this.btnReviewConnections.Location = new System.Drawing.Point(6, 268);
             this.btnReviewConnections.Name = "btnReviewConnections";
             this.btnReviewConnections.Size = new System.Drawing.Size(212, 40);
             this.btnReviewConnections.TabIndex = 5;
@@ -238,7 +220,7 @@
             this.btnVerifyDocuments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerifyDocuments.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnVerifyDocuments.ForeColor = System.Drawing.Color.White;
-            this.btnVerifyDocuments.Location = new System.Drawing.Point(0, 316);
+            this.btnVerifyDocuments.Location = new System.Drawing.Point(6, 212);
             this.btnVerifyDocuments.Name = "btnVerifyDocuments";
             this.btnVerifyDocuments.Size = new System.Drawing.Size(212, 40);
             this.btnVerifyDocuments.TabIndex = 6;
@@ -255,11 +237,11 @@
             this.btnScheduleInstallation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScheduleInstallation.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnScheduleInstallation.ForeColor = System.Drawing.Color.White;
-            this.btnScheduleInstallation.Location = new System.Drawing.Point(0, 372);
+            this.btnScheduleInstallation.Location = new System.Drawing.Point(6, 329);
             this.btnScheduleInstallation.Name = "btnScheduleInstallation";
             this.btnScheduleInstallation.Size = new System.Drawing.Size(212, 40);
             this.btnScheduleInstallation.TabIndex = 7;
-            this.btnScheduleInstallation.Text = "🗓️ Schedule Installation";
+            this.btnScheduleInstallation.Text = "🗓️ Schedule Meter Installation";
             this.btnScheduleInstallation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnScheduleInstallation.UseVisualStyleBackColor = false;
             this.btnScheduleInstallation.Click += new System.EventHandler(this.btnScheduleInstallation_Click);
@@ -272,11 +254,11 @@
             this.btnBillingReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBillingReport.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnBillingReport.ForeColor = System.Drawing.Color.White;
-            this.btnBillingReport.Location = new System.Drawing.Point(1, 428);
+            this.btnBillingReport.Location = new System.Drawing.Point(6, 392);
             this.btnBillingReport.Name = "btnBillingReport";
             this.btnBillingReport.Size = new System.Drawing.Size(212, 40);
             this.btnBillingReport.TabIndex = 8;
-            this.btnBillingReport.Text = "📄 Billing Report";
+            this.btnBillingReport.Text = "📄 Log Billing Report";
             this.btnBillingReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBillingReport.UseVisualStyleBackColor = false;
             this.btnBillingReport.Click += new System.EventHandler(this.btnBillingReport_Click);
@@ -289,7 +271,7 @@
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnProfile.ForeColor = System.Drawing.Color.White;
-            this.btnProfile.Location = new System.Drawing.Point(0, 484);
+            this.btnProfile.Location = new System.Drawing.Point(6, 451);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(212, 40);
             this.btnProfile.TabIndex = 9;
@@ -309,9 +291,9 @@
             this.panelMain.Controls.Add(this.lblRecentRecords);
             this.panelMain.Controls.Add(this.dgvRecentRecords);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(206, 52);
+            this.panelMain.Location = new System.Drawing.Point(227, 52);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(930, 575);
+            this.panelMain.Size = new System.Drawing.Size(909, 575);
             this.panelMain.TabIndex = 7;
             // 
             // lblOverview
@@ -319,18 +301,18 @@
             this.lblOverview.AutoSize = true;
             this.lblOverview.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblOverview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(28)))), ((int)(((byte)(54)))));
-            this.lblOverview.Location = new System.Drawing.Point(24, 19);
+            this.lblOverview.Location = new System.Drawing.Point(9, 13);
             this.lblOverview.Name = "lblOverview";
-            this.lblOverview.Size = new System.Drawing.Size(435, 46);
+            this.lblOverview.Size = new System.Drawing.Size(351, 37);
             this.lblOverview.TabIndex = 0;
             this.lblOverview.Text = "Service Officer Dashboard";
             // 
             // cardMeter
             // 
-            this.cardMeter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(47)))), ((int)(((byte)(52)))));
+            this.cardMeter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
             this.cardMeter.Controls.Add(this.lblMeterCount);
             this.cardMeter.Controls.Add(this.lblMeterText);
-            this.cardMeter.Location = new System.Drawing.Point(39, 97);
+            this.cardMeter.Location = new System.Drawing.Point(30, 93);
             this.cardMeter.Name = "cardMeter";
             this.cardMeter.Size = new System.Drawing.Size(186, 91);
             this.cardMeter.TabIndex = 1;
@@ -342,7 +324,7 @@
             this.lblMeterCount.ForeColor = System.Drawing.Color.White;
             this.lblMeterCount.Location = new System.Drawing.Point(69, 3);
             this.lblMeterCount.Name = "lblMeterCount";
-            this.lblMeterCount.Size = new System.Drawing.Size(46, 54);
+            this.lblMeterCount.Size = new System.Drawing.Size(38, 45);
             this.lblMeterCount.TabIndex = 0;
             this.lblMeterCount.Text = "0";
             // 
@@ -353,48 +335,48 @@
             this.lblMeterText.ForeColor = System.Drawing.Color.White;
             this.lblMeterText.Location = new System.Drawing.Point(33, 60);
             this.lblMeterText.Name = "lblMeterText";
-            this.lblMeterText.Size = new System.Drawing.Size(129, 23);
+            this.lblMeterText.Size = new System.Drawing.Size(105, 19);
             this.lblMeterText.TabIndex = 1;
             this.lblMeterText.Text = "Meter Readings";
             // 
             // cardBill
             // 
-            this.cardBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(151)))), ((int)(((byte)(9)))));
-            this.cardBill.Controls.Add(this.lblBillCount);
-            this.cardBill.Controls.Add(this.lblBillText);
-            this.cardBill.Location = new System.Drawing.Point(259, 97);
+            this.cardBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            this.cardBill.Controls.Add(this.lblPaidBillCount);
+            this.cardBill.Controls.Add(this.lblPaidBillText);
+            this.cardBill.Location = new System.Drawing.Point(250, 93);
             this.cardBill.Name = "cardBill";
             this.cardBill.Size = new System.Drawing.Size(186, 91);
             this.cardBill.TabIndex = 2;
             // 
-            // lblBillCount
+            // lblPaidBillCount
             // 
-            this.lblBillCount.AutoSize = true;
-            this.lblBillCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.lblBillCount.ForeColor = System.Drawing.Color.White;
-            this.lblBillCount.Location = new System.Drawing.Point(68, 3);
-            this.lblBillCount.Name = "lblBillCount";
-            this.lblBillCount.Size = new System.Drawing.Size(46, 54);
-            this.lblBillCount.TabIndex = 0;
-            this.lblBillCount.Text = "0";
+            this.lblPaidBillCount.AutoSize = true;
+            this.lblPaidBillCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblPaidBillCount.ForeColor = System.Drawing.Color.White;
+            this.lblPaidBillCount.Location = new System.Drawing.Point(72, 3);
+            this.lblPaidBillCount.Name = "lblPaidBillCount";
+            this.lblPaidBillCount.Size = new System.Drawing.Size(38, 45);
+            this.lblPaidBillCount.TabIndex = 0;
+            this.lblPaidBillCount.Text = "0";
             // 
-            // lblBillText
+            // lblPaidBillText
             // 
-            this.lblBillText.AutoSize = true;
-            this.lblBillText.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblBillText.ForeColor = System.Drawing.Color.White;
-            this.lblBillText.Location = new System.Drawing.Point(35, 60);
-            this.lblBillText.Name = "lblBillText";
-            this.lblBillText.Size = new System.Drawing.Size(124, 23);
-            this.lblBillText.TabIndex = 1;
-            this.lblBillText.Text = "Generated Bills";
+            this.lblPaidBillText.AutoSize = true;
+            this.lblPaidBillText.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPaidBillText.ForeColor = System.Drawing.Color.White;
+            this.lblPaidBillText.Location = new System.Drawing.Point(60, 60);
+            this.lblPaidBillText.Name = "lblPaidBillText";
+            this.lblPaidBillText.Size = new System.Drawing.Size(62, 19);
+            this.lblPaidBillText.TabIndex = 1;
+            this.lblPaidBillText.Text = "Paid Bills";
             // 
             // cardDispute
             // 
             this.cardDispute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
             this.cardDispute.Controls.Add(this.lblDisputeCount);
             this.cardDispute.Controls.Add(this.lblDisputeText);
-            this.cardDispute.Location = new System.Drawing.Point(478, 97);
+            this.cardDispute.Location = new System.Drawing.Point(469, 93);
             this.cardDispute.Name = "cardDispute";
             this.cardDispute.Size = new System.Drawing.Size(186, 91);
             this.cardDispute.TabIndex = 3;
@@ -406,7 +388,7 @@
             this.lblDisputeCount.ForeColor = System.Drawing.Color.White;
             this.lblDisputeCount.Location = new System.Drawing.Point(68, 3);
             this.lblDisputeCount.Name = "lblDisputeCount";
-            this.lblDisputeCount.Size = new System.Drawing.Size(46, 54);
+            this.lblDisputeCount.Size = new System.Drawing.Size(38, 45);
             this.lblDisputeCount.TabIndex = 0;
             this.lblDisputeCount.Text = "0";
             // 
@@ -415,18 +397,18 @@
             this.lblDisputeText.AutoSize = true;
             this.lblDisputeText.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblDisputeText.ForeColor = System.Drawing.Color.White;
-            this.lblDisputeText.Location = new System.Drawing.Point(21, 60);
+            this.lblDisputeText.Location = new System.Drawing.Point(34, 60);
             this.lblDisputeText.Name = "lblDisputeText";
-            this.lblDisputeText.Size = new System.Drawing.Size(142, 23);
+            this.lblDisputeText.Size = new System.Drawing.Size(115, 19);
             this.lblDisputeText.TabIndex = 1;
             this.lblDisputeText.Text = "Pending Disputes";
             // 
             // cardConnection
             // 
-            this.cardConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(153)))), ((int)(((byte)(93)))));
+            this.cardConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
             this.cardConnection.Controls.Add(this.lblConnectionCount);
             this.cardConnection.Controls.Add(this.lblConnectionText);
-            this.cardConnection.Location = new System.Drawing.Point(697, 97);
+            this.cardConnection.Location = new System.Drawing.Point(688, 93);
             this.cardConnection.Name = "cardConnection";
             this.cardConnection.Size = new System.Drawing.Size(186, 91);
             this.cardConnection.TabIndex = 4;
@@ -438,7 +420,7 @@
             this.lblConnectionCount.ForeColor = System.Drawing.Color.White;
             this.lblConnectionCount.Location = new System.Drawing.Point(72, 3);
             this.lblConnectionCount.Name = "lblConnectionCount";
-            this.lblConnectionCount.Size = new System.Drawing.Size(46, 54);
+            this.lblConnectionCount.Size = new System.Drawing.Size(38, 45);
             this.lblConnectionCount.TabIndex = 0;
             this.lblConnectionCount.Text = "0";
             // 
@@ -447,9 +429,9 @@
             this.lblConnectionText.AutoSize = true;
             this.lblConnectionText.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblConnectionText.ForeColor = System.Drawing.Color.White;
-            this.lblConnectionText.Location = new System.Drawing.Point(7, 60);
+            this.lblConnectionText.Location = new System.Drawing.Point(26, 60);
             this.lblConnectionText.Name = "lblConnectionText";
-            this.lblConnectionText.Size = new System.Drawing.Size(171, 23);
+            this.lblConnectionText.Size = new System.Drawing.Size(138, 19);
             this.lblConnectionText.TabIndex = 1;
             this.lblConnectionText.Text = "Connection Requests";
             // 
@@ -457,9 +439,9 @@
             // 
             this.lblRecentRecords.AutoSize = true;
             this.lblRecentRecords.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblRecentRecords.Location = new System.Drawing.Point(27, 218);
+            this.lblRecentRecords.Location = new System.Drawing.Point(6, 216);
             this.lblRecentRecords.Name = "lblRecentRecords";
-            this.lblRecentRecords.Size = new System.Drawing.Size(171, 30);
+            this.lblRecentRecords.Size = new System.Drawing.Size(144, 25);
             this.lblRecentRecords.TabIndex = 5;
             this.lblRecentRecords.Text = "Recent Records";
             // 
@@ -495,14 +477,14 @@
             this.dgvRecentRecords.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRecentRecords.EnableHeadersVisualStyles = false;
             this.dgvRecentRecords.GridColor = System.Drawing.Color.White;
-            this.dgvRecentRecords.Location = new System.Drawing.Point(31, 247);
+            this.dgvRecentRecords.Location = new System.Drawing.Point(6, 247);
             this.dgvRecentRecords.MultiSelect = false;
             this.dgvRecentRecords.Name = "dgvRecentRecords";
             this.dgvRecentRecords.ReadOnly = true;
             this.dgvRecentRecords.RowHeadersVisible = false;
             this.dgvRecentRecords.RowHeadersWidth = 51;
             this.dgvRecentRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRecentRecords.Size = new System.Drawing.Size(871, 287);
+            this.dgvRecentRecords.Size = new System.Drawing.Size(896, 287);
             this.dgvRecentRecords.TabIndex = 6;
             // 
             // colId
@@ -542,8 +524,7 @@
             // 
             // ServiceOfficerDashboardForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1136, 627);
             this.Controls.Add(this.panelMain);
@@ -551,6 +532,7 @@
             this.Controls.Add(this.panelHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ServiceOfficerDashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Service Officer Dashboard";
@@ -582,7 +564,6 @@
         private System.Windows.Forms.Button btnMeterReading;
         private System.Windows.Forms.Button btnGenerateBill;
         private System.Windows.Forms.Button btnReviewDisputes;
-        private System.Windows.Forms.Button btnCorrectBill;
         private System.Windows.Forms.Button btnReviewConnections;
         private System.Windows.Forms.Button btnVerifyDocuments;
         private System.Windows.Forms.Button btnScheduleInstallation;
@@ -594,8 +575,8 @@
         private System.Windows.Forms.Label lblMeterCount;
         private System.Windows.Forms.Label lblMeterText;
         private System.Windows.Forms.Panel cardBill;
-        private System.Windows.Forms.Label lblBillCount;
-        private System.Windows.Forms.Label lblBillText;
+        private System.Windows.Forms.Label lblPaidBillCount;
+        private System.Windows.Forms.Label lblPaidBillText;
         private System.Windows.Forms.Panel cardDispute;
         private System.Windows.Forms.Label lblDisputeCount;
         private System.Windows.Forms.Label lblDisputeText;

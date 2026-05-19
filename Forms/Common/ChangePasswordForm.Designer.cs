@@ -6,6 +6,7 @@ namespace WaterSewageManagementSystem.Forms.Common
         protected override void Dispose(bool disposing) { if (disposing && components != null) components.Dispose(); base.Dispose(disposing); }
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePasswordForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblOld = new System.Windows.Forms.Label();
             this.txtOld = new System.Windows.Forms.TextBox();
@@ -44,7 +45,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtOld.Location = new System.Drawing.Point(200, 66);
             this.txtOld.Name = "txtOld";
             this.txtOld.PasswordChar = '*';
-            this.txtOld.Size = new System.Drawing.Size(170, 30);
+            this.txtOld.Size = new System.Drawing.Size(170, 25);
             this.txtOld.TabIndex = 2;
             // 
             // lblNew
@@ -63,7 +64,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtNew.Location = new System.Drawing.Point(200, 118);
             this.txtNew.Name = "txtNew";
             this.txtNew.PasswordChar = '*';
-            this.txtNew.Size = new System.Drawing.Size(170, 30);
+            this.txtNew.Size = new System.Drawing.Size(170, 25);
             this.txtNew.TabIndex = 4;
             // 
             // lblConfirm
@@ -82,7 +83,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtConfirm.Location = new System.Drawing.Point(200, 168);
             this.txtConfirm.Name = "txtConfirm";
             this.txtConfirm.PasswordChar = '*';
-            this.txtConfirm.Size = new System.Drawing.Size(170, 30);
+            this.txtConfirm.Size = new System.Drawing.Size(170, 25);
             this.txtConfirm.TabIndex = 6;
             // 
             // btnSave
@@ -129,6 +130,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ChangePasswordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

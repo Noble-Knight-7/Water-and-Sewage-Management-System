@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MeterReadingBillGenerateForm));
             this.lblCustomer = new System.Windows.Forms.Label();
             this.cmbCustomer = new System.Windows.Forms.ComboBox();
             this.lblMonth = new System.Windows.Forms.Label();
@@ -41,17 +41,10 @@
             this.txtArrears = new System.Windows.Forms.TextBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelHeader.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
-            this.lblTitle.Location = new System.Drawing.Point(21, 9);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(467, 42);
-            this.lblTitle.TabIndex = 13;
-            this.lblTitle.Text = "📊 Meter Reading and Bill Generation";
             // 
             // lblCustomer
             // 
@@ -69,8 +62,9 @@
             this.cmbCustomer.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbCustomer.Location = new System.Drawing.Point(210, 63);
             this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(240, 31);
+            this.cmbCustomer.Size = new System.Drawing.Size(240, 25);
             this.cmbCustomer.TabIndex = 15;
+            this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
             // 
             // lblMonth
             // 
@@ -87,7 +81,7 @@
             this.txtBillingMonth.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtBillingMonth.Location = new System.Drawing.Point(210, 111);
             this.txtBillingMonth.Name = "txtBillingMonth";
-            this.txtBillingMonth.Size = new System.Drawing.Size(240, 30);
+            this.txtBillingMonth.Size = new System.Drawing.Size(240, 25);
             this.txtBillingMonth.TabIndex = 17;
             // 
             // lblPrevious
@@ -105,7 +99,7 @@
             this.txtPrevious.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtPrevious.Location = new System.Drawing.Point(210, 159);
             this.txtPrevious.Name = "txtPrevious";
-            this.txtPrevious.Size = new System.Drawing.Size(240, 30);
+            this.txtPrevious.Size = new System.Drawing.Size(240, 25);
             this.txtPrevious.TabIndex = 19;
             // 
             // lblCurrent
@@ -123,7 +117,7 @@
             this.txtCurrent.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCurrent.Location = new System.Drawing.Point(210, 207);
             this.txtCurrent.Name = "txtCurrent";
-            this.txtCurrent.Size = new System.Drawing.Size(240, 30);
+            this.txtCurrent.Size = new System.Drawing.Size(240, 25);
             this.txtCurrent.TabIndex = 21;
             // 
             // lblArrears
@@ -141,7 +135,7 @@
             this.txtArrears.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtArrears.Location = new System.Drawing.Point(210, 255);
             this.txtArrears.Name = "txtArrears";
-            this.txtArrears.Size = new System.Drawing.Size(240, 30);
+            this.txtArrears.Size = new System.Drawing.Size(240, 25);
             this.txtArrears.TabIndex = 23;
             this.txtArrears.Text = "0";
             // 
@@ -177,13 +171,33 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            this.panelHeader.Controls.Add(this.label1);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(500, 52);
+            this.panelHeader.TabIndex = 26;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(75, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(375, 28);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "📊 Meter Reading and Bill Generation";
+            // 
             // MeterReadingBillGenerateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(500, 370);
-            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.lblCustomer);
             this.Controls.Add(this.cmbCustomer);
             this.Controls.Add(this.lblMonth);
@@ -197,17 +211,18 @@
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MeterReadingBillGenerateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Enter Meter Reading & Generate Bill";
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblCustomer;
         private System.Windows.Forms.ComboBox cmbCustomer;
         private System.Windows.Forms.Label lblMonth;
@@ -220,5 +235,7 @@
         private System.Windows.Forms.TextBox txtArrears;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label label1;
     }
 }

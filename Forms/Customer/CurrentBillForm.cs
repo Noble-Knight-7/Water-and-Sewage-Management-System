@@ -122,11 +122,13 @@ namespace WaterSewageManagementSystem.Forms.Customer
                 {
                     lblStatus.ForeColor = Color.Green;
                     btnDispute.Enabled = false;
+                    btnPayBill.Enabled = false;
                 }
                 else
                 {
                     lblStatus.ForeColor = Color.Red;
                     btnDispute.Enabled = true;
+                    btnPayBill.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -279,6 +281,146 @@ namespace WaterSewageManagementSystem.Forms.Customer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPayBill_Click(object sender, EventArgs e)
+        {
+            if (currentBillStatus == "Disputed")
+            {
+                MessageBox.Show("This bill is currently disputed. Please wait for dispute review before payment.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to pay this bill?",
+                "Confirm Payment",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string billQuery = @"SELECT BillID, CustomerID, Amount, Arrears, Status
+                             FROM Bills
+                             WHERE BillID = @BillID
+                             AND CustomerID = @CustomerID";
+
+                SqlCommand billCmd = new SqlCommand(billQuery, conn);
+                billCmd.Parameters.AddWithValue("@BillID", currentBillID);
+                billCmd.Parameters.AddWithValue("@CustomerID", currentCustomerID);
+
+                SqlDataAdapter adp = new SqlDataAdapter(billCmd);
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+
+                DataTable dt = ds.Tables[0];
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Bill not found.");
+                    return;
+                }
+
+                string billStatus = dt.Rows[0]["Status"].ToString();
+
+                if (billStatus == "Paid")
+                {
+                    MessageBox.Show("This bill is already paid.");
+                    LoadBill();
+                    return;
+                }
+
+                if (billStatus == "Disputed")
+                {
+                    MessageBox.Show("This bill is currently disputed. Please wait for dispute review before payment.");
+                    LoadBill();
+                    return;
+                }
+
+                decimal amount = Convert.ToDecimal(dt.Rows[0]["Amount"]);
+                decimal arrears = Convert.ToDecimal(dt.Rows[0]["Arrears"]);
+                decimal totalPayable = amount + arrears;
+
+                string receiptNo = "RCPT-" + DateTime.Now.ToString("yyyyMMddHHmmss");
+
+                string insertPaymentQuery = @"INSERT INTO Payments
+                                      (
+                                          BillID,
+                                          CustomerID,
+                                          PaymentDate,
+                                          Amount,
+                                          Method,
+                                          ReceiptNo
+                                      )
+                                      VALUES
+                                      (
+                                          @BillID,
+                                          @CustomerID,
+                                          GETDATE(),
+                                          @Amount,
+                                          @Method,
+                                          @ReceiptNo
+                                      )";
+
+                SqlCommand paymentCmd = new SqlCommand(insertPaymentQuery, conn);
+                paymentCmd.Parameters.AddWithValue("@BillID", currentBillID);
+                paymentCmd.Parameters.AddWithValue("@CustomerID", currentCustomerID);
+                paymentCmd.Parameters.AddWithValue("@Amount", totalPayable);
+                paymentCmd.Parameters.AddWithValue("@Method", "Cash");
+                paymentCmd.Parameters.AddWithValue("@ReceiptNo", receiptNo);
+
+                int paymentRows = paymentCmd.ExecuteNonQuery();
+
+                if (paymentRows > 0)
+                {
+                    string updateBillQuery = @"UPDATE Bills
+                                       SET Status = 'Paid'
+                                       WHERE BillID = @BillID";
+
+                    SqlCommand updateBillCmd = new SqlCommand(updateBillQuery, conn);
+                    updateBillCmd.Parameters.AddWithValue("@BillID", currentBillID);
+
+                    int billRows = updateBillCmd.ExecuteNonQuery();
+
+                    if (billRows > 0)
+                    {
+                        MessageBox.Show("Bill paid successfully.\nReceipt No: " + receiptNo);
+
+                        currentBillStatus = "Paid";
+                        LoadBill();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Payment saved, but bill status was not updated.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Payment failed.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Payment error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }

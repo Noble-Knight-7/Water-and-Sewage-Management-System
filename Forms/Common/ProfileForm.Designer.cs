@@ -6,6 +6,7 @@ namespace WaterSewageManagementSystem.Forms.Common
         protected override void Dispose(bool disposing) { if (disposing && components != null) components.Dispose(); base.Dispose(disposing); }
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblRole = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -66,7 +67,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtName.Location = new System.Drawing.Point(180, 90);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(240, 30);
+            this.txtName.Size = new System.Drawing.Size(240, 25);
             this.txtName.TabIndex = 4;
             // 
             // lblEmail
@@ -86,7 +87,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtEmail.Location = new System.Drawing.Point(180, 157);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(240, 30);
+            this.txtEmail.Size = new System.Drawing.Size(240, 25);
             this.txtEmail.TabIndex = 6;
             // 
             // lblPhone
@@ -104,7 +105,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtPhone.Location = new System.Drawing.Point(180, 222);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(240, 30);
+            this.txtPhone.Size = new System.Drawing.Size(240, 25);
             this.txtPhone.TabIndex = 8;
             // 
             // lblAddress
@@ -122,7 +123,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtAddress.Location = new System.Drawing.Point(180, 289);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(240, 30);
+            this.txtAddress.Size = new System.Drawing.Size(240, 25);
             this.txtAddress.TabIndex = 10;
             // 
             // btnSave
@@ -190,6 +191,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ProfileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

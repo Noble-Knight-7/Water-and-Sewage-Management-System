@@ -15,9 +15,70 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
             txtBillingMonth.Text = DateTime.Now.ToString("MMMM yyyy");
             txtArrears.Text = "0";
-            LoadCustomers();
-        }
 
+            txtPrevious.ReadOnly = true;
+
+            LoadCustomers();
+
+            if (cmbCustomer.Items.Count > 0)
+            {
+                LoadPreviousReading();
+            }
+        }
+        private void LoadPreviousReading()
+        {
+            if (cmbCustomer.SelectedValue == null)
+            {
+                txtPrevious.Text = "0";
+                return;
+            }
+
+            int customerID;
+
+            if (!int.TryParse(cmbCustomer.SelectedValue.ToString(), out customerID))
+            {
+                txtPrevious.Text = "0";
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = @"SELECT TOP 1 CurrentReading
+                         FROM Bills
+                         WHERE CustomerID = @CustomerID
+                         ORDER BY CreatedAt DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@CustomerID", customerID);
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+
+                DataTable dt = ds.Tables[0];
+
+                if (dt.Rows.Count > 0)
+                {
+                    txtPrevious.Text = dt.Rows[0]["CurrentReading"].ToString();
+                }
+                else
+                {
+                    txtPrevious.Text = "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading previous reading: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         private void LoadCustomers()
         {
             SqlConnection conn = new SqlConnection(connectionString);
@@ -92,9 +153,10 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 return;
             }
 
-            if (currentReading < previousReading)
+            if (currentReading <= previousReading)
             {
-                MessageBox.Show("Current reading cannot be less than previous reading.");
+                MessageBox.Show("Current reading must be greater than previous reading.");
+                txtCurrent.Focus();
                 return;
             }
 
@@ -151,17 +213,36 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             {
                 conn.Open();
 
-                string query = "INSERT INTO Bills " +
-                               "(CustomerID, BillingMonth, PreviousReading, CurrentReading, Amount, Arrears, Status, CreatedAt) " +
-                               "VALUES (" +
-                               customerID + ", '" +
-                               billingMonth + "', " +
-                               previousReading + ", " +
-                               currentReading + ", " +
-                               amount + ", " +
-                               arrears + ", 'Unpaid', GETDATE())";
+                string query = @"INSERT INTO Bills
+                 (
+                     CustomerID,
+                     BillingMonth,
+                     PreviousReading,
+                     CurrentReading,
+                     Amount,
+                     Arrears,
+                     Status,
+                     CreatedAt
+                 )
+                 VALUES
+                 (
+                     @CustomerID,
+                     @BillingMonth,
+                     @PreviousReading,
+                     @CurrentReading,
+                     @Amount,
+                     @Arrears,
+                     'Unpaid',
+                     GETDATE()
+                 )";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@CustomerID", customerID);
+                cmd.Parameters.AddWithValue("@BillingMonth", billingMonth);
+                cmd.Parameters.AddWithValue("@PreviousReading", previousReading);
+                cmd.Parameters.AddWithValue("@CurrentReading", currentReading);
+                cmd.Parameters.AddWithValue("@Amount", amount);
+                cmd.Parameters.AddWithValue("@Arrears", arrears);
 
                 int rows = cmd.ExecuteNonQuery();
 
@@ -177,10 +258,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                         "Total Due: Tk. " + (amount + arrears).ToString("N2")
                     );
 
-                    txtPrevious.Text = "";
                     txtCurrent.Text = "";
                     txtArrears.Text = "0";
                     txtBillingMonth.Text = DateTime.Now.ToString("MMMM yyyy");
+
+                    LoadPreviousReading();
                 }
                 else
                 {
@@ -200,6 +282,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadPreviousReading();
         }
     }
 }

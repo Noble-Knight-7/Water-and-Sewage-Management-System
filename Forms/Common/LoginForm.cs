@@ -147,5 +147,18 @@ namespace WaterSewageManagementSystem
         {
             Application.Exit();
         }
+
+        private void checkBoxShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowPass.Checked == true)
+            {
+                txtPassword.UseSystemPasswordChar = false;
+
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = true;
+            }
+        }
     }
 }

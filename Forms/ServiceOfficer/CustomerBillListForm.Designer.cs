@@ -29,23 +29,15 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lblTitle = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerBillListForm));
             this.dgvBills = new System.Windows.Forms.DataGridView();
             this.btnMarkPaid = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBills)).BeginInit();
+            this.panelHeader.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(92)))));
-            this.lblTitle.Location = new System.Drawing.Point(322, 9);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(324, 39);
-            this.lblTitle.TabIndex = 5;
-            this.lblTitle.Text = "💵  List of Customer Bills";
             // 
             // dgvBills
             // 
@@ -63,13 +55,13 @@
             this.dgvBills.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBills.ColumnHeadersHeight = 29;
             this.dgvBills.EnableHeadersVisualStyles = false;
-            this.dgvBills.Location = new System.Drawing.Point(20, 51);
+            this.dgvBills.Location = new System.Drawing.Point(12, 58);
             this.dgvBills.Name = "dgvBills";
             this.dgvBills.ReadOnly = true;
             this.dgvBills.RowHeadersVisible = false;
             this.dgvBills.RowHeadersWidth = 51;
             this.dgvBills.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBills.Size = new System.Drawing.Size(910, 410);
+            this.dgvBills.Size = new System.Drawing.Size(1112, 516);
             this.dgvBills.TabIndex = 6;
             // 
             // btnMarkPaid
@@ -80,29 +72,13 @@
             this.btnMarkPaid.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMarkPaid.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnMarkPaid.ForeColor = System.Drawing.Color.White;
-            this.btnMarkPaid.Location = new System.Drawing.Point(20, 474);
+            this.btnMarkPaid.Location = new System.Drawing.Point(12, 580);
             this.btnMarkPaid.Name = "btnMarkPaid";
             this.btnMarkPaid.Size = new System.Drawing.Size(140, 35);
             this.btnMarkPaid.TabIndex = 7;
             this.btnMarkPaid.Text = "Mark as Paid";
             this.btnMarkPaid.UseVisualStyleBackColor = false;
             this.btnMarkPaid.Click += new System.EventHandler(this.btnMarkPaid_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(170, 474);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(100, 35);
-            this.btnRefresh.TabIndex = 8;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnClose
             // 
@@ -112,7 +88,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(840, 474);
+            this.btnClose.Location = new System.Drawing.Point(1034, 580);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(90, 35);
             this.btnClose.TabIndex = 9;
@@ -120,32 +96,53 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            this.panelHeader.Controls.Add(this.label1);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1136, 52);
+            this.panelHeader.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(455, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(253, 28);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "💵  List of Customer Bills";
+            // 
             // CustomerBillListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(950, 520);
-            this.Controls.Add(this.lblTitle);
+            this.ClientSize = new System.Drawing.Size(1136, 627);
+            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.dgvBills);
             this.Controls.Add(this.btnMarkPaid);
-            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnClose);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CustomerBillListForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Bill List";
             ((System.ComponentModel.ISupportInitialize)(this.dgvBills)).EndInit();
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dgvBills;
         private System.Windows.Forms.Button btnMarkPaid;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label label1;
     }
 }

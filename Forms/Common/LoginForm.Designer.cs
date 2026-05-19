@@ -12,6 +12,7 @@ namespace WaterSewageManagementSystem
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -22,6 +23,7 @@ namespace WaterSewageManagementSystem
             this.lnkRegister = new System.Windows.Forms.LinkLabel();
             this.lnkForgotPassword = new System.Windows.Forms.LinkLabel();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.checkBoxShowPass = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelMain.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +65,7 @@ namespace WaterSewageManagementSystem
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtEmail.Location = new System.Drawing.Point(40, 128);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(320, 30);
+            this.txtEmail.Size = new System.Drawing.Size(320, 25);
             this.txtEmail.TabIndex = 3;
             // 
             // lblPassword
@@ -81,9 +83,9 @@ namespace WaterSewageManagementSystem
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtPassword.Location = new System.Drawing.Point(40, 198);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(320, 30);
+            this.txtPassword.Size = new System.Drawing.Size(320, 25);
             this.txtPassword.TabIndex = 5;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
@@ -93,7 +95,7 @@ namespace WaterSewageManagementSystem
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(40, 255);
+            this.btnLogin.Location = new System.Drawing.Point(40, 269);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(320, 42);
             this.btnLogin.TabIndex = 6;
@@ -103,7 +105,7 @@ namespace WaterSewageManagementSystem
             // 
             // lnkRegister
             // 
-            this.lnkRegister.Location = new System.Drawing.Point(80, 315);
+            this.lnkRegister.Location = new System.Drawing.Point(80, 329);
             this.lnkRegister.Name = "lnkRegister";
             this.lnkRegister.Size = new System.Drawing.Size(240, 20);
             this.lnkRegister.TabIndex = 7;
@@ -114,7 +116,7 @@ namespace WaterSewageManagementSystem
             // 
             // lnkForgotPassword
             // 
-            this.lnkForgotPassword.Location = new System.Drawing.Point(130, 340);
+            this.lnkForgotPassword.Location = new System.Drawing.Point(130, 354);
             this.lnkForgotPassword.Name = "lnkForgotPassword";
             this.lnkForgotPassword.Size = new System.Drawing.Size(140, 20);
             this.lnkForgotPassword.TabIndex = 8;
@@ -126,6 +128,7 @@ namespace WaterSewageManagementSystem
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.White;
+            this.panelMain.Controls.Add(this.checkBoxShowPass);
             this.panelMain.Controls.Add(this.panel1);
             this.panelMain.Controls.Add(this.lblTitle);
             this.panelMain.Controls.Add(this.lblSubtitle);
@@ -140,6 +143,17 @@ namespace WaterSewageManagementSystem
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(806, 390);
             this.panelMain.TabIndex = 0;
+            // 
+            // checkBoxShowPass
+            // 
+            this.checkBoxShowPass.AutoSize = true;
+            this.checkBoxShowPass.Location = new System.Drawing.Point(235, 234);
+            this.checkBoxShowPass.Name = "checkBoxShowPass";
+            this.checkBoxShowPass.Size = new System.Drawing.Size(122, 20);
+            this.checkBoxShowPass.TabIndex = 10;
+            this.checkBoxShowPass.Text = "Show Password";
+            this.checkBoxShowPass.UseVisualStyleBackColor = true;
+            this.checkBoxShowPass.CheckedChanged += new System.EventHandler(this.checkBoxShowPass_CheckedChanged);
             // 
             // panel1
             // 
@@ -156,6 +170,7 @@ namespace WaterSewageManagementSystem
             this.ClientSize = new System.Drawing.Size(900, 550);
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -178,5 +193,6 @@ namespace WaterSewageManagementSystem
         private System.Windows.Forms.LinkLabel lnkForgotPassword;
         private System.Windows.Forms.Panel     panelMain;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox checkBoxShowPass;
     }
 }

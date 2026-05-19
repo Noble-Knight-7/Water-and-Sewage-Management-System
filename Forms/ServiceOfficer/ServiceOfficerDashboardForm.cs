@@ -8,7 +8,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
     public partial class ServiceOfficerDashboardForm : Form
     {
-        //string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
+        string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
         public ServiceOfficerDashboardForm()
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void ServiceOfficerDashboardForm_Load(object sender, EventArgs e)
         {
-            LoadDashboardData(); //Can we move it inside the Constructor? We can, but it's generally better to keep data loading in the Load event. This way, if we ever need to refresh the dashboard data without re-creating the form, we can just call LoadDashboardData() again.
+            LoadDashboardData();
         }
 
         private void LoadDashboardData()
@@ -36,7 +36,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void LoadCounts()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True");
+            SqlConnection conn = new SqlConnection(connectionString);
 
             try
             {
@@ -46,9 +46,9 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 SqlCommand cmdMeter = new SqlCommand(queryMeter, conn);
                 lblMeterCount.Text = cmdMeter.ExecuteScalar().ToString();
 
-                string queryBill = "SELECT COUNT(*) FROM Bills";
+                string queryBill = "SELECT COUNT(*) FROM Bills WHERE Status = 'Paid'";
                 SqlCommand cmdBill = new SqlCommand(queryBill, conn);
-                lblBillCount.Text = cmdBill.ExecuteScalar().ToString();
+                lblPaidBillCount.Text = cmdBill.ExecuteScalar().ToString();
 
                 string queryDispute = "SELECT COUNT(*) FROM BillDisputes WHERE Status='Pending' OR Status IS NULL";
                 SqlCommand cmdDispute = new SqlCommand(queryDispute, conn);
@@ -70,7 +70,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void LoadRecentRecords()
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True");
+            SqlConnection conn = new SqlConnection(connectionString);
 
             try
             {
@@ -165,12 +165,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         private void btnReviewDisputes_Click(object sender, EventArgs e)
         {
             new ReviewDisputesForm().ShowDialog();
-            LoadDashboardData();
-        }
-
-        private void btnCorrectBill_Click(object sender, EventArgs e)
-        {
-            new CorrectBillForm().ShowDialog();
             LoadDashboardData();
         }
 

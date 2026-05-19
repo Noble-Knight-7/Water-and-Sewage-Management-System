@@ -8,10 +8,12 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
     public partial class ReviewDisputesForm : Form
     {
         string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=WaterSewageManagementDB;Integrated Security=True;TrustServerCertificate=True";
+        int billID = 0;
 
         public ReviewDisputesForm()
         {
             InitializeComponent();
+            btnCorrectBill.Enabled = false;
             LoadDisputes();
         }
 
@@ -77,6 +79,8 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             }
 
             int disputeID = Convert.ToInt32(dgvDisputes.SelectedRows[0].Cells["DisputeID"].Value);
+            billID = Convert.ToInt32(dgvDisputes.SelectedRows[0].Cells["BillID"].Value);
+
             string currentStatus = dgvDisputes.SelectedRows[0].Cells["Status"].Value.ToString();
 
             if (currentStatus == "Reviewed")
@@ -116,6 +120,8 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 {
                     MessageBox.Show("Dispute marked as Reviewed. You can now open Correct Bill to adjust the amount.");
                     LoadDisputes();
+                    btnCorrectBill.Enabled = true;
+                    btnCorrectBill.Focus();
                 }
                 else
                 {
@@ -140,6 +146,15 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnCorrectBill_Click(object sender, EventArgs e)
+        {
+
+            CorrectBillForm form = new CorrectBillForm(billID);
+            form.ShowDialog();
+
+            LoadDisputes();
         }
     }
 }

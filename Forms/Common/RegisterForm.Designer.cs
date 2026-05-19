@@ -12,6 +12,7 @@ namespace WaterSewageManagementSystem.Forms.Common
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -71,7 +72,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtName.Location = new System.Drawing.Point(219, 86);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(260, 30);
+            this.txtName.Size = new System.Drawing.Size(260, 25);
             this.txtName.TabIndex = 2;
             // 
             // lblEmail
@@ -89,7 +90,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtEmail.Location = new System.Drawing.Point(219, 162);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(260, 30);
+            this.txtEmail.Size = new System.Drawing.Size(260, 25);
             this.txtEmail.TabIndex = 4;
             // 
             // lblPhone
@@ -108,7 +109,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtPhone.Location = new System.Drawing.Point(219, 234);
             this.txtPhone.MaxLength = 11;
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(260, 30);
+            this.txtPhone.Size = new System.Drawing.Size(260, 25);
             this.txtPhone.TabIndex = 6;
             // 
             // lblPassword
@@ -127,7 +128,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtPassword.Location = new System.Drawing.Point(706, 163);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(260, 30);
+            this.txtPassword.Size = new System.Drawing.Size(260, 25);
             this.txtPassword.TabIndex = 8;
             // 
             // lblConfirm
@@ -146,7 +147,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtConfirmPass.Location = new System.Drawing.Point(706, 234);
             this.txtConfirmPass.Name = "txtConfirmPass";
             this.txtConfirmPass.PasswordChar = '*';
-            this.txtConfirmPass.Size = new System.Drawing.Size(260, 30);
+            this.txtConfirmPass.Size = new System.Drawing.Size(260, 25);
             this.txtConfirmPass.TabIndex = 10;
             // 
             // lblRole
@@ -168,7 +169,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             "MaintenanceEngineer"});
             this.cmbRole.Location = new System.Drawing.Point(706, 312);
             this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(260, 31);
+            this.cmbRole.Size = new System.Drawing.Size(260, 25);
             this.cmbRole.TabIndex = 12;
             // 
             // lblAddress
@@ -186,7 +187,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtAddress.Location = new System.Drawing.Point(219, 387);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(260, 30);
+            this.txtAddress.Size = new System.Drawing.Size(260, 25);
             this.txtAddress.TabIndex = 14;
             // 
             // btnRegister
@@ -234,7 +235,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.radioButton_Male.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.radioButton_Male.Location = new System.Drawing.Point(219, 310);
             this.radioButton_Male.Name = "radioButton_Male";
-            this.radioButton_Male.Size = new System.Drawing.Size(70, 27);
+            this.radioButton_Male.Size = new System.Drawing.Size(60, 23);
             this.radioButton_Male.TabIndex = 20;
             this.radioButton_Male.TabStop = true;
             this.radioButton_Male.Text = "Male";
@@ -246,7 +247,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.radioButton_Female.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.radioButton_Female.Location = new System.Drawing.Point(391, 312);
             this.radioButton_Female.Name = "radioButton_Female";
-            this.radioButton_Female.Size = new System.Drawing.Size(88, 27);
+            this.radioButton_Female.Size = new System.Drawing.Size(75, 23);
             this.radioButton_Female.TabIndex = 21;
             this.radioButton_Female.TabStop = true;
             this.radioButton_Female.Text = "Female";
@@ -259,7 +260,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblAdress.ForeColor = System.Drawing.Color.Red;
             this.errorlblAdress.Location = new System.Drawing.Point(215, 420);
             this.errorlblAdress.Name = "errorlblAdress";
-            this.errorlblAdress.Size = new System.Drawing.Size(105, 20);
+            this.errorlblAdress.Size = new System.Drawing.Size(84, 15);
             this.errorlblAdress.TabIndex = 24;
             this.errorlblAdress.Text = "errorlblAdress";
             // 
@@ -270,7 +271,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblRole.ForeColor = System.Drawing.Color.Red;
             this.errorlblRole.Location = new System.Drawing.Point(703, 346);
             this.errorlblRole.Name = "errorlblRole";
-            this.errorlblRole.Size = new System.Drawing.Size(89, 20);
+            this.errorlblRole.Size = new System.Drawing.Size(71, 15);
             this.errorlblRole.TabIndex = 27;
             this.errorlblRole.Text = "errorlblRole";
             // 
@@ -281,7 +282,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblPhone.ForeColor = System.Drawing.Color.Red;
             this.errorlblPhone.Location = new System.Drawing.Point(215, 267);
             this.errorlblPhone.Name = "errorlblPhone";
-            this.errorlblPhone.Size = new System.Drawing.Size(103, 20);
+            this.errorlblPhone.Size = new System.Drawing.Size(82, 15);
             this.errorlblPhone.TabIndex = 28;
             this.errorlblPhone.Text = "errorlblPhone";
             // 
@@ -292,7 +293,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblConfPass.ForeColor = System.Drawing.Color.Red;
             this.errorlblConfPass.Location = new System.Drawing.Point(703, 267);
             this.errorlblConfPass.Name = "errorlblConfPass";
-            this.errorlblConfPass.Size = new System.Drawing.Size(122, 20);
+            this.errorlblConfPass.Size = new System.Drawing.Size(98, 15);
             this.errorlblConfPass.TabIndex = 29;
             this.errorlblConfPass.Text = "errorlblConfPass";
             // 
@@ -303,7 +304,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblEmail.ForeColor = System.Drawing.Color.Red;
             this.errorlblEmail.Location = new System.Drawing.Point(215, 194);
             this.errorlblEmail.Name = "errorlblEmail";
-            this.errorlblEmail.Size = new System.Drawing.Size(98, 20);
+            this.errorlblEmail.Size = new System.Drawing.Size(78, 15);
             this.errorlblEmail.TabIndex = 30;
             this.errorlblEmail.Text = "errorlblEmail";
             // 
@@ -314,7 +315,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblPass.ForeColor = System.Drawing.Color.Red;
             this.errorlblPass.Location = new System.Drawing.Point(703, 196);
             this.errorlblPass.Name = "errorlblPass";
-            this.errorlblPass.Size = new System.Drawing.Size(90, 20);
+            this.errorlblPass.Size = new System.Drawing.Size(72, 15);
             this.errorlblPass.TabIndex = 31;
             this.errorlblPass.Text = "errorlblPass";
             // 
@@ -325,7 +326,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblName.ForeColor = System.Drawing.Color.Red;
             this.errorlblName.Location = new System.Drawing.Point(215, 119);
             this.errorlblName.Name = "errorlblName";
-            this.errorlblName.Size = new System.Drawing.Size(102, 20);
+            this.errorlblName.Size = new System.Drawing.Size(81, 15);
             this.errorlblName.TabIndex = 32;
             this.errorlblName.Text = "errorlblName";
             // 
@@ -336,7 +337,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblGender.ForeColor = System.Drawing.Color.Red;
             this.errorlblGender.Location = new System.Drawing.Point(215, 342);
             this.errorlblGender.Name = "errorlblGender";
-            this.errorlblGender.Size = new System.Drawing.Size(110, 20);
+            this.errorlblGender.Size = new System.Drawing.Size(87, 15);
             this.errorlblGender.TabIndex = 33;
             this.errorlblGender.Text = "errorlblGender";
             // 
@@ -347,7 +348,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblPassNotMatch.ForeColor = System.Drawing.Color.Red;
             this.errorlblPassNotMatch.Location = new System.Drawing.Point(706, 267);
             this.errorlblPassNotMatch.Name = "errorlblPassNotMatch";
-            this.errorlblPassNotMatch.Size = new System.Drawing.Size(158, 20);
+            this.errorlblPassNotMatch.Size = new System.Drawing.Size(125, 15);
             this.errorlblPassNotMatch.TabIndex = 34;
             this.errorlblPassNotMatch.Text = "errorlblPassNotMatch";
             // 
@@ -367,7 +368,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.errorlblDOB.ForeColor = System.Drawing.Color.Red;
             this.errorlblDOB.Location = new System.Drawing.Point(702, 111);
             this.errorlblDOB.Name = "errorlblDOB";
-            this.errorlblDOB.Size = new System.Drawing.Size(91, 20);
+            this.errorlblDOB.Size = new System.Drawing.Size(73, 15);
             this.errorlblDOB.TabIndex = 36;
             this.errorlblDOB.Text = "errorlblDOB";
             // 
@@ -418,6 +419,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

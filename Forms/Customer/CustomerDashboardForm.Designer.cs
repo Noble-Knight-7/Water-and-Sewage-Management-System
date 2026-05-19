@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerDashboardForm));
             this.lblApplicationCount = new System.Windows.Forms.Label();
             this.lblApplicationText = new System.Windows.Forms.Label();
             this.cardApplication = new System.Windows.Forms.Panel();
@@ -41,23 +42,21 @@
             this.lblBillCount = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.dgvNotices = new System.Windows.Forms.DataGridView();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.lblOverview = new System.Windows.Forms.Label();
             this.cardBill = new System.Windows.Forms.Panel();
             this.lblBillText = new System.Windows.Forms.Label();
             this.lblRecentRecords = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblWelcome = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.btnCurrentBill = new System.Windows.Forms.Button();
             this.btnBillHistory = new System.Windows.Forms.Button();
-            this.btnDispute = new System.Windows.Forms.Button();
             this.btnComplaint = new System.Windows.Forms.Button();
             this.btnTrackComplaint = new System.Windows.Forms.Button();
             this.btnConnection = new System.Windows.Forms.Button();
             this.btnTrackApp = new System.Windows.Forms.Button();
-            this.btnNotices = new System.Windows.Forms.Button();
             this.btnProfile = new System.Windows.Forms.Button();
             this.cardApplication.SuspendLayout();
             this.cardComplaint.SuspendLayout();
@@ -76,7 +75,7 @@
             this.lblApplicationCount.ForeColor = System.Drawing.Color.White;
             this.lblApplicationCount.Location = new System.Drawing.Point(37, 20);
             this.lblApplicationCount.Name = "lblApplicationCount";
-            this.lblApplicationCount.Size = new System.Drawing.Size(28, 32);
+            this.lblApplicationCount.Size = new System.Drawing.Size(23, 25);
             this.lblApplicationCount.TabIndex = 0;
             this.lblApplicationCount.Text = "0";
             // 
@@ -87,7 +86,7 @@
             this.lblApplicationText.ForeColor = System.Drawing.Color.White;
             this.lblApplicationText.Location = new System.Drawing.Point(17, 60);
             this.lblApplicationText.Name = "lblApplicationText";
-            this.lblApplicationText.Size = new System.Drawing.Size(149, 23);
+            this.lblApplicationText.Size = new System.Drawing.Size(121, 19);
             this.lblApplicationText.TabIndex = 1;
             this.lblApplicationText.Text = "Connection Status";
             // 
@@ -108,7 +107,7 @@
             this.lblComplaintCount.ForeColor = System.Drawing.Color.White;
             this.lblComplaintCount.Location = new System.Drawing.Point(76, 20);
             this.lblComplaintCount.Name = "lblComplaintCount";
-            this.lblComplaintCount.Size = new System.Drawing.Size(28, 32);
+            this.lblComplaintCount.Size = new System.Drawing.Size(23, 25);
             this.lblComplaintCount.TabIndex = 0;
             this.lblComplaintCount.Text = "0";
             // 
@@ -119,13 +118,13 @@
             this.lblComplaintText.ForeColor = System.Drawing.Color.White;
             this.lblComplaintText.Location = new System.Drawing.Point(18, 60);
             this.lblComplaintText.Name = "lblComplaintText";
-            this.lblComplaintText.Size = new System.Drawing.Size(143, 23);
+            this.lblComplaintText.Size = new System.Drawing.Size(116, 19);
             this.lblComplaintText.TabIndex = 1;
             this.lblComplaintText.Text = "Open Complaints";
             // 
             // cardComplaint
             // 
-            this.cardComplaint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            this.cardComplaint.BackColor = System.Drawing.Color.SteelBlue;
             this.cardComplaint.Controls.Add(this.lblComplaintCount);
             this.cardComplaint.Controls.Add(this.lblComplaintText);
             this.cardComplaint.Location = new System.Drawing.Point(478, 97);
@@ -140,7 +139,7 @@
             this.lblHistoryCount.ForeColor = System.Drawing.Color.White;
             this.lblHistoryCount.Location = new System.Drawing.Point(69, 20);
             this.lblHistoryCount.Name = "lblHistoryCount";
-            this.lblHistoryCount.Size = new System.Drawing.Size(28, 32);
+            this.lblHistoryCount.Size = new System.Drawing.Size(23, 25);
             this.lblHistoryCount.TabIndex = 0;
             this.lblHistoryCount.Text = "0";
             // 
@@ -151,13 +150,13 @@
             this.lblHistoryText.ForeColor = System.Drawing.Color.White;
             this.lblHistoryText.Location = new System.Drawing.Point(44, 60);
             this.lblHistoryText.Name = "lblHistoryText";
-            this.lblHistoryText.Size = new System.Drawing.Size(90, 23);
+            this.lblHistoryText.Size = new System.Drawing.Size(74, 19);
             this.lblHistoryText.TabIndex = 1;
             this.lblHistoryText.Text = "Bill History";
             // 
             // cardHistory
             // 
-            this.cardHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(151)))), ((int)(((byte)(9)))));
+            this.cardHistory.BackColor = System.Drawing.Color.SteelBlue;
             this.cardHistory.Controls.Add(this.lblHistoryCount);
             this.cardHistory.Controls.Add(this.lblHistoryText);
             this.cardHistory.Location = new System.Drawing.Point(259, 97);
@@ -172,13 +171,13 @@
             this.lblBillCount.ForeColor = System.Drawing.Color.White;
             this.lblBillCount.Location = new System.Drawing.Point(45, 20);
             this.lblBillCount.Name = "lblBillCount";
-            this.lblBillCount.Size = new System.Drawing.Size(28, 32);
+            this.lblBillCount.Size = new System.Drawing.Size(23, 25);
             this.lblBillCount.TabIndex = 0;
             this.lblBillCount.Text = "0";
             // 
             // panelMain
             // 
-            this.panelMain.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panelMain.BackColor = System.Drawing.Color.AntiqueWhite;
             this.panelMain.Controls.Add(this.dgvNotices);
             this.panelMain.Controls.Add(this.lblWelcome);
             this.panelMain.Controls.Add(this.lblOverview);
@@ -201,14 +200,14 @@
             this.dgvNotices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvNotices.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvNotices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            this.dgvNotices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            this.dgvNotices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvNotices.ColumnHeadersHeight = 36;
             this.dgvNotices.EnableHeadersVisualStyles = false;
             this.dgvNotices.GridColor = System.Drawing.Color.White;
-            this.dgvNotices.Location = new System.Drawing.Point(39, 251);
+            this.dgvNotices.Location = new System.Drawing.Point(48, 251);
             this.dgvNotices.MultiSelect = false;
             this.dgvNotices.Name = "dgvNotices";
             this.dgvNotices.ReadOnly = true;
@@ -219,6 +218,19 @@
             this.dgvNotices.TabIndex = 6;
             this.dgvNotices.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNotices_CellContentClick);
             // 
+            // lblWelcome
+            // 
+            this.lblWelcome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.lblWelcome.ForeColor = System.Drawing.Color.Black;
+            this.lblWelcome.Location = new System.Drawing.Point(603, 4);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(269, 61);
+            this.lblWelcome.TabIndex = 1;
+            this.lblWelcome.Text = "Welcome, Customer";
+            this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblWelcome.Click += new System.EventHandler(this.lblWelcome_Click);
+            // 
             // lblOverview
             // 
             this.lblOverview.AutoSize = true;
@@ -226,13 +238,13 @@
             this.lblOverview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(28)))), ((int)(((byte)(54)))));
             this.lblOverview.Location = new System.Drawing.Point(24, 19);
             this.lblOverview.Name = "lblOverview";
-            this.lblOverview.Size = new System.Drawing.Size(356, 46);
+            this.lblOverview.Size = new System.Drawing.Size(288, 37);
             this.lblOverview.TabIndex = 0;
             this.lblOverview.Text = "Customer Dashboard";
             // 
             // cardBill
             // 
-            this.cardBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(47)))), ((int)(((byte)(52)))));
+            this.cardBill.BackColor = System.Drawing.Color.SteelBlue;
             this.cardBill.Controls.Add(this.lblBillCount);
             this.cardBill.Controls.Add(this.lblBillText);
             this.cardBill.Location = new System.Drawing.Point(39, 97);
@@ -248,7 +260,7 @@
             this.lblBillText.ForeColor = System.Drawing.Color.White;
             this.lblBillText.Location = new System.Drawing.Point(47, 60);
             this.lblBillText.Name = "lblBillText";
-            this.lblBillText.Size = new System.Drawing.Size(95, 23);
+            this.lblBillText.Size = new System.Drawing.Size(77, 19);
             this.lblBillText.TabIndex = 1;
             this.lblBillText.Text = "Current Bill";
             // 
@@ -258,14 +270,14 @@
             this.lblRecentRecords.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.lblRecentRecords.Location = new System.Drawing.Point(34, 218);
             this.lblRecentRecords.Name = "lblRecentRecords";
-            this.lblRecentRecords.Size = new System.Drawing.Size(138, 30);
+            this.lblRecentRecords.Size = new System.Drawing.Size(114, 25);
             this.lblRecentRecords.TabIndex = 5;
             this.lblRecentRecords.Text = "View Notice";
             this.lblRecentRecords.Click += new System.EventHandler(this.lblRecentRecords_Click);
             // 
             // panelHeader
             // 
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            this.panelHeader.BackColor = System.Drawing.Color.DimGray;
             this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(206, 0);
@@ -280,22 +292,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(6, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(625, 35);
+            this.lblTitle.Size = new System.Drawing.Size(503, 28);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Water and Sewage Management System - Customer";
-            // 
-            // lblWelcome
-            // 
-            this.lblWelcome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.lblWelcome.ForeColor = System.Drawing.Color.Black;
-            this.lblWelcome.Location = new System.Drawing.Point(521, 19);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(269, 61);
-            this.lblWelcome.TabIndex = 1;
-            this.lblWelcome.Text = "Welcome, Customer";
-            this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblWelcome.Click += new System.EventHandler(this.lblWelcome_Click);
             // 
             // btnLogout
             // 
@@ -306,11 +305,11 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(3, 601);
+            this.btnLogout.Location = new System.Drawing.Point(3, 590);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(200, 44);
+            this.btnLogout.Size = new System.Drawing.Size(200, 55);
             this.btnLogout.TabIndex = 2;
-            this.btnLogout.Text = "Logout";
+            this.btnLogout.Text = "⏻ Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
@@ -320,12 +319,10 @@
             this.panelSidebar.Controls.Add(this.btnCurrentBill);
             this.panelSidebar.Controls.Add(this.btnBillHistory);
             this.panelSidebar.Controls.Add(this.btnLogout);
-            this.panelSidebar.Controls.Add(this.btnDispute);
             this.panelSidebar.Controls.Add(this.btnComplaint);
             this.panelSidebar.Controls.Add(this.btnTrackComplaint);
             this.panelSidebar.Controls.Add(this.btnConnection);
             this.panelSidebar.Controls.Add(this.btnTrackApp);
-            this.panelSidebar.Controls.Add(this.btnNotices);
             this.panelSidebar.Controls.Add(this.btnProfile);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
@@ -368,23 +365,6 @@
             this.btnBillHistory.UseVisualStyleBackColor = false;
             this.btnBillHistory.Click += new System.EventHandler(this.btnBillHistory_Click);
             // 
-            // btnDispute
-            // 
-            this.btnDispute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(45)))), ((int)(((byte)(78)))));
-            this.btnDispute.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDispute.FlatAppearance.BorderSize = 0;
-            this.btnDispute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDispute.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnDispute.ForeColor = System.Drawing.Color.White;
-            this.btnDispute.Location = new System.Drawing.Point(0, 148);
-            this.btnDispute.Name = "btnDispute";
-            this.btnDispute.Size = new System.Drawing.Size(212, 40);
-            this.btnDispute.TabIndex = 2;
-            this.btnDispute.Text = "⚠ Submit Dispute";
-            this.btnDispute.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDispute.UseVisualStyleBackColor = false;
-            this.btnDispute.Click += new System.EventHandler(this.btnDispute_Click);
-            // 
             // btnComplaint
             // 
             this.btnComplaint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(45)))), ((int)(((byte)(78)))));
@@ -393,7 +373,7 @@
             this.btnComplaint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnComplaint.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnComplaint.ForeColor = System.Drawing.Color.White;
-            this.btnComplaint.Location = new System.Drawing.Point(0, 204);
+            this.btnComplaint.Location = new System.Drawing.Point(0, 149);
             this.btnComplaint.Name = "btnComplaint";
             this.btnComplaint.Size = new System.Drawing.Size(212, 40);
             this.btnComplaint.TabIndex = 3;
@@ -410,7 +390,7 @@
             this.btnTrackComplaint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrackComplaint.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnTrackComplaint.ForeColor = System.Drawing.Color.White;
-            this.btnTrackComplaint.Location = new System.Drawing.Point(0, 260);
+            this.btnTrackComplaint.Location = new System.Drawing.Point(0, 205);
             this.btnTrackComplaint.Name = "btnTrackComplaint";
             this.btnTrackComplaint.Size = new System.Drawing.Size(212, 40);
             this.btnTrackComplaint.TabIndex = 4;
@@ -427,7 +407,7 @@
             this.btnConnection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConnection.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnConnection.ForeColor = System.Drawing.Color.White;
-            this.btnConnection.Location = new System.Drawing.Point(0, 316);
+            this.btnConnection.Location = new System.Drawing.Point(0, 261);
             this.btnConnection.Name = "btnConnection";
             this.btnConnection.Size = new System.Drawing.Size(212, 40);
             this.btnConnection.TabIndex = 5;
@@ -444,7 +424,7 @@
             this.btnTrackApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrackApp.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnTrackApp.ForeColor = System.Drawing.Color.White;
-            this.btnTrackApp.Location = new System.Drawing.Point(0, 372);
+            this.btnTrackApp.Location = new System.Drawing.Point(0, 317);
             this.btnTrackApp.Name = "btnTrackApp";
             this.btnTrackApp.Size = new System.Drawing.Size(212, 40);
             this.btnTrackApp.TabIndex = 6;
@@ -452,23 +432,6 @@
             this.btnTrackApp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTrackApp.UseVisualStyleBackColor = false;
             this.btnTrackApp.Click += new System.EventHandler(this.btnTrackApp_Click);
-            // 
-            // btnNotices
-            // 
-            this.btnNotices.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(45)))), ((int)(((byte)(78)))));
-            this.btnNotices.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNotices.FlatAppearance.BorderSize = 0;
-            this.btnNotices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNotices.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnNotices.ForeColor = System.Drawing.Color.White;
-            this.btnNotices.Location = new System.Drawing.Point(1, 428);
-            this.btnNotices.Name = "btnNotices";
-            this.btnNotices.Size = new System.Drawing.Size(212, 40);
-            this.btnNotices.TabIndex = 7;
-            this.btnNotices.Text = "📢 View Notices";
-            this.btnNotices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNotices.UseVisualStyleBackColor = false;
-            this.btnNotices.Click += new System.EventHandler(this.btnNotices_Click);
             // 
             // btnProfile
             // 
@@ -478,7 +441,7 @@
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnProfile.ForeColor = System.Drawing.Color.White;
-            this.btnProfile.Location = new System.Drawing.Point(0, 484);
+            this.btnProfile.Location = new System.Drawing.Point(0, 372);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(212, 40);
             this.btnProfile.TabIndex = 8;
@@ -496,6 +459,7 @@
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelSidebar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CustomerDashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Dashboard";
@@ -540,12 +504,10 @@
         private System.Windows.Forms.Panel panelSidebar;
         private System.Windows.Forms.Button btnCurrentBill;
         private System.Windows.Forms.Button btnBillHistory;
-        private System.Windows.Forms.Button btnDispute;
         private System.Windows.Forms.Button btnComplaint;
         private System.Windows.Forms.Button btnTrackComplaint;
         private System.Windows.Forms.Button btnConnection;
         private System.Windows.Forms.Button btnTrackApp;
-        private System.Windows.Forms.Button btnNotices;
         private System.Windows.Forms.Button btnProfile;
         private System.Windows.Forms.Label lblRecentRecords;
         private System.Windows.Forms.DataGridView dgvNotices;

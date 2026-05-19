@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentBillForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelBill = new System.Windows.Forms.Panel();
             this.lblBillID = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnDispute = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnPayBill = new System.Windows.Forms.Button();
             this.panelBill.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,16 +166,34 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnPayBill
+            // 
+            this.btnPayBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnPayBill.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPayBill.FlatAppearance.BorderSize = 0;
+            this.btnPayBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayBill.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPayBill.ForeColor = System.Drawing.Color.White;
+            this.btnPayBill.Location = new System.Drawing.Point(211, 366);
+            this.btnPayBill.Name = "btnPayBill";
+            this.btnPayBill.Size = new System.Drawing.Size(160, 36);
+            this.btnPayBill.TabIndex = 9;
+            this.btnPayBill.Text = "Pay Bill";
+            this.btnPayBill.UseVisualStyleBackColor = false;
+            this.btnPayBill.Click += new System.EventHandler(this.btnPayBill_Click);
+            // 
             // CurrentBillForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(520, 420);
+            this.Controls.Add(this.btnPayBill);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.panelBill);
             this.Controls.Add(this.btnDispute);
             this.Controls.Add(this.btnClose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CurrentBillForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Current Bill";
@@ -196,5 +216,6 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Button btnDispute;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnPayBill;
     }
 }

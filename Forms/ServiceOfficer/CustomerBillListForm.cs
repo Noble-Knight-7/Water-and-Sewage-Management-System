@@ -123,10 +123,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            LoadBills();
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {

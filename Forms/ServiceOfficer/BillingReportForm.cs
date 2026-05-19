@@ -115,5 +115,10 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         {
             this.Close();
         }
+
+        private void dgvBills_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
