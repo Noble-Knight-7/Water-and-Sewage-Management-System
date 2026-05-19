@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
-using WaterSewageManagementSystem.Helpers;
 
 namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
@@ -66,13 +65,13 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void btnLogReport_Click(object sender, EventArgs e)
         {
-            if (SessionManager.CurrentUser == null)
+            int createdBy = LoginForm.LoggedInUserID;
+
+            if (createdBy == 0)
             {
                 MessageBox.Show("No logged in user found. Please login again.");
                 return;
             }
-
-            int createdBy = SessionManager.CurrentUser.UserID;
 
             SqlConnection conn = new SqlConnection(connectionString);
 
@@ -80,10 +79,16 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             {
                 conn.Open();
 
-                string query = "INSERT INTO Reports (CreatedBy, ReportType, CreatedDate, Description) " +
-                               "VALUES (" + createdBy + ", 'Billing', GETDATE(), 'Service Officer generated billing report.')";
+                string query = @"INSERT INTO Reports 
+                         (CreatedBy, ReportType, CreatedDate, Description)
+                         VALUES 
+                         (@CreatedBy, @ReportType, GETDATE(), @Description)";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
+
+                cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
+                cmd.Parameters.AddWithValue("@ReportType", "Billing");
+                cmd.Parameters.AddWithValue("@Description", "Service Officer generated billing report.");
 
                 int rows = cmd.ExecuteNonQuery();
 

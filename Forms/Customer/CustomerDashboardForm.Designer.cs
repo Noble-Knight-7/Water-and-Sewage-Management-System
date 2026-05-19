@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblApplicationCount = new System.Windows.Forms.Label();
             this.lblApplicationText = new System.Windows.Forms.Label();
             this.cardApplication = new System.Windows.Forms.Panel();
@@ -72,11 +72,11 @@
             // lblApplicationCount
             // 
             this.lblApplicationCount.AutoSize = true;
-            this.lblApplicationCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblApplicationCount.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblApplicationCount.ForeColor = System.Drawing.Color.White;
-            this.lblApplicationCount.Location = new System.Drawing.Point(72, 3);
+            this.lblApplicationCount.Location = new System.Drawing.Point(37, 20);
             this.lblApplicationCount.Name = "lblApplicationCount";
-            this.lblApplicationCount.Size = new System.Drawing.Size(46, 54);
+            this.lblApplicationCount.Size = new System.Drawing.Size(28, 32);
             this.lblApplicationCount.TabIndex = 0;
             this.lblApplicationCount.Text = "0";
             // 
@@ -104,11 +104,11 @@
             // lblComplaintCount
             // 
             this.lblComplaintCount.AutoSize = true;
-            this.lblComplaintCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblComplaintCount.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblComplaintCount.ForeColor = System.Drawing.Color.White;
-            this.lblComplaintCount.Location = new System.Drawing.Point(68, 3);
+            this.lblComplaintCount.Location = new System.Drawing.Point(76, 20);
             this.lblComplaintCount.Name = "lblComplaintCount";
-            this.lblComplaintCount.Size = new System.Drawing.Size(46, 54);
+            this.lblComplaintCount.Size = new System.Drawing.Size(28, 32);
             this.lblComplaintCount.TabIndex = 0;
             this.lblComplaintCount.Text = "0";
             // 
@@ -136,11 +136,11 @@
             // lblHistoryCount
             // 
             this.lblHistoryCount.AutoSize = true;
-            this.lblHistoryCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblHistoryCount.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblHistoryCount.ForeColor = System.Drawing.Color.White;
-            this.lblHistoryCount.Location = new System.Drawing.Point(68, 3);
+            this.lblHistoryCount.Location = new System.Drawing.Point(69, 20);
             this.lblHistoryCount.Name = "lblHistoryCount";
-            this.lblHistoryCount.Size = new System.Drawing.Size(46, 54);
+            this.lblHistoryCount.Size = new System.Drawing.Size(28, 32);
             this.lblHistoryCount.TabIndex = 0;
             this.lblHistoryCount.Text = "0";
             // 
@@ -168,11 +168,11 @@
             // lblBillCount
             // 
             this.lblBillCount.AutoSize = true;
-            this.lblBillCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblBillCount.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblBillCount.ForeColor = System.Drawing.Color.White;
-            this.lblBillCount.Location = new System.Drawing.Point(69, 3);
+            this.lblBillCount.Location = new System.Drawing.Point(45, 20);
             this.lblBillCount.Name = "lblBillCount";
-            this.lblBillCount.Size = new System.Drawing.Size(46, 54);
+            this.lblBillCount.Size = new System.Drawing.Size(28, 32);
             this.lblBillCount.TabIndex = 0;
             this.lblBillCount.Text = "0";
             // 
@@ -201,10 +201,10 @@
             this.dgvNotices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvNotices.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvNotices.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.dgvNotices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            this.dgvNotices.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvNotices.ColumnHeadersHeight = 36;
             this.dgvNotices.EnableHeadersVisualStyles = false;
             this.dgvNotices.GridColor = System.Drawing.Color.White;
@@ -239,6 +239,7 @@
             this.cardBill.Name = "cardBill";
             this.cardBill.Size = new System.Drawing.Size(186, 91);
             this.cardBill.TabIndex = 1;
+            this.cardBill.Paint += new System.Windows.Forms.PaintEventHandler(this.cardBill_Paint);
             // 
             // lblBillText
             // 
@@ -286,11 +287,11 @@
             // lblWelcome
             // 
             this.lblWelcome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.lblWelcome.ForeColor = System.Drawing.Color.Black;
-            this.lblWelcome.Location = new System.Drawing.Point(611, 39);
+            this.lblWelcome.Location = new System.Drawing.Point(521, 19);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(204, 19);
+            this.lblWelcome.Size = new System.Drawing.Size(269, 61);
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Welcome, Customer";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -497,7 +498,7 @@
             this.Controls.Add(this.panelSidebar);
             this.Name = "CustomerDashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Customer Dashboard";
             this.cardApplication.ResumeLayout(false);
             this.cardApplication.PerformLayout();
             this.cardComplaint.ResumeLayout(false);

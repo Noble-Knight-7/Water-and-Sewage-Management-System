@@ -125,19 +125,61 @@ namespace WaterSewageManagementSystem.Forms.Admin
             {
                 conn.Open();
 
-                string query = "UPDATE Complaints SET AssignedEngineerID=" + engineerID + ", Status='Assigned' WHERE ComplaintID=" + complaintID;
-                SqlCommand cmd = new SqlCommand(query, conn);
+                // 1. Update Complaints table
+                string updateComplaintQuery =
+                    "UPDATE Complaints SET AssignedEngineerID=" + engineerID +
+                    ", Status='Assigned' WHERE ComplaintID=" + complaintID;
 
-                int rows = cmd.ExecuteNonQuery();
+                SqlCommand updateComplaintCmd = new SqlCommand(updateComplaintQuery, conn);
+                int complaintRows = updateComplaintCmd.ExecuteNonQuery();
 
-                if (rows > 0)
+                // 2. Check if maintenance task already exists for this complaint
+                string checkTaskQuery =
+                    "SELECT COUNT(*) FROM MaintenanceTasks WHERE ComplaintID=" + complaintID;
+
+                SqlCommand checkTaskCmd = new SqlCommand(checkTaskQuery, conn);
+                int taskCount = Convert.ToInt32(checkTaskCmd.ExecuteScalar());
+
+                int taskRows = 0;
+
+                if (taskCount == 0)
                 {
-                    MessageBox.Show("Complaint assigned successfully.");
+                    // 3. Insert new task into MaintenanceTasks table
+                    string insertTaskQuery =
+                        "INSERT INTO MaintenanceTasks " +
+                        "(ComplaintID, EngineerID, VisitDate, ProgressStatus, Notes, CompletionReport, UpdatedAt) " +
+                        "VALUES (" +
+                        complaintID + ", " +
+                        engineerID + ", " +
+                        "NULL, " +
+                        "'Assigned', " +
+                        "'', " +
+                        "'', " +
+                        "GETDATE())";
+
+                    SqlCommand insertTaskCmd = new SqlCommand(insertTaskQuery, conn);
+                    taskRows = insertTaskCmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    // 4. If task already exists, update engineer instead of inserting duplicate
+                    string updateTaskQuery =
+                        "UPDATE MaintenanceTasks SET EngineerID=" + engineerID +
+                        ", ProgressStatus='Assigned', UpdatedAt=GETDATE() " +
+                        "WHERE ComplaintID=" + complaintID;
+
+                    SqlCommand updateTaskCmd = new SqlCommand(updateTaskQuery, conn);
+                    taskRows = updateTaskCmd.ExecuteNonQuery();
+                }
+
+                if (complaintRows > 0 && taskRows > 0)
+                {
+                    MessageBox.Show("Complaint assigned and maintenance task created successfully.");
                     LoadData();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to assign complaint.");
+                    MessageBox.Show("Assignment incomplete. Please check the database.");
                 }
             }
             catch (Exception ex)

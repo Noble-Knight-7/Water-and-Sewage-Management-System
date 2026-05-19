@@ -13,7 +13,7 @@ namespace WaterSewageManagementSystem.Forms.Customer
         public CustomerDashboardForm()
         {
             InitializeComponent();
-
+            LoadDashboardCounts();
             SetWelcomeText();
             LoadNotices();
         }
@@ -27,6 +27,79 @@ namespace WaterSewageManagementSystem.Forms.Customer
             else
             {
                 lblWelcome.Text = "Welcome, Customer";
+            }
+        }
+
+        private void LoadDashboardCounts()
+        {
+            if (LoginForm.LoggedInUserID == 0)
+            {
+                lblBillCount.Text = "0";
+                lblHistoryCount.Text = "0";
+                lblComplaintCount.Text = "0";
+                lblApplicationCount.Text = "N/A";
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                int customerID = 0;
+
+                string customerQuery = "SELECT CustomerID FROM Customers WHERE UserID = " + LoginForm.LoggedInUserID;
+                SqlCommand customerCmd = new SqlCommand(customerQuery, conn);
+
+                object customerResult = customerCmd.ExecuteScalar();
+
+                if (customerResult == null || customerResult == DBNull.Value)
+                {
+                    lblBillCount.Text = "0";
+                    lblHistoryCount.Text = "0";
+                    lblComplaintCount.Text = "0";
+                    lblApplicationCount.Text = "N/A";
+                    return;
+                }
+
+                customerID = Convert.ToInt32(customerResult);
+
+                string currentBillQuery = "SELECT ISNULL(SUM(Amount + Arrears), 0) FROM Bills WHERE CustomerID = " + customerID + " AND Status = 'Unpaid'";
+                SqlCommand currentBillCmd = new SqlCommand(currentBillQuery, conn);
+                decimal currentBill = Convert.ToDecimal(currentBillCmd.ExecuteScalar());
+                lblBillCount.Text = currentBill.ToString("N0");
+
+                string billHistoryQuery = "SELECT COUNT(*) FROM Bills WHERE CustomerID = " + customerID;
+                SqlCommand billHistoryCmd = new SqlCommand(billHistoryQuery, conn);
+                int billHistoryCount = Convert.ToInt32(billHistoryCmd.ExecuteScalar());
+                lblHistoryCount.Text = billHistoryCount.ToString();
+
+                string complaintQuery = "SELECT COUNT(*) FROM Complaints WHERE CustomerID = " + customerID + " AND Status NOT IN ('Resolved', 'Closed')";
+                SqlCommand complaintCmd = new SqlCommand(complaintQuery, conn);
+                int openComplaintCount = Convert.ToInt32(complaintCmd.ExecuteScalar());
+                lblComplaintCount.Text = openComplaintCount.ToString();
+
+                string connectionQuery = "SELECT TOP 1 ApprovalStatus FROM ConnectionApplications WHERE CustomerID = " + customerID + " ORDER BY ApplicationDate DESC, ApplicationID DESC";
+                SqlCommand connectionCmd = new SqlCommand(connectionQuery, conn);
+                object connectionResult = connectionCmd.ExecuteScalar();
+
+                if (connectionResult == null || connectionResult == DBNull.Value)
+                {
+                    lblApplicationCount.Text = "N/A";
+                }
+                else
+                {
+                    lblApplicationCount.Text = connectionResult.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading dashboard counts: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
 
@@ -179,6 +252,7 @@ namespace WaterSewageManagementSystem.Forms.Customer
         //        this.Hide();
         //    }
         //}
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -203,6 +277,11 @@ namespace WaterSewageManagementSystem.Forms.Customer
         }
 
         private void lblWelcome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cardBill_Paint(object sender, PaintEventArgs e)
         {
 
         }
