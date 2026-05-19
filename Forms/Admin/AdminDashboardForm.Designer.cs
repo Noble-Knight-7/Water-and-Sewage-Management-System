@@ -469,6 +469,7 @@
             this.lblCard1Num.Size = new System.Drawing.Size(69, 50);
             this.lblCard1Num.TabIndex = 0;
             this.lblCard1Num.Text = "— ";
+            this.lblCard1Num.Click += new System.EventHandler(this.lblCard1Num_Click);
             // 
             // card1Bar
             // 

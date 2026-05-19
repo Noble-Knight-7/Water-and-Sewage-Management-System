@@ -189,5 +189,10 @@ namespace WaterSewageManagementSystem.Forms.Admin
         {
 
         }
+
+        private void lblCard1Num_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
