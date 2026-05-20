@@ -42,12 +42,26 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             {
                 conn.Open();
 
-                string queryMeter = "SELECT COUNT(*) FROM Bills WHERE PreviousReading IS NOT NULL AND CurrentReading IS NOT NULL";
+                int officerID = LoginForm.LoggedInUserID;
+
+                string queryMeter = @"SELECT COUNT(*) 
+                      FROM Bills 
+                      WHERE PreviousReading IS NOT NULL 
+                      AND CurrentReading IS NOT NULL 
+                      AND GeneratedBy = @OfficerID";
+
                 SqlCommand cmdMeter = new SqlCommand(queryMeter, conn);
+                cmdMeter.Parameters.AddWithValue("@OfficerID", officerID);
                 lblMeterCount.Text = cmdMeter.ExecuteScalar().ToString();
 
-                string queryBill = "SELECT COUNT(*) FROM Bills WHERE Status = 'Paid'";
+
+                string queryBill = @"SELECT COUNT(*) 
+                     FROM Bills 
+                     WHERE Status = 'Paid' 
+                     AND GeneratedBy = @OfficerID";
+
                 SqlCommand cmdBill = new SqlCommand(queryBill, conn);
+                cmdBill.Parameters.AddWithValue("@OfficerID", officerID);
                 lblPaidBillCount.Text = cmdBill.ExecuteScalar().ToString();
 
                 string queryDispute = "SELECT COUNT(*) FROM BillDisputes WHERE Status='Pending' OR Status IS NULL";
@@ -94,6 +108,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                         FROM Bills b
                         JOIN Customers c ON b.CustomerID = c.CustomerID
                         JOIN Users u ON c.UserID = u.UserID
+                        WHERE b.GeneratedBy = @OfficerID
 
                         UNION ALL
 
@@ -106,6 +121,7 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                         FROM BillDisputes d
                         JOIN Customers c ON d.CustomerID = c.CustomerID
                         JOIN Users u ON c.UserID = u.UserID
+                        WHERE d.Status = 'Pending' OR d.Status IS NULL OR d.ReviewedBy = @OfficerID
 
                         UNION ALL
 
@@ -118,10 +134,12 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                         FROM ConnectionApplications a
                         JOIN Customers c ON a.CustomerID = c.CustomerID
                         JOIN Users u ON c.UserID = u.UserID
+                        WHERE a.AssignedOfficer = @OfficerID
                     ) AS RecentRecords
                     ORDER BY RecordDate DESC";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@OfficerID", LoginForm.LoggedInUserID);
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();

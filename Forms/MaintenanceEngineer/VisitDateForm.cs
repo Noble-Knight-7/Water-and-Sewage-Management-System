@@ -58,6 +58,16 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 DataTable dt = ds.Tables[0];
                 dgvTasks.DataSource = dt;
                 dgvTasks.AutoGenerateColumns = true;
+
+                // Allow manual resizing
+                dgvTasks.AllowUserToResizeColumns = true;
+                dgvTasks.AllowUserToResizeRows = true;
+
+                // Auto size based on content initially
+                dgvTasks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+                // Extra settings
+                dgvTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             }
             catch (Exception ex)
             {
@@ -83,6 +93,19 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             if (visitDate.Date < DateTime.Today)
             {
                 MessageBox.Show("Visit date cannot be in the past.");
+                return;
+            }
+
+            DialogResult confirmResult = MessageBox.Show(
+                "Set visit date to " + visitDate.ToString("dd MMM yyyy") + "?",
+                "Confirm Visit Date",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question);
+
+            // If the user closes the popup using X, confirmResult is Cancel.
+            // So the database is updated only when the OK button is pressed.
+            if (confirmResult != DialogResult.OK)
+            {
                 return;
             }
 
@@ -127,6 +150,15 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dtpVisitDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void dgvTasks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

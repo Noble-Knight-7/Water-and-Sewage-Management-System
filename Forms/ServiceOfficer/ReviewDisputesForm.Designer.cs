@@ -1,4 +1,4 @@
-namespace WaterSewageManagementSystem.Forms.ServiceOfficer
+﻿namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
     partial class ReviewDisputesForm
     {
@@ -106,11 +106,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(516, 9);
+            this.label1.Location = new System.Drawing.Point(447, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 28);
+            this.label1.Size = new System.Drawing.Size(239, 28);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Bill Disputes";
+            this.label1.Text = "🔎 Review Bill Disputes";
             // 
             // ReviewDisputesForm
             // 

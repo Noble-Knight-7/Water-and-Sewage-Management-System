@@ -1,4 +1,4 @@
-namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
+﻿namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
 {
     partial class MaintenanceDashboardForm
     {
@@ -12,6 +12,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MaintenanceDashboardForm));
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnCompletionReport = new System.Windows.Forms.Button();
@@ -76,7 +77,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(360, 685);
+            this.panelSidebar.Size = new System.Drawing.Size(255, 606);
             this.panelSidebar.TabIndex = 0;
             // 
             // btnProfile
@@ -88,9 +89,9 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnProfile.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnProfile.Location = new System.Drawing.Point(70, 515);
+            this.btnProfile.Location = new System.Drawing.Point(0, 467);
             this.btnProfile.Name = "btnProfile";
-            this.btnProfile.Size = new System.Drawing.Size(260, 46);
+            this.btnProfile.Size = new System.Drawing.Size(263, 46);
             this.btnProfile.TabIndex = 7;
             this.btnProfile.Text = "My Profile";
             this.btnProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -106,7 +107,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.btnCompletionReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompletionReport.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnCompletionReport.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnCompletionReport.Location = new System.Drawing.Point(70, 455);
+            this.btnCompletionReport.Location = new System.Drawing.Point(0, 415);
             this.btnCompletionReport.Name = "btnCompletionReport";
             this.btnCompletionReport.Size = new System.Drawing.Size(260, 46);
             this.btnCompletionReport.TabIndex = 5;
@@ -124,9 +125,9 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.btnInspectionNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInspectionNotes.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnInspectionNotes.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnInspectionNotes.Location = new System.Drawing.Point(70, 395);
+            this.btnInspectionNotes.Location = new System.Drawing.Point(0, 348);
             this.btnInspectionNotes.Name = "btnInspectionNotes";
-            this.btnInspectionNotes.Size = new System.Drawing.Size(260, 46);
+            this.btnInspectionNotes.Size = new System.Drawing.Size(260, 61);
             this.btnInspectionNotes.TabIndex = 4;
             this.btnInspectionNotes.Text = "Inspection Notes";
             this.btnInspectionNotes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -142,7 +143,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.btnVisitDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVisitDate.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnVisitDate.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnVisitDate.Location = new System.Drawing.Point(70, 335);
+            this.btnVisitDate.Location = new System.Drawing.Point(0, 296);
             this.btnVisitDate.Name = "btnVisitDate";
             this.btnVisitDate.Size = new System.Drawing.Size(260, 46);
             this.btnVisitDate.TabIndex = 3;
@@ -160,9 +161,9 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.btnRepairProgress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRepairProgress.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnRepairProgress.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnRepairProgress.Location = new System.Drawing.Point(70, 275);
+            this.btnRepairProgress.Location = new System.Drawing.Point(0, 244);
             this.btnRepairProgress.Name = "btnRepairProgress";
-            this.btnRepairProgress.Size = new System.Drawing.Size(260, 46);
+            this.btnRepairProgress.Size = new System.Drawing.Size(264, 46);
             this.btnRepairProgress.TabIndex = 2;
             this.btnRepairProgress.Text = "Update Repair Progress";
             this.btnRepairProgress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -178,7 +179,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.btnMaintenanceTasks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaintenanceTasks.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnMaintenanceTasks.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMaintenanceTasks.Location = new System.Drawing.Point(70, 215);
+            this.btnMaintenanceTasks.Location = new System.Drawing.Point(0, 192);
             this.btnMaintenanceTasks.Name = "btnMaintenanceTasks";
             this.btnMaintenanceTasks.Size = new System.Drawing.Size(260, 46);
             this.btnMaintenanceTasks.TabIndex = 1;
@@ -196,7 +197,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.btnAssignedComplaints.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAssignedComplaints.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnAssignedComplaints.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnAssignedComplaints.Location = new System.Drawing.Point(70, 155);
+            this.btnAssignedComplaints.Location = new System.Drawing.Point(0, 143);
             this.btnAssignedComplaints.Name = "btnAssignedComplaints";
             this.btnAssignedComplaints.Size = new System.Drawing.Size(260, 46);
             this.btnAssignedComplaints.TabIndex = 0;
@@ -210,9 +211,9 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.panelLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(27)))), ((int)(((byte)(55)))));
             this.panelLogout.Controls.Add(this.btnLogout);
             this.panelLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelLogout.Location = new System.Drawing.Point(0, 592);
+            this.panelLogout.Location = new System.Drawing.Point(0, 534);
             this.panelLogout.Name = "panelLogout";
-            this.panelLogout.Size = new System.Drawing.Size(360, 93);
+            this.panelLogout.Size = new System.Drawing.Size(255, 72);
             this.panelLogout.TabIndex = 9;
             // 
             // btnLogout
@@ -220,15 +221,15 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.btnLogout.BackColor = System.Drawing.Color.Transparent;
             this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogout.FlatAppearance.BorderSize = 0;
-            this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(45)))), ((int)(((byte)(84)))));
+            this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.btnLogout.Location = new System.Drawing.Point(67, 21);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Location = new System.Drawing.Point(0, 0);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(190, 48);
+            this.btnLogout.Size = new System.Drawing.Size(255, 72);
             this.btnLogout.TabIndex = 8;
-            this.btnLogout.Text = "Logout";
+            this.btnLogout.Text = "⏻ Logout";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
@@ -240,7 +241,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.panelBrand.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBrand.Location = new System.Drawing.Point(0, 0);
             this.panelBrand.Name = "panelBrand";
-            this.panelBrand.Size = new System.Drawing.Size(360, 125);
+            this.panelBrand.Size = new System.Drawing.Size(255, 143);
             this.panelBrand.TabIndex = 0;
             // 
             // lblBrandTitle
@@ -248,32 +249,32 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblBrandTitle.AutoSize = true;
             this.lblBrandTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblBrandTitle.ForeColor = System.Drawing.Color.White;
-            this.lblBrandTitle.Location = new System.Drawing.Point(51, 33);
+            this.lblBrandTitle.Location = new System.Drawing.Point(28, 43);
             this.lblBrandTitle.Name = "lblBrandTitle";
-            this.lblBrandTitle.Size = new System.Drawing.Size(225, 32);
+            this.lblBrandTitle.Size = new System.Drawing.Size(177, 25);
             this.lblBrandTitle.TabIndex = 1;
             this.lblBrandTitle.Text = "Water and Sewage";
             // 
             // lblBrandSubtitle
             // 
             this.lblBrandSubtitle.AutoSize = true;
-            this.lblBrandSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblBrandSubtitle.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblBrandSubtitle.Location = new System.Drawing.Point(75, 68);
+            this.lblBrandSubtitle.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.lblBrandSubtitle.ForeColor = System.Drawing.Color.White;
+            this.lblBrandSubtitle.Location = new System.Drawing.Point(28, 79);
             this.lblBrandSubtitle.Name = "lblBrandSubtitle";
-            this.lblBrandSubtitle.Size = new System.Drawing.Size(171, 23);
+            this.lblBrandSubtitle.Size = new System.Drawing.Size(191, 25);
             this.lblBrandSubtitle.TabIndex = 2;
             this.lblBrandSubtitle.Text = "Management System";
             // 
             // panelHeader
             // 
-            this.panelHeader.BackColor = System.Drawing.Color.White;
+            this.panelHeader.BackColor = System.Drawing.Color.PapayaWhip;
             this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Controls.Add(this.lblWelcome);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(360, 0);
+            this.panelHeader.Location = new System.Drawing.Point(255, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(860, 145);
+            this.panelHeader.Size = new System.Drawing.Size(731, 143);
             this.panelHeader.TabIndex = 1;
             // 
             // lblTitle
@@ -283,7 +284,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(24)))), ((int)(((byte)(38)))));
             this.lblTitle.Location = new System.Drawing.Point(28, 33);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(559, 46);
+            this.lblTitle.Size = new System.Drawing.Size(449, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Maintenance Engineer Dashboard";
             // 
@@ -291,10 +292,10 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
-            this.lblWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
+            this.lblWelcome.ForeColor = System.Drawing.Color.Black;
             this.lblWelcome.Location = new System.Drawing.Point(31, 94);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(339, 25);
+            this.lblWelcome.Size = new System.Drawing.Size(264, 19);
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Welcome Back, Maintenance Engineer";
             // 
@@ -307,9 +308,9 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.panelContent.Controls.Add(this.cardMaintenanceTasks);
             this.panelContent.Controls.Add(this.cardAssignedComplaints);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(360, 145);
+            this.panelContent.Location = new System.Drawing.Point(255, 143);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(860, 540);
+            this.panelContent.Size = new System.Drawing.Size(731, 463);
             this.panelContent.TabIndex = 2;
             // 
             // cardCompletionReport
@@ -319,9 +320,9 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.cardCompletionReport.Controls.Add(this.lblReportNumber);
             this.cardCompletionReport.Controls.Add(this.accentCompletionReport);
             this.cardCompletionReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cardCompletionReport.Location = new System.Drawing.Point(447, 191);
+            this.cardCompletionReport.Location = new System.Drawing.Point(447, 174);
             this.cardCompletionReport.Name = "cardCompletionReport";
-            this.cardCompletionReport.Size = new System.Drawing.Size(265, 120);
+            this.cardCompletionReport.Size = new System.Drawing.Size(209, 129);
             this.cardCompletionReport.TabIndex = 0;
             this.cardCompletionReport.Click += new System.EventHandler(this.btnCompletionReport_Click);
             // 
@@ -332,7 +333,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblReportText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblReportText.Location = new System.Drawing.Point(40, 78);
             this.lblReportText.Name = "lblReportText";
-            this.lblReportText.Size = new System.Drawing.Size(174, 25);
+            this.lblReportText.Size = new System.Drawing.Size(137, 19);
             this.lblReportText.TabIndex = 2;
             this.lblReportText.Text = "Completion Report";
             // 
@@ -343,7 +344,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblReportNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(15)))), ((int)(((byte)(25)))));
             this.lblReportNumber.Location = new System.Drawing.Point(38, 25);
             this.lblReportNumber.Name = "lblReportNumber";
-            this.lblReportNumber.Size = new System.Drawing.Size(40, 46);
+            this.lblReportNumber.Size = new System.Drawing.Size(33, 37);
             this.lblReportNumber.TabIndex = 1;
             this.lblReportNumber.Text = "0";
             this.lblReportNumber.Click += new System.EventHandler(this.lblReportNumber_Click);
@@ -354,7 +355,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.accentCompletionReport.Dock = System.Windows.Forms.DockStyle.Left;
             this.accentCompletionReport.Location = new System.Drawing.Point(0, 0);
             this.accentCompletionReport.Name = "accentCompletionReport";
-            this.accentCompletionReport.Size = new System.Drawing.Size(13, 120);
+            this.accentCompletionReport.Size = new System.Drawing.Size(13, 129);
             this.accentCompletionReport.TabIndex = 0;
             // 
             // cardInspectionNotes
@@ -364,9 +365,9 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.cardInspectionNotes.Controls.Add(this.lblInspectionNumber);
             this.cardInspectionNotes.Controls.Add(this.accentInspectionNotes);
             this.cardInspectionNotes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cardInspectionNotes.Location = new System.Drawing.Point(260, 331);
+            this.cardInspectionNotes.Location = new System.Drawing.Point(130, 324);
             this.cardInspectionNotes.Name = "cardInspectionNotes";
-            this.cardInspectionNotes.Size = new System.Drawing.Size(265, 120);
+            this.cardInspectionNotes.Size = new System.Drawing.Size(209, 129);
             this.cardInspectionNotes.TabIndex = 0;
             this.cardInspectionNotes.Click += new System.EventHandler(this.btnInspectionNotes_Click);
             // 
@@ -377,7 +378,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblInspectionText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblInspectionText.Location = new System.Drawing.Point(40, 78);
             this.lblInspectionText.Name = "lblInspectionText";
-            this.lblInspectionText.Size = new System.Drawing.Size(156, 25);
+            this.lblInspectionText.Size = new System.Drawing.Size(120, 19);
             this.lblInspectionText.TabIndex = 2;
             this.lblInspectionText.Text = "Inspection Notes";
             // 
@@ -388,7 +389,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblInspectionNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(15)))), ((int)(((byte)(25)))));
             this.lblInspectionNumber.Location = new System.Drawing.Point(38, 25);
             this.lblInspectionNumber.Name = "lblInspectionNumber";
-            this.lblInspectionNumber.Size = new System.Drawing.Size(40, 46);
+            this.lblInspectionNumber.Size = new System.Drawing.Size(33, 37);
             this.lblInspectionNumber.TabIndex = 1;
             this.lblInspectionNumber.Text = "0";
             this.lblInspectionNumber.Click += new System.EventHandler(this.lblInspectionNumber_Click);
@@ -399,7 +400,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.accentInspectionNotes.Dock = System.Windows.Forms.DockStyle.Left;
             this.accentInspectionNotes.Location = new System.Drawing.Point(0, 0);
             this.accentInspectionNotes.Name = "accentInspectionNotes";
-            this.accentInspectionNotes.Size = new System.Drawing.Size(13, 120);
+            this.accentInspectionNotes.Size = new System.Drawing.Size(13, 129);
             this.accentInspectionNotes.TabIndex = 0;
             // 
             // cardRepairProgress
@@ -409,9 +410,9 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.cardRepairProgress.Controls.Add(this.lblRepairNumber);
             this.cardRepairProgress.Controls.Add(this.accentRepairProgress);
             this.cardRepairProgress.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cardRepairProgress.Location = new System.Drawing.Point(132, 191);
+            this.cardRepairProgress.Location = new System.Drawing.Point(130, 174);
             this.cardRepairProgress.Name = "cardRepairProgress";
-            this.cardRepairProgress.Size = new System.Drawing.Size(265, 120);
+            this.cardRepairProgress.Size = new System.Drawing.Size(209, 129);
             this.cardRepairProgress.TabIndex = 0;
             this.cardRepairProgress.Click += new System.EventHandler(this.btnRepairProgress_Click);
             // 
@@ -422,7 +423,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblRepairText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblRepairText.Location = new System.Drawing.Point(40, 78);
             this.lblRepairText.Name = "lblRepairText";
-            this.lblRepairText.Size = new System.Drawing.Size(145, 25);
+            this.lblRepairText.Size = new System.Drawing.Size(116, 19);
             this.lblRepairText.TabIndex = 2;
             this.lblRepairText.Text = "Repair Progress";
             // 
@@ -433,7 +434,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblRepairNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(15)))), ((int)(((byte)(25)))));
             this.lblRepairNumber.Location = new System.Drawing.Point(38, 25);
             this.lblRepairNumber.Name = "lblRepairNumber";
-            this.lblRepairNumber.Size = new System.Drawing.Size(40, 46);
+            this.lblRepairNumber.Size = new System.Drawing.Size(33, 37);
             this.lblRepairNumber.TabIndex = 1;
             this.lblRepairNumber.Text = "0";
             this.lblRepairNumber.Click += new System.EventHandler(this.lblRepairNumber_Click);
@@ -444,7 +445,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.accentRepairProgress.Dock = System.Windows.Forms.DockStyle.Left;
             this.accentRepairProgress.Location = new System.Drawing.Point(0, 0);
             this.accentRepairProgress.Name = "accentRepairProgress";
-            this.accentRepairProgress.Size = new System.Drawing.Size(13, 120);
+            this.accentRepairProgress.Size = new System.Drawing.Size(13, 129);
             this.accentRepairProgress.TabIndex = 0;
             // 
             // cardMaintenanceTasks
@@ -454,11 +455,12 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.cardMaintenanceTasks.Controls.Add(this.lblMaintenanceNumber);
             this.cardMaintenanceTasks.Controls.Add(this.accentMaintenanceTasks);
             this.cardMaintenanceTasks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cardMaintenanceTasks.Location = new System.Drawing.Point(447, 56);
+            this.cardMaintenanceTasks.Location = new System.Drawing.Point(447, 18);
             this.cardMaintenanceTasks.Name = "cardMaintenanceTasks";
-            this.cardMaintenanceTasks.Size = new System.Drawing.Size(265, 120);
+            this.cardMaintenanceTasks.Size = new System.Drawing.Size(209, 129);
             this.cardMaintenanceTasks.TabIndex = 0;
             this.cardMaintenanceTasks.Click += new System.EventHandler(this.btnMaintenanceTasks_Click);
+            this.cardMaintenanceTasks.Paint += new System.Windows.Forms.PaintEventHandler(this.cardMaintenanceTasks_Paint);
             // 
             // lblMaintenanceText
             // 
@@ -467,7 +469,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblMaintenanceText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblMaintenanceText.Location = new System.Drawing.Point(40, 78);
             this.lblMaintenanceText.Name = "lblMaintenanceText";
-            this.lblMaintenanceText.Size = new System.Drawing.Size(173, 25);
+            this.lblMaintenanceText.Size = new System.Drawing.Size(133, 19);
             this.lblMaintenanceText.TabIndex = 2;
             this.lblMaintenanceText.Text = "Maintenance Tasks";
             // 
@@ -478,7 +480,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblMaintenanceNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(15)))), ((int)(((byte)(25)))));
             this.lblMaintenanceNumber.Location = new System.Drawing.Point(38, 25);
             this.lblMaintenanceNumber.Name = "lblMaintenanceNumber";
-            this.lblMaintenanceNumber.Size = new System.Drawing.Size(40, 46);
+            this.lblMaintenanceNumber.Size = new System.Drawing.Size(33, 37);
             this.lblMaintenanceNumber.TabIndex = 1;
             this.lblMaintenanceNumber.Text = "0";
             this.lblMaintenanceNumber.Click += new System.EventHandler(this.lblMaintenanceNumber_Click);
@@ -489,7 +491,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.accentMaintenanceTasks.Dock = System.Windows.Forms.DockStyle.Left;
             this.accentMaintenanceTasks.Location = new System.Drawing.Point(0, 0);
             this.accentMaintenanceTasks.Name = "accentMaintenanceTasks";
-            this.accentMaintenanceTasks.Size = new System.Drawing.Size(13, 120);
+            this.accentMaintenanceTasks.Size = new System.Drawing.Size(13, 129);
             this.accentMaintenanceTasks.TabIndex = 0;
             // 
             // cardAssignedComplaints
@@ -499,9 +501,9 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.cardAssignedComplaints.Controls.Add(this.lblAssignedNumber);
             this.cardAssignedComplaints.Controls.Add(this.accentAssignedComplaints);
             this.cardAssignedComplaints.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cardAssignedComplaints.Location = new System.Drawing.Point(132, 56);
+            this.cardAssignedComplaints.Location = new System.Drawing.Point(130, 18);
             this.cardAssignedComplaints.Name = "cardAssignedComplaints";
-            this.cardAssignedComplaints.Size = new System.Drawing.Size(265, 120);
+            this.cardAssignedComplaints.Size = new System.Drawing.Size(209, 129);
             this.cardAssignedComplaints.TabIndex = 0;
             this.cardAssignedComplaints.Click += new System.EventHandler(this.btnAssignedComplaints_Click);
             this.cardAssignedComplaints.Paint += new System.Windows.Forms.PaintEventHandler(this.cardAssignedComplaints_Paint);
@@ -513,7 +515,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblAssignedText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblAssignedText.Location = new System.Drawing.Point(40, 78);
             this.lblAssignedText.Name = "lblAssignedText";
-            this.lblAssignedText.Size = new System.Drawing.Size(189, 25);
+            this.lblAssignedText.Size = new System.Drawing.Size(148, 19);
             this.lblAssignedText.TabIndex = 2;
             this.lblAssignedText.Text = "Assigned Complaints";
             // 
@@ -524,7 +526,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.lblAssignedNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(15)))), ((int)(((byte)(25)))));
             this.lblAssignedNumber.Location = new System.Drawing.Point(38, 25);
             this.lblAssignedNumber.Name = "lblAssignedNumber";
-            this.lblAssignedNumber.Size = new System.Drawing.Size(40, 46);
+            this.lblAssignedNumber.Size = new System.Drawing.Size(33, 37);
             this.lblAssignedNumber.TabIndex = 1;
             this.lblAssignedNumber.Text = "0";
             this.lblAssignedNumber.Click += new System.EventHandler(this.lblAssignedNumber_Click);
@@ -535,20 +537,21 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.accentAssignedComplaints.Dock = System.Windows.Forms.DockStyle.Left;
             this.accentAssignedComplaints.Location = new System.Drawing.Point(0, 0);
             this.accentAssignedComplaints.Name = "accentAssignedComplaints";
-            this.accentAssignedComplaints.Size = new System.Drawing.Size(13, 120);
+            this.accentAssignedComplaints.Size = new System.Drawing.Size(13, 129);
             this.accentAssignedComplaints.TabIndex = 0;
             // 
             // MaintenanceDashboardForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(246)))), ((int)(((byte)(251)))));
-            this.ClientSize = new System.Drawing.Size(1220, 685);
+            this.ClientSize = new System.Drawing.Size(986, 606);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelSidebar);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MaintenanceDashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentBillForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelBill = new System.Windows.Forms.Panel();
             this.lblBillID = new System.Windows.Forms.Label();
@@ -52,7 +51,8 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(260, 30);
             this.lblTitle.TabIndex = 4;
-            this.lblTitle.Text = "Your Current Bill";
+            this.lblTitle.Text = "🧾 Your Current Bill";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // panelBill
             // 
@@ -193,7 +193,6 @@
             this.Controls.Add(this.panelBill);
             this.Controls.Add(this.btnDispute);
             this.Controls.Add(this.btnClose);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CurrentBillForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Current Bill";

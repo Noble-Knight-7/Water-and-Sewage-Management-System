@@ -7,6 +7,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDashboardForm));
             this.btnManageUsers = new System.Windows.Forms.Button();
             this.btnApproveEmployees = new System.Windows.Forms.Button();
             this.btnAssignComplaints = new System.Windows.Forms.Button();
@@ -221,7 +222,7 @@
             this.lblLogoSub.ForeColor = System.Drawing.Color.White;
             this.lblLogoSub.Location = new System.Drawing.Point(74, 56);
             this.lblLogoSub.Name = "lblLogoSub";
-            this.lblLogoSub.Size = new System.Drawing.Size(171, 23);
+            this.lblLogoSub.Size = new System.Drawing.Size(139, 19);
             this.lblLogoSub.TabIndex = 2;
             this.lblLogoSub.Text = "Management System";
             // 
@@ -233,7 +234,7 @@
             this.lblLogoName.ForeColor = System.Drawing.Color.White;
             this.lblLogoName.Location = new System.Drawing.Point(48, 21);
             this.lblLogoName.Name = "lblLogoName";
-            this.lblLogoName.Size = new System.Drawing.Size(233, 35);
+            this.lblLogoName.Size = new System.Drawing.Size(188, 28);
             this.lblLogoName.TabIndex = 0;
             this.lblLogoName.Text = "Water and Sewage";
             // 
@@ -244,7 +245,7 @@
             this.lblLogoIcon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
             this.lblLogoIcon.Location = new System.Drawing.Point(-5, 25);
             this.lblLogoIcon.Name = "lblLogoIcon";
-            this.lblLogoIcon.Size = new System.Drawing.Size(73, 49);
+            this.lblLogoIcon.Size = new System.Drawing.Size(58, 40);
             this.lblLogoIcon.TabIndex = 1;
             this.lblLogoIcon.Text = "💧";
             // 
@@ -266,7 +267,7 @@
             this.lblWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblWelcome.Location = new System.Drawing.Point(22, 46);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(192, 23);
+            this.lblWelcome.Size = new System.Drawing.Size(161, 19);
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Welcome Back, Admin";
             // 
@@ -277,7 +278,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.lblTitle.Location = new System.Drawing.Point(19, 8);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(255, 38);
+            this.lblTitle.Size = new System.Drawing.Size(200, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Admin Dashboard";
             // 
@@ -320,7 +321,7 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.label5.Location = new System.Drawing.Point(27, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 23);
+            this.label5.Size = new System.Drawing.Size(105, 19);
             this.label5.TabIndex = 1;
             this.label5.Text = "Active Notices";
             // 
@@ -331,7 +332,7 @@
             this.lblCard4Num.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.lblCard4Num.Location = new System.Drawing.Point(22, 7);
             this.lblCard4Num.Name = "lblCard4Num";
-            this.lblCard4Num.Size = new System.Drawing.Size(69, 50);
+            this.lblCard4Num.Size = new System.Drawing.Size(56, 41);
             this.lblCard4Num.TabIndex = 0;
             this.lblCard4Num.Text = "— ";
             // 
@@ -363,7 +364,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.label3.Location = new System.Drawing.Point(11, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 23);
+            this.label3.Size = new System.Drawing.Size(137, 19);
             this.label3.TabIndex = 1;
             this.label3.Text = "Pending Approvals";
             // 
@@ -374,7 +375,7 @@
             this.lblCard3Num.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.lblCard3Num.Location = new System.Drawing.Point(22, 7);
             this.lblCard3Num.Name = "lblCard3Num";
-            this.lblCard3Num.Size = new System.Drawing.Size(69, 50);
+            this.lblCard3Num.Size = new System.Drawing.Size(56, 41);
             this.lblCard3Num.TabIndex = 0;
             this.lblCard3Num.Text = "— ";
             // 
@@ -406,7 +407,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.label1.Location = new System.Drawing.Point(27, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 23);
+            this.label1.Size = new System.Drawing.Size(124, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "Open Complaints";
             // 
@@ -417,7 +418,7 @@
             this.lblCard2Num.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.lblCard2Num.Location = new System.Drawing.Point(22, 7);
             this.lblCard2Num.Name = "lblCard2Num";
-            this.lblCard2Num.Size = new System.Drawing.Size(69, 50);
+            this.lblCard2Num.Size = new System.Drawing.Size(56, 41);
             this.lblCard2Num.TabIndex = 0;
             this.lblCard2Num.Text = "— ";
             // 
@@ -450,7 +451,7 @@
             this.lblCard1Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblCard1Title.Location = new System.Drawing.Point(27, 66);
             this.lblCard1Title.Name = "lblCard1Title";
-            this.lblCard1Title.Size = new System.Drawing.Size(96, 23);
+            this.lblCard1Title.Size = new System.Drawing.Size(82, 19);
             this.lblCard1Title.TabIndex = 1;
             this.lblCard1Title.Text = "Total Users";
             // 
@@ -461,7 +462,7 @@
             this.lblCard1Num.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.lblCard1Num.Location = new System.Drawing.Point(22, 7);
             this.lblCard1Num.Name = "lblCard1Num";
-            this.lblCard1Num.Size = new System.Drawing.Size(69, 50);
+            this.lblCard1Num.Size = new System.Drawing.Size(56, 41);
             this.lblCard1Num.TabIndex = 0;
             this.lblCard1Num.Text = "— ";
             this.lblCard1Num.Click += new System.EventHandler(this.lblCard1Num_Click);
@@ -487,6 +488,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(213)))), ((int)(((byte)(225)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AdminDashboardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

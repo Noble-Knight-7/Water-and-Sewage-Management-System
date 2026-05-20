@@ -8,6 +8,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssignComplaintsForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblEngineer = new System.Windows.Forms.Label();
             this.cmbEngineer = new System.Windows.Forms.ComboBox();
@@ -52,7 +53,7 @@
             this.cmbEngineer.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEngineer.Location = new System.Drawing.Point(169, 14);
             this.cmbEngineer.Name = "cmbEngineer";
-            this.cmbEngineer.Size = new System.Drawing.Size(250, 31);
+            this.cmbEngineer.Size = new System.Drawing.Size(250, 25);
             this.cmbEngineer.TabIndex = 3;
             // 
             // btnAssign
@@ -204,6 +205,7 @@
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelFooterBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AssignComplaintsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

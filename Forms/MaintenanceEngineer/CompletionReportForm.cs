@@ -58,6 +58,16 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 DataTable dt = ds.Tables[0];
                 dgvTasks.DataSource = dt;
                 dgvTasks.AutoGenerateColumns = true;
+
+                // Allow manual resizing
+                dgvTasks.AllowUserToResizeColumns = true;
+                dgvTasks.AllowUserToResizeRows = true;
+
+                // Auto size based on content initially
+                dgvTasks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+                // Extra settings
+                dgvTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             }
             catch (Exception ex)
             {
@@ -164,6 +174,48 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if (dgvTasks.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Select a task first.");
+                return;
+            }
+
+            int taskID = Convert.ToInt32(dgvTasks.SelectedRows[0].Cells["TaskID"].Value);
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = "UPDATE MaintenanceTasks SET CompletionReport='', UpdatedAt=GETDATE() WHERE TaskID=" + taskID;
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Completion report removed successfully.");
+                    txtReport.Clear();
+                    LoadTasks();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to remove completion report.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error removing completion report: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }

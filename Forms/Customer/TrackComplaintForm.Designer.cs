@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrackComplaintForm));
             this.panelTop = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -57,9 +56,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(20, 14);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(165, 28);
+            this.lblTitle.Size = new System.Drawing.Size(248, 35);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Track Complaint";
+            this.lblTitle.Text = "🔎 Track Complaint";
             this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // btnRefresh
@@ -130,7 +129,6 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvComplaints);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TrackComplaintForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Track Complaint";

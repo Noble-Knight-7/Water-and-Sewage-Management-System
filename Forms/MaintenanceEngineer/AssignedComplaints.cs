@@ -53,6 +53,16 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 DataTable dt = ds.Tables[0];
                 dgvComplaints.DataSource = dt;
                 dgvComplaints.AutoGenerateColumns = true;
+
+                // Allow manual resizing
+                dgvComplaints.AllowUserToResizeColumns = true;
+                dgvComplaints.AllowUserToResizeRows = true;
+
+                // Auto size based on content initially
+                dgvComplaints.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+                // Extra settings
+                dgvComplaints.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             }
             catch (Exception ex)
             {

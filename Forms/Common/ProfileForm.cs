@@ -155,5 +155,79 @@ namespace WaterSewageManagementSystem.Forms.Common
         {
 
         }
+
+        private void lblStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete your profile?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string roleQuery = "SELECT Role FROM Users WHERE UserID = @UserID";
+                SqlCommand roleCmd = new SqlCommand(roleQuery, conn);
+                roleCmd.Parameters.AddWithValue("@UserID", currentUserId);
+
+                object roleResult = roleCmd.ExecuteScalar();
+
+                if (roleResult == null)
+                {
+                    MessageBox.Show("User not found.");
+                    return;
+                }
+
+                string role = roleResult.ToString();
+
+                if (role == "Customer")
+                {
+                    string deleteCustomerQuery = "DELETE FROM Customers WHERE UserID = @UserID";
+                    SqlCommand customerCmd = new SqlCommand(deleteCustomerQuery, conn);
+                    customerCmd.Parameters.AddWithValue("@UserID", currentUserId);
+                    customerCmd.ExecuteNonQuery();
+                }
+
+                string deleteUserQuery = "DELETE FROM Users WHERE UserID = @UserID";
+                SqlCommand userCmd = new SqlCommand(deleteUserQuery, conn);
+                userCmd.Parameters.AddWithValue("@UserID", currentUserId);
+
+                int rows = userCmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Profile deleted successfully. You will be logged out.");
+
+                    Application.Restart();
+                }
+                else
+                {
+                    MessageBox.Show("Could not delete profile.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting profile: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

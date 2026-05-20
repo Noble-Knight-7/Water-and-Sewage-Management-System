@@ -7,6 +7,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoticeManagementForm));
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -192,7 +193,7 @@
             this.txtTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtTitle.Location = new System.Drawing.Point(342, 32);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(400, 30);
+            this.txtTitle.Size = new System.Drawing.Size(400, 25);
             this.txtTitle.TabIndex = 41;
             // 
             // lblDesc
@@ -232,7 +233,7 @@
             this.txtArea.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtArea.Location = new System.Drawing.Point(342, 132);
             this.txtArea.Name = "txtArea";
-            this.txtArea.Size = new System.Drawing.Size(200, 30);
+            this.txtArea.Size = new System.Drawing.Size(200, 25);
             this.txtArea.TabIndex = 45;
             // 
             // lblType
@@ -255,7 +256,7 @@
             "Emergency"});
             this.cmbType.Location = new System.Drawing.Point(342, 163);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(180, 31);
+            this.cmbType.Size = new System.Drawing.Size(180, 25);
             this.cmbType.TabIndex = 47;
             // 
             // dgvNotices
@@ -291,6 +292,7 @@
             this.Controls.Add(this.panelFooterBorder);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "NoticeManagementForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

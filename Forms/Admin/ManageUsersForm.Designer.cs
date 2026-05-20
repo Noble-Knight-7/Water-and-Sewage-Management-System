@@ -8,6 +8,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageUsersForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnActivate = new System.Windows.Forms.Button();
             this.btnDeactivate = new System.Windows.Forms.Button();
@@ -204,6 +205,7 @@
             this.Controls.Add(this.panelFooterBorder);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ManageUsersForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

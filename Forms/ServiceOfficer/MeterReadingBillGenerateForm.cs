@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using WaterSewageManagementSystem.Forms.Common;
 
 namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 {
@@ -27,11 +28,11 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         }
         private void LoadPreviousReading()
         {
-            if (cmbCustomer.SelectedValue == null)
-            {
-                txtPrevious.Text = "0";
-                return;
-            }
+            //if (cmbCustomer.SelectedValue == null)
+            //{
+            //    txtPrevious.Text = "0";
+            //    return;
+            //}
 
             int customerID;
 
@@ -138,6 +139,14 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 return;
             }
 
+            int officerID = LoginForm.LoggedInUserID;
+
+            if (officerID == 0)
+            {
+                MessageBox.Show("No logged in service officer found. Please login again.");
+                return;
+            }
+
             int previousReading;
             int currentReading;
 
@@ -214,32 +223,35 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 conn.Open();
 
                 string query = @"INSERT INTO Bills
-                 (
-                     CustomerID,
-                     BillingMonth,
-                     PreviousReading,
-                     CurrentReading,
-                     Amount,
-                     Arrears,
-                     Status,
-                     CreatedAt
-                 )
-                 VALUES
-                 (
-                     @CustomerID,
-                     @BillingMonth,
-                     @PreviousReading,
-                     @CurrentReading,
-                     @Amount,
-                     @Arrears,
-                     'Unpaid',
-                     GETDATE()
-                 )";
+                (
+                    CustomerID,
+                    BillingMonth,
+                    PreviousReading,
+                    CurrentReading,
+                    Amount,
+                    Arrears,
+                    Status,
+                    CreatedAt,
+                    GeneratedBy
+                )
+                VALUES
+                (
+                    @CustomerID,
+                    @BillingMonth,
+                    @PreviousReading,
+                    @CurrentReading,
+                    @Amount,
+                    @Arrears,
+                    'Unpaid',
+                    GETDATE(),
+                    @GeneratedBy
+                )";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@CustomerID", customerID);
                 cmd.Parameters.AddWithValue("@BillingMonth", billingMonth);
                 cmd.Parameters.AddWithValue("@PreviousReading", previousReading);
+                cmd.Parameters.AddWithValue("@GeneratedBy", officerID);
                 cmd.Parameters.AddWithValue("@CurrentReading", currentReading);
                 cmd.Parameters.AddWithValue("@Amount", amount);
                 cmd.Parameters.AddWithValue("@Arrears", arrears);

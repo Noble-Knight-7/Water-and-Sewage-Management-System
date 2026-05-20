@@ -302,5 +302,10 @@ namespace WaterSewageManagementSystem.Forms.Customer
         {
 
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadDashboardData();
+        }
     }
 }

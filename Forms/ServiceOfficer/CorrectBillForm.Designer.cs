@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CorrectBillForm));
-            this.lblTitle = new System.Windows.Forms.Label();
             this.lblBillIDLbl = new System.Windows.Forms.Label();
             this.txtBillID = new System.Windows.Forms.TextBox();
             this.lblBillInfo = new System.Windows.Forms.Label();
@@ -37,22 +36,15 @@
             this.txtNewAmount = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelHeader.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.lblTitle.Location = new System.Drawing.Point(135, 20);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(280, 28);
-            this.lblTitle.TabIndex = 9;
-            this.lblTitle.Text = "Correct Bill Amount";
             // 
             // lblBillIDLbl
             // 
             this.lblBillIDLbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblBillIDLbl.Location = new System.Drawing.Point(25, 78);
+            this.lblBillIDLbl.Location = new System.Drawing.Point(45, 80);
             this.lblBillIDLbl.Name = "lblBillIDLbl";
             this.lblBillIDLbl.Size = new System.Drawing.Size(120, 22);
             this.lblBillIDLbl.TabIndex = 10;
@@ -62,24 +54,24 @@
             // 
             this.txtBillID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBillID.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtBillID.Location = new System.Drawing.Point(170, 76);
+            this.txtBillID.Location = new System.Drawing.Point(189, 78);
             this.txtBillID.Name = "txtBillID";
             this.txtBillID.Size = new System.Drawing.Size(200, 25);
             this.txtBillID.TabIndex = 11;
             // 
             // lblBillInfo
             // 
-            this.lblBillInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblBillInfo.ForeColor = System.Drawing.Color.DimGray;
-            this.lblBillInfo.Location = new System.Drawing.Point(25, 118);
+            this.lblBillInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBillInfo.ForeColor = System.Drawing.Color.Red;
+            this.lblBillInfo.Location = new System.Drawing.Point(0, 118);
             this.lblBillInfo.Name = "lblBillInfo";
-            this.lblBillInfo.Size = new System.Drawing.Size(460, 22);
+            this.lblBillInfo.Size = new System.Drawing.Size(520, 22);
             this.lblBillInfo.TabIndex = 13;
             // 
             // lblNewAmt
             // 
             this.lblNewAmt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblNewAmt.Location = new System.Drawing.Point(25, 156);
+            this.lblNewAmt.Location = new System.Drawing.Point(45, 155);
             this.lblNewAmt.Name = "lblNewAmt";
             this.lblNewAmt.Size = new System.Drawing.Size(140, 22);
             this.lblNewAmt.TabIndex = 14;
@@ -90,7 +82,7 @@
             this.txtNewAmount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNewAmount.Enabled = false;
             this.txtNewAmount.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNewAmount.Location = new System.Drawing.Point(170, 152);
+            this.txtNewAmount.Location = new System.Drawing.Point(189, 153);
             this.txtNewAmount.Name = "txtNewAmount";
             this.txtNewAmount.Size = new System.Drawing.Size(200, 25);
             this.txtNewAmount.TabIndex = 15;
@@ -128,12 +120,33 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
+            this.panelHeader.Controls.Add(this.label1);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(520, 52);
+            this.panelHeader.TabIndex = 30;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(165, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(200, 28);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Correct Bill Amount";
+            // 
             // CorrectBillForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(520, 280);
-            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.lblBillIDLbl);
             this.Controls.Add(this.txtBillID);
             this.Controls.Add(this.lblBillInfo);
@@ -146,14 +159,14 @@
             this.Name = "CorrectBillForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Correct Bill";
+            this.panelHeader.ResumeLayout(false);
+            this.panelHeader.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblBillIDLbl;
         private System.Windows.Forms.TextBox txtBillID;
         private System.Windows.Forms.Label lblBillInfo;
@@ -161,5 +174,7 @@
         private System.Windows.Forms.TextBox txtNewAmount;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label label1;
     }
 }

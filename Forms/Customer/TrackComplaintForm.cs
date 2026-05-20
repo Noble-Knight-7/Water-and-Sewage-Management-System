@@ -20,10 +20,11 @@ namespace WaterSewageManagementSystem.Forms.Customer
         public TrackComplaintForm()
         {
             InitializeComponent();
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-            {
-                LoadComplaints();
-            }
+            LoadComplaints();
+            //if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            //{
+            //    LoadComplaints();
+            //}
         }
 
         private void LoadComplaints()

@@ -29,7 +29,7 @@ namespace WaterSewageManagementSystem.Forms.Customer
 
             if (holdingNumber == "")
             {
-                errorlblHold.Text = "Please enter your holding number";
+                errorlblHold.Text = "Please enter your nid number";
                 hasError = true;
             }
 
@@ -167,6 +167,11 @@ namespace WaterSewageManagementSystem.Forms.Customer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ConnectionApplicationForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

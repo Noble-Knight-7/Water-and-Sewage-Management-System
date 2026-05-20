@@ -62,7 +62,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 SqlCommand inspectionCmd = new SqlCommand(inspectionQuery, conn);
                 lblInspectionNumber.Text = inspectionCmd.ExecuteScalar().ToString();
 
-                string reportQuery = "SELECT COUNT(*) FROM MaintenanceTasks WHERE EngineerID=" + LoginForm.LoggedInUserID + " AND CompletionReport IS NOT NULL AND CompletionReport<>''";
+                string reportQuery = "SELECT COUNT(*) FROM MaintenanceTasks WHERE EngineerID=" + LoginForm.LoggedInUserID + " AND ProgressStatus='Completed'";
                 SqlCommand reportCmd = new SqlCommand(reportQuery, conn);
                 lblReportNumber.Text = reportCmd.ExecuteScalar().ToString();
 
@@ -178,6 +178,16 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
 
 
         private void lblBrandIcon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cardMaintenanceTasks_Paint(object sender, PaintEventArgs e)
         {
 
         }

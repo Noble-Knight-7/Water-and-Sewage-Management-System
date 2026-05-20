@@ -203,8 +203,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
                 return;
             }
 
-            reason = reason.Replace("'", "''");
-
             DialogResult result = MessageBox.Show(
                 "Reject this connection application?",
                 "Confirm Rejection",

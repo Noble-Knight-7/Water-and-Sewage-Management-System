@@ -96,5 +96,10 @@ namespace WaterSewageManagementSystem.Forms.Customer
         {
             this.Close();
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadHistory();
+        }
     }
 }

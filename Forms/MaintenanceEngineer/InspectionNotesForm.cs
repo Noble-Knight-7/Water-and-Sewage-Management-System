@@ -58,6 +58,16 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 DataTable dt = ds.Tables[0];
                 dgvTasks.DataSource = dt;
                 dgvTasks.AutoGenerateColumns = true;
+
+                // Allow manual resizing
+                dgvTasks.AllowUserToResizeColumns = true;
+                dgvTasks.AllowUserToResizeRows = true;
+
+                // Auto size based on content initially
+                dgvTasks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+                // Extra settings
+                dgvTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             }
             catch (Exception ex)
             {
@@ -137,7 +147,44 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtNotes.Clear();
+            if (dgvTasks.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Select a task first.");
+                return;
+            }
+
+            int taskID = Convert.ToInt32(dgvTasks.SelectedRows[0].Cells["TaskID"].Value);
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+
+                string query = "UPDATE MaintenanceTasks SET Notes='', UpdatedAt=GETDATE() WHERE TaskID=" + taskID;
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                {
+                    MessageBox.Show("Inspection note removed successfully.");
+                    txtNotes.Clear();
+                    LoadTasks();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to remove note.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error removing note: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

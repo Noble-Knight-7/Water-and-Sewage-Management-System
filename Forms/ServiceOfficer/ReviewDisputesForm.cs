@@ -138,10 +138,10 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             }
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            LoadDisputes();
-        }
+        //private void btnRefresh_Click(object sender, EventArgs e)
+        //{
+        //    LoadDisputes();
+        //}
 
         private void btnClose_Click(object sender, EventArgs e)
         {

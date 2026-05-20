@@ -9,6 +9,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SystemReportForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -146,7 +147,7 @@
             "Connection"});
             this.cmbType.Location = new System.Drawing.Point(204, 42);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(200, 31);
+            this.cmbType.Size = new System.Drawing.Size(200, 25);
             this.cmbType.TabIndex = 13;
             // 
             // lblDesc
@@ -164,7 +165,7 @@
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtDescription.Location = new System.Drawing.Point(204, 79);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(650, 30);
+            this.txtDescription.Size = new System.Drawing.Size(650, 25);
             this.txtDescription.TabIndex = 15;
             // 
             // btnGenerate
@@ -231,6 +232,7 @@
             this.Controls.Add(this.panelFooter);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "SystemReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

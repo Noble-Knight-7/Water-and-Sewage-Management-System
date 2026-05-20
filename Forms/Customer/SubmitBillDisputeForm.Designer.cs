@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubmitBillDisputeForm));
             this.panelTop = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
@@ -60,7 +59,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(20, 14);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(195, 28);
+            this.lblTitle.Size = new System.Drawing.Size(242, 35);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Submit Bill Dispute";
             this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
@@ -85,7 +84,7 @@
             this.lblBillID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblBillID.Location = new System.Drawing.Point(22, 24);
             this.lblBillID.Name = "lblBillID";
-            this.lblBillID.Size = new System.Drawing.Size(48, 19);
+            this.lblBillID.Size = new System.Drawing.Size(59, 23);
             this.lblBillID.TabIndex = 0;
             this.lblBillID.Text = "Bill ID";
             this.lblBillID.Click += new System.EventHandler(this.lblBillID_Click);
@@ -96,7 +95,7 @@
             this.txtBillID.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtBillID.Location = new System.Drawing.Point(26, 54);
             this.txtBillID.Name = "txtBillID";
-            this.txtBillID.Size = new System.Drawing.Size(508, 25);
+            this.txtBillID.Size = new System.Drawing.Size(508, 30);
             this.txtBillID.TabIndex = 1;
             this.txtBillID.TextChanged += new System.EventHandler(this.txtBillID_TextChanged);
             // 
@@ -106,7 +105,7 @@
             this.lblReason.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblReason.Location = new System.Drawing.Point(22, 106);
             this.lblReason.Name = "lblReason";
-            this.lblReason.Size = new System.Drawing.Size(134, 19);
+            this.lblReason.Size = new System.Drawing.Size(160, 23);
             this.lblReason.TabIndex = 2;
             this.lblReason.Text = "Reason for dispute";
             this.lblReason.Click += new System.EventHandler(this.lblReason_Click);
@@ -165,7 +164,6 @@
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubmitBillDisputeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Submit Bill Dispute";

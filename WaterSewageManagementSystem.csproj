@@ -403,6 +403,12 @@
     <EmbeddedResource Include="Forms\Admin\ApproveEmployeesForm.resx">
       <DependentUpon>ApproveEmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\AssignComplaintsForm.resx">
+      <DependentUpon>AssignComplaintsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Admin\ManageUsersForm.resx">
+      <DependentUpon>ManageUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\NoticeManagementForm.resx">
       <DependentUpon>NoticeManagementForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -433,6 +439,9 @@
     <EmbeddedResource Include="Forms\Customer\CurrentBillForm.resx">
       <DependentUpon>CurrentBillForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Customer\CustomerDashboardForm.resx">
+      <DependentUpon>CustomerDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\SubmitBillDisputeForm.resx">
       <DependentUpon>SubmitBillDisputeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -451,8 +460,23 @@
     <EmbeddedResource Include="Forms\MaintenanceEngineer\AssignedComplaints.resx">
       <DependentUpon>AssignedComplaints.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaintenanceEngineer\CompletionReportForm.resx">
+      <DependentUpon>CompletionReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaintenanceEngineer\InspectionNotesForm.resx">
+      <DependentUpon>InspectionNotesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MaintenanceEngineer\MaintenanceDashboardForm.resx">
       <DependentUpon>MaintenanceDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaintenanceEngineer\MaintenanceTasksForm.resx">
+      <DependentUpon>MaintenanceTasksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaintenanceEngineer\RepairProgressForm.resx">
+      <DependentUpon>RepairProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MaintenanceEngineer\VisitDateForm.resx">
+      <DependentUpon>VisitDateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServiceOfficer\BillingReportForm.resx">
       <DependentUpon>BillingReportForm.cs</DependentUpon>
