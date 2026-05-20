@@ -12,28 +12,12 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         public ServiceOfficerDashboardForm()
         {
             InitializeComponent();
-
-            if (!string.IsNullOrEmpty(LoginForm.LoggedInFullName))
-            {
-                lbl_Welcome.Text = "Welcome, " + LoginForm.LoggedInFullName;
-            }
-            else
-            {
-                lbl_Welcome.Text = "Welcome, Service Officer";
-            }
+            lbl_Welcome.Text = "Welcome, " + LoginForm.LoggedInFullName;
         }
-
         private void ServiceOfficerDashboardForm_Load(object sender, EventArgs e)
         {
-            LoadDashboardData();
-        }
-
-        private void LoadDashboardData()
-        {
             LoadCounts();
-            LoadRecentRecords();
         }
-
         private void LoadCounts()
         {
             SqlConnection conn = new SqlConnection(connectionString);
@@ -82,132 +66,52 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
             }
         }
 
-        private void LoadRecentRecords()
-        {
-            SqlConnection conn = new SqlConnection(connectionString);
-
-            try
-            {
-                conn.Open();
-
-                string query = @"
-                    SELECT TOP 10 
-                        ID,
-                        Type,
-                        Customer,
-                        CONVERT(varchar(20), RecordDate, 106) AS Date,
-                        Status
-                    FROM
-                    (
-                        SELECT 
-                            b.BillID AS ID,
-                            'Bill' AS Type,
-                            u.FullName AS Customer,
-                            b.CreatedAt AS RecordDate,
-                            b.Status AS Status
-                        FROM Bills b
-                        JOIN Customers c ON b.CustomerID = c.CustomerID
-                        JOIN Users u ON c.UserID = u.UserID
-                        WHERE b.GeneratedBy = @OfficerID
-
-                        UNION ALL
-
-                        SELECT 
-                            d.DisputeID AS ID,
-                            'Bill Dispute' AS Type,
-                            u.FullName AS Customer,
-                            d.SubmittedAt AS RecordDate,
-                            d.Status AS Status
-                        FROM BillDisputes d
-                        JOIN Customers c ON d.CustomerID = c.CustomerID
-                        JOIN Users u ON c.UserID = u.UserID
-                        WHERE d.Status = 'Pending' OR d.Status IS NULL OR d.ReviewedBy = @OfficerID
-
-                        UNION ALL
-
-                        SELECT 
-                            a.ApplicationID AS ID,
-                            'Connection Application' AS Type,
-                            u.FullName AS Customer,
-                            a.ApplicationDate AS RecordDate,
-                            a.ApprovalStatus AS Status
-                        FROM ConnectionApplications a
-                        JOIN Customers c ON a.CustomerID = c.CustomerID
-                        JOIN Users u ON c.UserID = u.UserID
-                        WHERE a.AssignedOfficer = @OfficerID
-                    ) AS RecentRecords
-                    ORDER BY RecordDate DESC";
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@OfficerID", LoginForm.LoggedInUserID);
-
-                SqlDataAdapter adp = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-
-                adp.Fill(ds);
-
-                DataTable dt = ds.Tables[0];
-
-                dgvRecentRecords.AutoGenerateColumns = false;
-
-                colId.DataPropertyName = "ID";
-                colType.DataPropertyName = "Type";
-                colCustomer.DataPropertyName = "Customer";
-                colDate.DataPropertyName = "Date";
-                colStatus.DataPropertyName = "Status";
-
-                dgvRecentRecords.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading recent records: " + ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
         private void btnMeterReading_Click(object sender, EventArgs e)
         {
             new MeterReadingBillGenerateForm().ShowDialog();
-            LoadDashboardData();
+            LoadCounts();
+
         }
 
         private void btnListofBill_Click(object sender, EventArgs e)
         {
             new CustomerBillListForm().ShowDialog();
-            LoadDashboardData();
+            LoadCounts();
+
         }
 
         private void btnReviewDisputes_Click(object sender, EventArgs e)
         {
             new ReviewDisputesForm().ShowDialog();
-            LoadDashboardData();
+            LoadCounts();
+
         }
 
         private void btnReviewConnections_Click(object sender, EventArgs e)
         {
             new ReviewConnectionApplicationsForm().ShowDialog();
-            LoadDashboardData();
+            LoadCounts();
+
         }
 
         private void btnVerifyDocuments_Click(object sender, EventArgs e)
         {
             new VerifyDocumentsForm().ShowDialog();
-            LoadDashboardData();
+            LoadCounts();
+
         }
 
         private void btnScheduleInstallation_Click(object sender, EventArgs e)
         {
             new ScheduleInstallationForm().ShowDialog();
-            LoadDashboardData();
+            LoadCounts();
         }
 
         private void btnBillingReport_Click(object sender, EventArgs e)
         {
             new BillingReportForm().ShowDialog();
-            LoadDashboardData();
+            LoadCounts();
+
         }
 
         private void btnProfile_Click(object sender, EventArgs e)

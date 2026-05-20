@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceOfficerDashboardForm));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -58,13 +56,6 @@
             this.cardConnection = new System.Windows.Forms.Panel();
             this.lblConnectionCount = new System.Windows.Forms.Label();
             this.lblConnectionText = new System.Windows.Forms.Label();
-            this.lblRecentRecords = new System.Windows.Forms.Label();
-            this.dgvRecentRecords = new System.Windows.Forms.DataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelHeader.SuspendLayout();
             this.panelSidebar.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -72,7 +63,6 @@
             this.cardBill.SuspendLayout();
             this.cardDispute.SuspendLayout();
             this.cardConnection.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRecentRecords)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -83,7 +73,7 @@
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1136, 52);
+            this.panelHeader.Size = new System.Drawing.Size(911, 52);
             this.panelHeader.TabIndex = 3;
             // 
             // lblTitle
@@ -102,7 +92,7 @@
             this.lbl_Welcome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Welcome.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Welcome.ForeColor = System.Drawing.Color.LimeGreen;
-            this.lbl_Welcome.Location = new System.Drawing.Point(784, 18);
+            this.lbl_Welcome.Location = new System.Drawing.Point(559, 18);
             this.lbl_Welcome.Name = "lbl_Welcome";
             this.lbl_Welcome.Size = new System.Drawing.Size(349, 19);
             this.lbl_Welcome.TabIndex = 1;
@@ -118,7 +108,7 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(15, 532);
+            this.btnLogout.Location = new System.Drawing.Point(15, 421);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(194, 31);
             this.btnLogout.TabIndex = 2;
@@ -141,7 +131,7 @@
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 52);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(227, 575);
+            this.panelSidebar.Size = new System.Drawing.Size(227, 470);
             this.panelSidebar.TabIndex = 5;
             // 
             // btnMeterReading
@@ -152,7 +142,7 @@
             this.btnMeterReading.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMeterReading.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnMeterReading.ForeColor = System.Drawing.Color.White;
-            this.btnMeterReading.Location = new System.Drawing.Point(6, 22);
+            this.btnMeterReading.Location = new System.Drawing.Point(6, 2);
             this.btnMeterReading.Name = "btnMeterReading";
             this.btnMeterReading.Size = new System.Drawing.Size(224, 50);
             this.btnMeterReading.TabIndex = 1;
@@ -169,7 +159,7 @@
             this.btnGenerateBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerateBill.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnGenerateBill.ForeColor = System.Drawing.Color.White;
-            this.btnGenerateBill.Location = new System.Drawing.Point(6, 89);
+            this.btnGenerateBill.Location = new System.Drawing.Point(6, 55);
             this.btnGenerateBill.Name = "btnGenerateBill";
             this.btnGenerateBill.Size = new System.Drawing.Size(212, 40);
             this.btnGenerateBill.TabIndex = 2;
@@ -186,7 +176,7 @@
             this.btnReviewDisputes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReviewDisputes.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnReviewDisputes.ForeColor = System.Drawing.Color.White;
-            this.btnReviewDisputes.Location = new System.Drawing.Point(6, 154);
+            this.btnReviewDisputes.Location = new System.Drawing.Point(6, 103);
             this.btnReviewDisputes.Name = "btnReviewDisputes";
             this.btnReviewDisputes.Size = new System.Drawing.Size(212, 40);
             this.btnReviewDisputes.TabIndex = 3;
@@ -203,7 +193,7 @@
             this.btnReviewConnections.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReviewConnections.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnReviewConnections.ForeColor = System.Drawing.Color.White;
-            this.btnReviewConnections.Location = new System.Drawing.Point(6, 268);
+            this.btnReviewConnections.Location = new System.Drawing.Point(6, 204);
             this.btnReviewConnections.Name = "btnReviewConnections";
             this.btnReviewConnections.Size = new System.Drawing.Size(212, 40);
             this.btnReviewConnections.TabIndex = 5;
@@ -220,7 +210,7 @@
             this.btnVerifyDocuments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerifyDocuments.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnVerifyDocuments.ForeColor = System.Drawing.Color.White;
-            this.btnVerifyDocuments.Location = new System.Drawing.Point(6, 212);
+            this.btnVerifyDocuments.Location = new System.Drawing.Point(6, 151);
             this.btnVerifyDocuments.Name = "btnVerifyDocuments";
             this.btnVerifyDocuments.Size = new System.Drawing.Size(212, 40);
             this.btnVerifyDocuments.TabIndex = 6;
@@ -237,7 +227,7 @@
             this.btnScheduleInstallation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScheduleInstallation.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnScheduleInstallation.ForeColor = System.Drawing.Color.White;
-            this.btnScheduleInstallation.Location = new System.Drawing.Point(6, 329);
+            this.btnScheduleInstallation.Location = new System.Drawing.Point(6, 258);
             this.btnScheduleInstallation.Name = "btnScheduleInstallation";
             this.btnScheduleInstallation.Size = new System.Drawing.Size(212, 40);
             this.btnScheduleInstallation.TabIndex = 7;
@@ -254,7 +244,7 @@
             this.btnBillingReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBillingReport.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnBillingReport.ForeColor = System.Drawing.Color.White;
-            this.btnBillingReport.Location = new System.Drawing.Point(6, 392);
+            this.btnBillingReport.Location = new System.Drawing.Point(6, 314);
             this.btnBillingReport.Name = "btnBillingReport";
             this.btnBillingReport.Size = new System.Drawing.Size(212, 40);
             this.btnBillingReport.TabIndex = 8;
@@ -271,7 +261,7 @@
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnProfile.ForeColor = System.Drawing.Color.White;
-            this.btnProfile.Location = new System.Drawing.Point(6, 451);
+            this.btnProfile.Location = new System.Drawing.Point(6, 365);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(212, 40);
             this.btnProfile.TabIndex = 9;
@@ -288,12 +278,10 @@
             this.panelMain.Controls.Add(this.cardBill);
             this.panelMain.Controls.Add(this.cardDispute);
             this.panelMain.Controls.Add(this.cardConnection);
-            this.panelMain.Controls.Add(this.lblRecentRecords);
-            this.panelMain.Controls.Add(this.dgvRecentRecords);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(227, 52);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(909, 575);
+            this.panelMain.Size = new System.Drawing.Size(684, 470);
             this.panelMain.TabIndex = 7;
             // 
             // lblOverview
@@ -312,7 +300,7 @@
             this.cardMeter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
             this.cardMeter.Controls.Add(this.lblMeterCount);
             this.cardMeter.Controls.Add(this.lblMeterText);
-            this.cardMeter.Location = new System.Drawing.Point(30, 93);
+            this.cardMeter.Location = new System.Drawing.Point(107, 90);
             this.cardMeter.Name = "cardMeter";
             this.cardMeter.Size = new System.Drawing.Size(186, 91);
             this.cardMeter.TabIndex = 1;
@@ -344,7 +332,7 @@
             this.cardBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
             this.cardBill.Controls.Add(this.lblPaidBillCount);
             this.cardBill.Controls.Add(this.lblPaidBillText);
-            this.cardBill.Location = new System.Drawing.Point(250, 93);
+            this.cardBill.Location = new System.Drawing.Point(107, 296);
             this.cardBill.Name = "cardBill";
             this.cardBill.Size = new System.Drawing.Size(186, 91);
             this.cardBill.TabIndex = 2;
@@ -376,7 +364,7 @@
             this.cardDispute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
             this.cardDispute.Controls.Add(this.lblDisputeCount);
             this.cardDispute.Controls.Add(this.lblDisputeText);
-            this.cardDispute.Location = new System.Drawing.Point(469, 93);
+            this.cardDispute.Location = new System.Drawing.Point(402, 93);
             this.cardDispute.Name = "cardDispute";
             this.cardDispute.Size = new System.Drawing.Size(186, 91);
             this.cardDispute.TabIndex = 3;
@@ -408,7 +396,7 @@
             this.cardConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
             this.cardConnection.Controls.Add(this.lblConnectionCount);
             this.cardConnection.Controls.Add(this.lblConnectionText);
-            this.cardConnection.Location = new System.Drawing.Point(688, 93);
+            this.cardConnection.Location = new System.Drawing.Point(402, 296);
             this.cardConnection.Name = "cardConnection";
             this.cardConnection.Size = new System.Drawing.Size(186, 91);
             this.cardConnection.TabIndex = 4;
@@ -418,7 +406,7 @@
             this.lblConnectionCount.AutoSize = true;
             this.lblConnectionCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lblConnectionCount.ForeColor = System.Drawing.Color.White;
-            this.lblConnectionCount.Location = new System.Drawing.Point(72, 3);
+            this.lblConnectionCount.Location = new System.Drawing.Point(68, 15);
             this.lblConnectionCount.Name = "lblConnectionCount";
             this.lblConnectionCount.Size = new System.Drawing.Size(38, 45);
             this.lblConnectionCount.TabIndex = 0;
@@ -435,98 +423,11 @@
             this.lblConnectionText.TabIndex = 1;
             this.lblConnectionText.Text = "Connection Requests";
             // 
-            // lblRecentRecords
-            // 
-            this.lblRecentRecords.AutoSize = true;
-            this.lblRecentRecords.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblRecentRecords.Location = new System.Drawing.Point(6, 216);
-            this.lblRecentRecords.Name = "lblRecentRecords";
-            this.lblRecentRecords.Size = new System.Drawing.Size(144, 25);
-            this.lblRecentRecords.TabIndex = 5;
-            this.lblRecentRecords.Text = "Recent Records";
-            // 
-            // dgvRecentRecords
-            // 
-            this.dgvRecentRecords.AllowUserToAddRows = false;
-            this.dgvRecentRecords.AllowUserToDeleteRows = false;
-            this.dgvRecentRecords.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRecentRecords.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvRecentRecords.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(89)))), ((int)(((byte)(138)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRecentRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvRecentRecords.ColumnHeadersHeight = 36;
-            this.dgvRecentRecords.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colId,
-            this.colType,
-            this.colCustomer,
-            this.colDate,
-            this.colStatus});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRecentRecords.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvRecentRecords.EnableHeadersVisualStyles = false;
-            this.dgvRecentRecords.GridColor = System.Drawing.Color.White;
-            this.dgvRecentRecords.Location = new System.Drawing.Point(6, 247);
-            this.dgvRecentRecords.MultiSelect = false;
-            this.dgvRecentRecords.Name = "dgvRecentRecords";
-            this.dgvRecentRecords.ReadOnly = true;
-            this.dgvRecentRecords.RowHeadersVisible = false;
-            this.dgvRecentRecords.RowHeadersWidth = 51;
-            this.dgvRecentRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRecentRecords.Size = new System.Drawing.Size(896, 287);
-            this.dgvRecentRecords.TabIndex = 6;
-            // 
-            // colId
-            // 
-            this.colId.HeaderText = "ID";
-            this.colId.MinimumWidth = 6;
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            // 
-            // colType
-            // 
-            this.colType.HeaderText = "Type";
-            this.colType.MinimumWidth = 6;
-            this.colType.Name = "colType";
-            this.colType.ReadOnly = true;
-            // 
-            // colCustomer
-            // 
-            this.colCustomer.HeaderText = "Customer";
-            this.colCustomer.MinimumWidth = 6;
-            this.colCustomer.Name = "colCustomer";
-            this.colCustomer.ReadOnly = true;
-            // 
-            // colDate
-            // 
-            this.colDate.HeaderText = "Date";
-            this.colDate.MinimumWidth = 6;
-            this.colDate.Name = "colDate";
-            this.colDate.ReadOnly = true;
-            // 
-            // colStatus
-            // 
-            this.colStatus.HeaderText = "Status";
-            this.colStatus.MinimumWidth = 6;
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            // 
             // ServiceOfficerDashboardForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1136, 627);
+            this.ClientSize = new System.Drawing.Size(911, 522);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelSidebar);
             this.Controls.Add(this.panelHeader);
@@ -550,7 +451,6 @@
             this.cardDispute.PerformLayout();
             this.cardConnection.ResumeLayout(false);
             this.cardConnection.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRecentRecords)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -583,12 +483,5 @@
         private System.Windows.Forms.Panel cardConnection;
         private System.Windows.Forms.Label lblConnectionCount;
         private System.Windows.Forms.Label lblConnectionText;
-        private System.Windows.Forms.Label lblRecentRecords;
-        private System.Windows.Forms.DataGridView dgvRecentRecords;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
     }
 }

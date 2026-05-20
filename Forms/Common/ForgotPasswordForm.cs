@@ -128,5 +128,10 @@ namespace WaterSewageManagementSystem.Forms.Common
         {
             this.Close();
         }
+
+        private void ForgotPasswordForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

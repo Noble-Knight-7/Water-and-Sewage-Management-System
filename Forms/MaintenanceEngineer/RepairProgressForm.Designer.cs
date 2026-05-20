@@ -51,6 +51,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.dgvTasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTasks.Size = new System.Drawing.Size(910, 310);
             this.dgvTasks.TabIndex = 1;
+            this.dgvTasks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTasks_CellContentClick);
             // 
             // lblStatus
             // 
@@ -159,6 +160,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.Name = "RepairProgressForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Repair Progress";
+            this.Load += new System.EventHandler(this.RepairProgressForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTasks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

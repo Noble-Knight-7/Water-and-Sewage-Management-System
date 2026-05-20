@@ -246,29 +246,12 @@ namespace WaterSewageManagementSystem.Forms.Customer
             LoadDashboardData();
         }
 
-        private void btnNotices_Click(object sender, EventArgs e)
-        {
-            new ViewNoticesForm().ShowDialog();
-            LoadDashboardData();
-        }
-
         private void btnProfile_Click(object sender, EventArgs e)
         {
             new ProfileForm().ShowDialog();
             LoadDashboardData();
         }
 
-        //private void btnLogout_Click(object sender, EventArgs e)
-        //{
-        //    if (MessageHelper.ShowConfirm("Are you sure you want to logout?") == DialogResult.Yes)
-        //    {
-        //        SessionManager.Logout();
-        //        LoginForm login = new LoginForm();
-        //        login.Show();
-
-        //        this.Hide();
-        //    }
-        //}
 
         private void btnLogout_Click(object sender, EventArgs e)
         {

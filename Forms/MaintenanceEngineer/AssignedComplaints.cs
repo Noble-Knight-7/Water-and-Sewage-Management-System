@@ -14,7 +14,6 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             InitializeComponent();
             LoadComplaints();
         }
-
         private void LoadComplaints()
         {
             if (LoginForm.LoggedInUserID == 0)
@@ -54,14 +53,12 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 dgvComplaints.DataSource = dt;
                 dgvComplaints.AutoGenerateColumns = true;
 
-                // Allow manual resizing
+           
                 dgvComplaints.AllowUserToResizeColumns = true;
                 dgvComplaints.AllowUserToResizeRows = true;
 
-                // Auto size based on content initially
                 dgvComplaints.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
-                // Extra settings
                 dgvComplaints.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             }
             catch (Exception ex)
@@ -183,10 +180,14 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
         {
             LoadComplaints();
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AssignedComplaints_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

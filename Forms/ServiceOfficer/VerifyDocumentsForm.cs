@@ -65,11 +65,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void btnVerify_Click(object sender, EventArgs e)
         {
-            if (dgvApplications.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Select an application first.");
-                return;
-            }
 
             int appID = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicationID"].Value);
             string documentStatus = dgvApplications.SelectedRows[0].Cells["DocumentStatus"].Value.ToString();

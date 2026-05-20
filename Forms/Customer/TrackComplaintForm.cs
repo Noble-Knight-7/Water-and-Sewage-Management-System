@@ -21,10 +21,6 @@ namespace WaterSewageManagementSystem.Forms.Customer
         {
             InitializeComponent();
             LoadComplaints();
-            //if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-            //{
-            //    LoadComplaints();
-            //}
         }
 
         private void LoadComplaints()

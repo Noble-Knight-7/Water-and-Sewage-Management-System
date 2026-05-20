@@ -59,14 +59,11 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 dgvTasks.DataSource = dt;
                 dgvTasks.AutoGenerateColumns = true;
 
-                // Allow manual resizing
                 dgvTasks.AllowUserToResizeColumns = true;
                 dgvTasks.AllowUserToResizeRows = true;
 
-                // Auto size based on content initially
                 dgvTasks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
-                // Extra settings
                 dgvTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             }
             catch (Exception ex)
@@ -101,9 +98,6 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 "Confirm Visit Date",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question);
-
-            // If the user closes the popup using X, confirmResult is Cancel.
-            // So the database is updated only when the OK button is pressed.
             if (confirmResult != DialogResult.OK)
             {
                 return;

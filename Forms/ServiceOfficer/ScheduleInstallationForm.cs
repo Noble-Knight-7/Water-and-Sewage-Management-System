@@ -65,12 +65,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
 
         private void btnSchedule_Click(object sender, EventArgs e)
         {
-            if (dgvApplications.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Select an approved application.");
-                return;
-            }
-
             int appID = Convert.ToInt32(dgvApplications.SelectedRows[0].Cells["ApplicationID"].Value);
             string approvalStatus = dgvApplications.SelectedRows[0].Cells["ApprovalStatus"].Value.ToString();
 

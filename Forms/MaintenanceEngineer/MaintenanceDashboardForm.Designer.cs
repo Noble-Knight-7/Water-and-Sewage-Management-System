@@ -312,6 +312,7 @@
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(731, 463);
             this.panelContent.TabIndex = 2;
+            this.panelContent.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContent_Paint);
             // 
             // cardCompletionReport
             // 
@@ -415,6 +416,7 @@
             this.cardRepairProgress.Size = new System.Drawing.Size(209, 129);
             this.cardRepairProgress.TabIndex = 0;
             this.cardRepairProgress.Click += new System.EventHandler(this.btnRepairProgress_Click);
+            this.cardRepairProgress.Paint += new System.Windows.Forms.PaintEventHandler(this.cardRepairProgress_Paint);
             // 
             // lblRepairText
             // 

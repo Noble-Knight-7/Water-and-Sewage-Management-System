@@ -134,6 +134,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.Name = "ForgotPasswordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reset Password";
+            this.Load += new System.EventHandler(this.ForgotPasswordForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

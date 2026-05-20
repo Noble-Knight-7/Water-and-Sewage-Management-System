@@ -270,6 +270,7 @@
             this.lblWelcome.Size = new System.Drawing.Size(161, 19);
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Welcome Back, Admin";
+            this.lblWelcome.Click += new System.EventHandler(this.lblWelcome_Click_2);
             // 
             // lblTitle
             // 

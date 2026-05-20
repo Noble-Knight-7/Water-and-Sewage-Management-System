@@ -25,10 +25,6 @@ namespace WaterSewageManagementSystem.Forms.Customer
         {
             InitializeComponent();
             LoadBill();
-            //if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-            //{
-            //    LoadBill();
-            //}
         }
 
         private void LoadBill()

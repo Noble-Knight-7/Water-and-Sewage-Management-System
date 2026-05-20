@@ -59,14 +59,10 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
                 dgvTasks.DataSource = dt;
                 dgvTasks.AutoGenerateColumns = true;
 
-                // Allow manual resizing
                 dgvTasks.AllowUserToResizeColumns = true;
                 dgvTasks.AllowUserToResizeRows = true;
 
-                // Auto size based on content initially
                 dgvTasks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-                // Extra settings
                 dgvTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             }
             catch (Exception ex)
@@ -190,6 +186,11 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvTasks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

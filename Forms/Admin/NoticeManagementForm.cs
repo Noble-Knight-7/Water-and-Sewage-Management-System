@@ -218,5 +218,10 @@ namespace WaterSewageManagementSystem.Forms.Admin
         {
 
         }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

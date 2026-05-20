@@ -171,5 +171,10 @@ namespace WaterSewageManagementSystem.Forms.Admin
         {
 
         }
+
+        private void lblWelcome_Click_2(object sender, EventArgs e)
+        {
+
+        }
     }
 }

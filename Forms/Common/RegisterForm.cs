@@ -124,20 +124,6 @@ namespace WaterSewageManagementSystem.Forms.Common
                 hasError = true;
             }
 
-            //if (role == "Customer")
-            //{
-            //    if (holdingNumber == "")
-            //    {
-            //        errorlblHold.Text = "Please enter your holding number";
-            //        hasError = true;
-            //    }
-
-            //    if (connectionType == null || connectionType == "")
-            //    {
-            //        errorlblConn.Text = "Select a connection type";
-            //        hasError = true;
-            //    }
-            //}
 
             if (hasError == true)
             {
@@ -145,8 +131,6 @@ namespace WaterSewageManagementSystem.Forms.Common
             }
 
             string status = "";
-
-
 
             if (role == "Customer")
             {
@@ -182,33 +166,33 @@ namespace WaterSewageManagementSystem.Forms.Common
                 }
 
                 string insertUserQuery = @"
-INSERT INTO Users
-(
-    FullName,
-    Email,
-    Phone,
-    Password,
-    Role,
-    Address,
-    Gender,
-    DOB,
-    Status,
-    CreatedAt
-)
-OUTPUT INSERTED.UserID
-VALUES
-(
-    @FullName,
-    @Email,
-    @Phone,
-    @Password,
-    @Role,
-    @Address,
-    @Gender,
-    @DOB,
-    @Status,
-    GETDATE()
-)";
+                                            INSERT INTO Users
+                                            (
+                                                FullName,
+                                                Email,
+                                                Phone,
+                                                Password,
+                                                Role,
+                                                Address,
+                                                Gender,
+                                                DOB,
+                                                Status,
+                                                CreatedAt
+                                            )
+                                            OUTPUT INSERTED.UserID
+                                            VALUES
+                                            (
+                                                @FullName,
+                                                @Email,
+                                                @Phone,
+                                                @Password,
+                                                @Role,
+                                                @Address,
+                                                @Gender,
+                                                @DOB,
+                                                @Status,
+                                                GETDATE()
+                                            )";
 
                 SqlCommand insertUserCmd = new SqlCommand(insertUserQuery, conn);
                 insertUserCmd.Parameters.AddWithValue("@FullName", name);
@@ -277,5 +261,9 @@ VALUES
             this.Close();
         }
 
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

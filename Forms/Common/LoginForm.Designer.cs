@@ -38,6 +38,7 @@ namespace WaterSewageManagementSystem
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Water and Sewage Managent System";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // lblSubtitle
             // 
@@ -149,7 +150,7 @@ namespace WaterSewageManagementSystem
             this.checkBoxShowPass.AutoSize = true;
             this.checkBoxShowPass.Location = new System.Drawing.Point(235, 234);
             this.checkBoxShowPass.Name = "checkBoxShowPass";
-            this.checkBoxShowPass.Size = new System.Drawing.Size(122, 20);
+            this.checkBoxShowPass.Size = new System.Drawing.Size(102, 17);
             this.checkBoxShowPass.TabIndex = 10;
             this.checkBoxShowPass.Text = "Show Password";
             this.checkBoxShowPass.UseVisualStyleBackColor = true;

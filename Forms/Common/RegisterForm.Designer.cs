@@ -378,7 +378,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.dateTimePickerDOB.Location = new System.Drawing.Point(706, 86);
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
             this.dateTimePickerDOB.ShowCheckBox = true;
-            this.dateTimePickerDOB.Size = new System.Drawing.Size(260, 22);
+            this.dateTimePickerDOB.Size = new System.Drawing.Size(260, 20);
             this.dateTimePickerDOB.TabIndex = 37;
             this.dateTimePickerDOB.Value = new System.DateTime(2026, 5, 19, 0, 0, 0, 0);
             // 
@@ -424,6 +424,7 @@ namespace WaterSewageManagementSystem.Forms.Common
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register New Account";
+            this.Load += new System.EventHandler(this.RegisterForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -229,5 +229,10 @@ namespace WaterSewageManagementSystem.Forms.Common
                 conn.Close();
             }
         }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

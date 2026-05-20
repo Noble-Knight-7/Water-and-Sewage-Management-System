@@ -191,5 +191,15 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
         {
 
         }
+
+        private void panelContent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cardRepairProgress_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -160,5 +160,10 @@ namespace WaterSewageManagementSystem
                 txtPassword.UseSystemPasswordChar = true;
             }
         }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

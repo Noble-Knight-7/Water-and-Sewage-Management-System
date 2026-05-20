@@ -149,6 +149,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AssignedComplaints";
             this.Text = "Assigned Complaints";
+            this.Load += new System.EventHandler(this.AssignedComplaints_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvComplaints)).EndInit();
             this.ResumeLayout(false);
 

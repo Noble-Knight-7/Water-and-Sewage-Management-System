@@ -142,5 +142,10 @@ namespace WaterSewageManagementSystem.Forms.Admin
         {
             btnGenerate_Click(sender, e);
         }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

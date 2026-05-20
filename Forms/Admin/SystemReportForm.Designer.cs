@@ -40,6 +40,7 @@
             this.lblTitle.Size = new System.Drawing.Size(220, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "System Reports";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // panelHeader
             // 

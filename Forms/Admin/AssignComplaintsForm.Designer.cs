@@ -36,6 +36,7 @@
             this.lblTitle.Size = new System.Drawing.Size(260, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Assign Complaints";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // lblEngineer
             // 

@@ -273,12 +273,6 @@
     <Compile Include="Forms\Customer\TrackComplaintForm.Designer.cs">
       <DependentUpon>TrackComplaintForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Customer\ViewNoticesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Customer\ViewNoticesForm.Designer.cs">
-      <DependentUpon>ViewNoticesForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MaintenanceEngineer\AssignedComplaints.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -453,9 +447,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\TrackComplaintForm.resx">
       <DependentUpon>TrackComplaintForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer\ViewNoticesForm.resx">
-      <DependentUpon>ViewNoticesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MaintenanceEngineer\AssignedComplaints.resx">
       <DependentUpon>AssignedComplaints.cs</DependentUpon>

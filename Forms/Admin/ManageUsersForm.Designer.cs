@@ -35,6 +35,7 @@
             this.lblTitle.Size = new System.Drawing.Size(200, 30);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Manage Users";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // btnActivate
             // 

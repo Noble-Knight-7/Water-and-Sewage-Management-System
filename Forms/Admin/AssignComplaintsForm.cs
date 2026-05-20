@@ -125,7 +125,6 @@ namespace WaterSewageManagementSystem.Forms.Admin
             {
                 conn.Open();
 
-                // 1. Update Complaints table
                 string updateComplaintQuery =
                     "UPDATE Complaints SET AssignedEngineerID=" + engineerID +
                     ", Status='Assigned' WHERE ComplaintID=" + complaintID;
@@ -133,7 +132,7 @@ namespace WaterSewageManagementSystem.Forms.Admin
                 SqlCommand updateComplaintCmd = new SqlCommand(updateComplaintQuery, conn);
                 int complaintRows = updateComplaintCmd.ExecuteNonQuery();
 
-                // 2. Check if maintenance task already exists for this complaint
+     
                 string checkTaskQuery =
                     "SELECT COUNT(*) FROM MaintenanceTasks WHERE ComplaintID=" + complaintID;
 
@@ -144,7 +143,7 @@ namespace WaterSewageManagementSystem.Forms.Admin
 
                 if (taskCount == 0)
                 {
-                    // 3. Insert new task into MaintenanceTasks table
+           
                     string insertTaskQuery =
                         "INSERT INTO MaintenanceTasks " +
                         "(ComplaintID, EngineerID, VisitDate, ProgressStatus, Notes, CompletionReport, UpdatedAt) " +
@@ -162,7 +161,7 @@ namespace WaterSewageManagementSystem.Forms.Admin
                 }
                 else
                 {
-                    // 4. If task already exists, update engineer instead of inserting duplicate
+                 
                     string updateTaskQuery =
                         "UPDATE MaintenanceTasks SET EngineerID=" + engineerID +
                         ", ProgressStatus='Assigned', UpdatedAt=GETDATE() " +
@@ -200,6 +199,11 @@ namespace WaterSewageManagementSystem.Forms.Admin
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

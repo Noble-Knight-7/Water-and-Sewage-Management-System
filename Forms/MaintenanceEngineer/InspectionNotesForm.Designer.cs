@@ -65,6 +65,7 @@ namespace WaterSewageManagementSystem.Forms.MaintenanceEngineer
             this.dgvTasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTasks.Size = new System.Drawing.Size(910, 290);
             this.dgvTasks.TabIndex = 2;
+            this.dgvTasks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTasks_CellContentClick);
             this.dgvTasks.SelectionChanged += new System.EventHandler(this.dgvTasks_SelectionChanged);
             // 
             // lblNotes

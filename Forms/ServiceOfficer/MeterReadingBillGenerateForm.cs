@@ -28,11 +28,6 @@ namespace WaterSewageManagementSystem.Forms.ServiceOfficer
         }
         private void LoadPreviousReading()
         {
-            //if (cmbCustomer.SelectedValue == null)
-            //{
-            //    txtPrevious.Text = "0";
-            //    return;
-            //}
 
             int customerID;
 

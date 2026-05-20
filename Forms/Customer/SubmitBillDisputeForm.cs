@@ -76,14 +76,8 @@ namespace WaterSewageManagementSystem.Forms.Customer
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (LoginForm.LoggedInUserID == 0)
-            {
-                MessageBox.Show("No logged-in user found. Please login again.");
-                return;
-            }
 
             int billID;
-
             if (!int.TryParse(txtBillID.Text, out billID))
             {
                 MessageBox.Show("Enter a valid Bill ID.");
