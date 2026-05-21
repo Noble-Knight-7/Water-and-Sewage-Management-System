@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubmitComplaintForm));
             this.panelTop = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
@@ -49,8 +50,9 @@
             this.panelTop.Controls.Add(this.lblTitle);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(680, 62);
+            this.panelTop.Size = new System.Drawing.Size(510, 50);
             this.panelTop.TabIndex = 7;
             this.panelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop_Paint);
             // 
@@ -59,9 +61,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(20, 14);
+            this.lblTitle.Location = new System.Drawing.Point(15, 11);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(271, 35);
+            this.lblTitle.Size = new System.Drawing.Size(216, 28);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "📝 Submit Complaint";
             this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
@@ -76,9 +79,10 @@
             this.panelContent.Controls.Add(this.cmbPriority);
             this.panelContent.Controls.Add(this.lblDescription);
             this.panelContent.Controls.Add(this.txtDescription);
-            this.panelContent.Location = new System.Drawing.Point(28, 101);
+            this.panelContent.Location = new System.Drawing.Point(21, 82);
+            this.panelContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(624, 320);
+            this.panelContent.Size = new System.Drawing.Size(468, 260);
             this.panelContent.TabIndex = 6;
             this.panelContent.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContent_Paint);
             // 
@@ -86,9 +90,10 @@
             // 
             this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblCategory.Location = new System.Drawing.Point(22, 22);
+            this.lblCategory.Location = new System.Drawing.Point(16, 18);
+            this.lblCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(84, 23);
+            this.lblCategory.Size = new System.Drawing.Size(72, 19);
             this.lblCategory.TabIndex = 0;
             this.lblCategory.Text = "Category";
             this.lblCategory.Click += new System.EventHandler(this.lblCategory_Click);
@@ -104,9 +109,10 @@
             "Leakage",
             "Billing Related",
             "Other"});
-            this.cmbCategory.Location = new System.Drawing.Point(26, 52);
+            this.cmbCategory.Location = new System.Drawing.Point(20, 42);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(270, 31);
+            this.cmbCategory.Size = new System.Drawing.Size(204, 25);
             this.cmbCategory.TabIndex = 1;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
@@ -114,9 +120,10 @@
             // 
             this.lblPriority.AutoSize = true;
             this.lblPriority.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblPriority.Location = new System.Drawing.Point(327, 22);
+            this.lblPriority.Location = new System.Drawing.Point(245, 18);
+            this.lblPriority.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPriority.Name = "lblPriority";
-            this.lblPriority.Size = new System.Drawing.Size(70, 23);
+            this.lblPriority.Size = new System.Drawing.Size(60, 19);
             this.lblPriority.TabIndex = 2;
             this.lblPriority.Text = "Priority";
             this.lblPriority.Click += new System.EventHandler(this.lblPriority_Click);
@@ -129,9 +136,10 @@
             "Low",
             "Medium",
             "High"});
-            this.cmbPriority.Location = new System.Drawing.Point(331, 52);
+            this.cmbPriority.Location = new System.Drawing.Point(248, 42);
+            this.cmbPriority.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbPriority.Name = "cmbPriority";
-            this.cmbPriority.Size = new System.Drawing.Size(270, 31);
+            this.cmbPriority.Size = new System.Drawing.Size(204, 25);
             this.cmbPriority.TabIndex = 3;
             this.cmbPriority.SelectedIndexChanged += new System.EventHandler(this.cmbPriority_SelectedIndexChanged);
             // 
@@ -139,9 +147,10 @@
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblDescription.Location = new System.Drawing.Point(22, 112);
+            this.lblDescription.Location = new System.Drawing.Point(16, 91);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(102, 23);
+            this.lblDescription.Size = new System.Drawing.Size(85, 19);
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "Description";
             this.lblDescription.Click += new System.EventHandler(this.lblDescription_Click);
@@ -150,11 +159,12 @@
             // 
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDescription.Location = new System.Drawing.Point(26, 142);
+            this.txtDescription.Location = new System.Drawing.Point(20, 115);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(575, 148);
+            this.txtDescription.Size = new System.Drawing.Size(432, 121);
             this.txtDescription.TabIndex = 5;
             this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             // 
@@ -166,9 +176,10 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(527, 441);
+            this.btnCancel.Location = new System.Drawing.Point(395, 358);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(125, 42);
+            this.btnCancel.Size = new System.Drawing.Size(94, 34);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -182,9 +193,10 @@
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(28, 441);
+            this.btnSubmit.Location = new System.Drawing.Point(21, 358);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(180, 42);
+            this.btnSubmit.Size = new System.Drawing.Size(135, 34);
             this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "Submit Complaint";
             this.btnSubmit.UseVisualStyleBackColor = false;
@@ -192,14 +204,16 @@
             // 
             // SubmitComplaintForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(680, 495);
+            this.ClientSize = new System.Drawing.Size(510, 402);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SubmitComplaintForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Submit Complaint";

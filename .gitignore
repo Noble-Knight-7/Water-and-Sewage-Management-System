@@ -39,7 +39,6 @@ project.nuget.cache
 *.log
 
 # SQL Server backup and generated database files
-*.bak
 *.mdf
 *.ldf
 *.trn

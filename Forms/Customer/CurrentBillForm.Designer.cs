@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CurrentBillForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelBill = new System.Windows.Forms.Panel();
             this.lblBillID = new System.Windows.Forms.Label();
@@ -47,9 +48,10 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(92)))));
-            this.lblTitle.Location = new System.Drawing.Point(130, 17);
+            this.lblTitle.Location = new System.Drawing.Point(98, 14);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(260, 30);
+            this.lblTitle.Size = new System.Drawing.Size(195, 24);
             this.lblTitle.TabIndex = 4;
             this.lblTitle.Text = "🧾 Your Current Bill";
             this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
@@ -65,54 +67,60 @@
             this.panelBill.Controls.Add(this.lblArrears);
             this.panelBill.Controls.Add(this.lblTotal);
             this.panelBill.Controls.Add(this.lblStatus);
-            this.panelBill.Location = new System.Drawing.Point(30, 57);
+            this.panelBill.Location = new System.Drawing.Point(22, 46);
+            this.panelBill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelBill.Name = "panelBill";
-            this.panelBill.Size = new System.Drawing.Size(460, 290);
+            this.panelBill.Size = new System.Drawing.Size(346, 236);
             this.panelBill.TabIndex = 5;
             this.panelBill.Paint += new System.Windows.Forms.PaintEventHandler(this.panelBill_Paint);
             // 
             // lblBillID
             // 
             this.lblBillID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblBillID.Location = new System.Drawing.Point(20, 20);
+            this.lblBillID.Location = new System.Drawing.Point(15, 16);
+            this.lblBillID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBillID.Name = "lblBillID";
-            this.lblBillID.Size = new System.Drawing.Size(420, 28);
+            this.lblBillID.Size = new System.Drawing.Size(315, 23);
             this.lblBillID.TabIndex = 0;
             this.lblBillID.Click += new System.EventHandler(this.lblBillID_Click);
             // 
             // lblMonth
             // 
             this.lblMonth.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblMonth.Location = new System.Drawing.Point(20, 58);
+            this.lblMonth.Location = new System.Drawing.Point(15, 47);
+            this.lblMonth.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(420, 28);
+            this.lblMonth.Size = new System.Drawing.Size(315, 23);
             this.lblMonth.TabIndex = 1;
             this.lblMonth.Click += new System.EventHandler(this.lblMonth_Click);
             // 
             // lblUnits
             // 
             this.lblUnits.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblUnits.Location = new System.Drawing.Point(20, 96);
+            this.lblUnits.Location = new System.Drawing.Point(15, 78);
+            this.lblUnits.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUnits.Name = "lblUnits";
-            this.lblUnits.Size = new System.Drawing.Size(420, 28);
+            this.lblUnits.Size = new System.Drawing.Size(315, 23);
             this.lblUnits.TabIndex = 2;
             this.lblUnits.Click += new System.EventHandler(this.lblUnits_Click);
             // 
             // lblAmount
             // 
             this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblAmount.Location = new System.Drawing.Point(20, 134);
+            this.lblAmount.Location = new System.Drawing.Point(15, 109);
+            this.lblAmount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAmount.Name = "lblAmount";
-            this.lblAmount.Size = new System.Drawing.Size(420, 28);
+            this.lblAmount.Size = new System.Drawing.Size(315, 23);
             this.lblAmount.TabIndex = 3;
             this.lblAmount.Click += new System.EventHandler(this.lblAmount_Click);
             // 
             // lblArrears
             // 
             this.lblArrears.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblArrears.Location = new System.Drawing.Point(20, 172);
+            this.lblArrears.Location = new System.Drawing.Point(15, 140);
+            this.lblArrears.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblArrears.Name = "lblArrears";
-            this.lblArrears.Size = new System.Drawing.Size(420, 28);
+            this.lblArrears.Size = new System.Drawing.Size(315, 23);
             this.lblArrears.TabIndex = 4;
             this.lblArrears.Click += new System.EventHandler(this.lblArrears_Click);
             // 
@@ -120,18 +128,20 @@
             // 
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.lblTotal.Location = new System.Drawing.Point(20, 210);
+            this.lblTotal.Location = new System.Drawing.Point(15, 171);
+            this.lblTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(420, 28);
+            this.lblTotal.Size = new System.Drawing.Size(315, 23);
             this.lblTotal.TabIndex = 5;
             this.lblTotal.Click += new System.EventHandler(this.lblTotal_Click);
             // 
             // lblStatus
             // 
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblStatus.Location = new System.Drawing.Point(20, 248);
+            this.lblStatus.Location = new System.Drawing.Point(15, 202);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(420, 28);
+            this.lblStatus.Size = new System.Drawing.Size(315, 23);
             this.lblStatus.TabIndex = 6;
             this.lblStatus.Click += new System.EventHandler(this.lblStatus_Click);
             // 
@@ -143,9 +153,10 @@
             this.btnDispute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDispute.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDispute.ForeColor = System.Drawing.Color.White;
-            this.btnDispute.Location = new System.Drawing.Point(30, 367);
+            this.btnDispute.Location = new System.Drawing.Point(22, 298);
+            this.btnDispute.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDispute.Name = "btnDispute";
-            this.btnDispute.Size = new System.Drawing.Size(160, 36);
+            this.btnDispute.Size = new System.Drawing.Size(120, 29);
             this.btnDispute.TabIndex = 6;
             this.btnDispute.Text = "Submit Dispute";
             this.btnDispute.UseVisualStyleBackColor = false;
@@ -158,9 +169,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(390, 367);
+            this.btnClose.Location = new System.Drawing.Point(292, 298);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 36);
+            this.btnClose.Size = new System.Drawing.Size(75, 29);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -174,9 +186,10 @@
             this.btnPayBill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayBill.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnPayBill.ForeColor = System.Drawing.Color.White;
-            this.btnPayBill.Location = new System.Drawing.Point(211, 366);
+            this.btnPayBill.Location = new System.Drawing.Point(158, 297);
+            this.btnPayBill.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPayBill.Name = "btnPayBill";
-            this.btnPayBill.Size = new System.Drawing.Size(160, 36);
+            this.btnPayBill.Size = new System.Drawing.Size(120, 29);
             this.btnPayBill.TabIndex = 9;
             this.btnPayBill.Text = "Pay Bill";
             this.btnPayBill.UseVisualStyleBackColor = false;
@@ -184,15 +197,17 @@
             // 
             // CurrentBillForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(520, 420);
+            this.ClientSize = new System.Drawing.Size(390, 341);
             this.Controls.Add(this.btnPayBill);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.panelBill);
             this.Controls.Add(this.btnDispute);
             this.Controls.Add(this.btnClose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CurrentBillForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Current Bill";

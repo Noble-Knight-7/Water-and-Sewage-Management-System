@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillHistoryForm));
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvBills = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
@@ -40,9 +41,10 @@
             // 
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(101)))), ((int)(((byte)(192)))));
-            this.lblTitle.Location = new System.Drawing.Point(20, 11);
+            this.lblTitle.Location = new System.Drawing.Point(15, 9);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(200, 30);
+            this.lblTitle.Size = new System.Drawing.Size(150, 24);
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "📄 Bill History";
             this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
@@ -62,13 +64,14 @@
             this.dgvBills.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBills.ColumnHeadersHeight = 29;
             this.dgvBills.EnableHeadersVisualStyles = false;
-            this.dgvBills.Location = new System.Drawing.Point(26, 44);
+            this.dgvBills.Location = new System.Drawing.Point(20, 36);
+            this.dgvBills.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvBills.Name = "dgvBills";
             this.dgvBills.ReadOnly = true;
             this.dgvBills.RowHeadersVisible = false;
             this.dgvBills.RowHeadersWidth = 51;
             this.dgvBills.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBills.Size = new System.Drawing.Size(895, 390);
+            this.dgvBills.Size = new System.Drawing.Size(671, 317);
             this.dgvBills.TabIndex = 4;
             this.dgvBills.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBills_CellContentClick);
             // 
@@ -79,9 +82,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(730, 454);
+            this.btnClose.Location = new System.Drawing.Point(548, 369);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 35);
+            this.btnClose.Size = new System.Drawing.Size(75, 28);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -94,9 +98,10 @@
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(26, 459);
+            this.btnRefresh.Location = new System.Drawing.Point(20, 373);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(100, 35);
+            this.btnRefresh.Size = new System.Drawing.Size(75, 28);
             this.btnRefresh.TabIndex = 6;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = false;
@@ -104,14 +109,16 @@
             // 
             // BillHistoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.ClientSize = new System.Drawing.Size(946, 506);
+            this.ClientSize = new System.Drawing.Size(710, 411);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvBills);
             this.Controls.Add(this.btnClose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "BillHistoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bill History";

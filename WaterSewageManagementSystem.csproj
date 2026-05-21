@@ -377,6 +377,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs" />
+    <None Include="database\WaterSewageManagementDB.bak" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings" />
   </ItemGroup>
@@ -384,6 +385,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="Resources\Images\login_page_logov2.jpg" />
     <None Include="Resources\Images\login_page_logo.jpg" />
   </ItemGroup>
@@ -502,6 +504,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="gear64x64.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
