@@ -310,7 +310,7 @@ WaterSewageManagementSystem/
 │   │   ├── TrackApplicationForm.cs
 │   │   └── TrackComplaintForm.cs
 │   │
-│   ├── 📁 Maintanence/                   ← Note: folder name kept as-is in codebase
+│   ├── 📁 MaintenanceEngineer/                  
 │   │   ├── AssignedComplaints.cs
 │   │   ├── CompletionReportForm.cs
 │   │   ├── InspectionNotesForm.cs
@@ -338,9 +338,6 @@ WaterSewageManagementSystem/
 ├── Program.cs
 └── README.md
 ```
-
-> ⚠️ The folder `Maintanence` is intentionally kept with this spelling to match existing namespace references in the codebase. Rename only if all namespace references are updated consistently.
-
 ---
 
 ## 🗃️ Database Schema
